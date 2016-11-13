@@ -12,6 +12,7 @@ public class RegisterController {
 	@GetMapping
 	public String registerCustomer(Model model) {
 		// TODO
+		
 		return null;
 	}
 
