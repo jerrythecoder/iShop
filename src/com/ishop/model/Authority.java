@@ -1,30 +1,22 @@
 package com.ishop.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Authority")
+@IdClass(AuthorityPK.class)
 public class Authority {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long authorityId;
-	
 	private String username;
 	
+	@Id
 	private String authority;
 
 	// ---------- Getters and Setters -----------
-	
-	public Long getAuthorityId() {
-		return authorityId;
-	}
-
-	public void setAuthorityId(Long authorityId) {
-		this.authorityId = authorityId;
-	}
 
 	public String getUsername() {
 		return username;

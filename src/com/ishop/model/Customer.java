@@ -24,21 +24,27 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long customerId;
 	
-	@NotEmpty(message = "Username must be specified")
-	private String username;
+//	@NotEmpty(message = "Username must be specified")
+//	private String username;
+//	
+//	@NotEmpty(message = "Password must be specified")
+//	private String password;
+//	
+//	@NotEmpty(message = "Customer name must be specified")
+//	private String customerName;
 	
-	@NotEmpty(message = "Password must be specified")
-	private String password;
+	@NotEmpty(message = "Customer first name must be specified")
+	private String customerFirstName;
 	
-	@NotEmpty(message = "Customer name must be specified")
-	private String customerName;
+	@NotEmpty(message = "Customer last name must be specified")
+	private String customerLastName;
 	
 	@NotEmpty(message = "Customer email address must be specifed")
 	private String customerEmail;
 	
 	private String customerPhone;
 	
-	private boolean enabled;
+//	private boolean enabled;
 	
 	@OneToOne
 	@JoinColumn(name = "billingAddressId")
@@ -52,9 +58,9 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;
-	
-	// ---------- Getters and Setters -----------
 
+	// ---------- Getters and Setters -----------
+	
 	public Long getCustomerId() {
 		return customerId;
 	}
@@ -63,28 +69,20 @@ public class Customer implements Serializable {
 		this.customerId = customerId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getCustomerFirstName() {
+		return customerFirstName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setCustomerFirstName(String customerFirstName) {
+		this.customerFirstName = customerFirstName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getCustomerLastName() {
+		return customerLastName;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+	public void setCustomerLastName(String customerLastName) {
+		this.customerLastName = customerLastName;
 	}
 
 	public String getCustomerEmail() {
@@ -101,14 +99,6 @@ public class Customer implements Serializable {
 
 	public void setCustomerPhone(String customerPhone) {
 		this.customerPhone = customerPhone;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public BillingAddress getBillingAddress() {
@@ -134,10 +124,6 @@ public class Customer implements Serializable {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-	
-	
-	
-	
 	
 	
 }

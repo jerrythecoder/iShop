@@ -63,16 +63,32 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href='<spring:url value="/"/>'>E-Music Store</a>
+              <a class="navbar-brand" href='<spring:url value="/"/>'>i SHOP</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href='<c:url value="/"/>'>Home</a></li>
                 <li><a href='<c:url value="/product/list"/>'>Product</a></li>
-                <li><a href='<c:url value="/item"/>'>Item(test)</a></li>
+                <li><a href="#">Contact</a></li>
+                <sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+                	<li><a href='<spring:url value="/admin"/>'>Admin Tools</a></li>
+                </sec:authorize>
               </ul>
               <ul class="nav navbar-nav pull-right">
-              	<li><a href='<spring:url value="/admin"/>'>Admin</a></li>
+              	<sec:authentication var="user" property="principal"/>
+				<sec:authorize access="isAuthenticated()">
+					<li>
+						<a href="#">Welcome, ${user.username}</a>
+					</li>
+					<li>
+						<a href='<spring:url value="/logout"/>'>Logout</a>
+					</li>
+				</sec:authorize>
+				
+				<sec:authorize access="not isAuthenticated()">
+              		<li><a href='<spring:url value="/register"/>'>Register</a></li>
+              		<li><a href='<spring:url value="/login"/>'>Login</a></li>
+				</sec:authorize>
               </ul>
             </div>
           </div>
@@ -88,15 +104,17 @@
 	      		</div>
 	      	
 	      		<div class="col-md-3" ng-init="updateTotalItemCount()">
-	      			<a href="<c:url value='/basket'/>">
-	      				<p class="text-right">
-	      					<button class="btn btn-warning" type="button">
-	      						<span class="badge">{{totalItemCount}}</span>
-		      					<span class="glyphicon glyphicon-shopping-cart"></span>
-		      					My Shopping Cart
-	      					</button>
-	      				</p>
-	      			</a>
+	      			<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+		      			<a href="<c:url value='/basket'/>">
+		      				<p class="text-right">
+		      					<button class="btn btn-warning" type="button">
+		      						<span class="badge">{{totalItemCount}}</span>
+			      					<span class="glyphicon glyphicon-shopping-cart"></span>
+			      					My Shopping Cart
+		      					</button>
+		      				</p>
+		      			</a>
+	      			</sec:authorize>
 	      		</div>
 	      		
 	      	</div>

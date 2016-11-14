@@ -1,34 +1,27 @@
 package com.ishop.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "User")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
-	
 	private String username;
 	
 	private String password;
 	
 	private boolean enabled;
 	
-	private Long customerId;
+	@OneToOne
+	@JoinColumn(name = "customerId")
+	private Customer customer;
 
 	// ---------- Getters and Setters -----------
-	
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
 
 	public String getUsername() {
 		return username;
@@ -54,13 +47,14 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public Long getCustomerId() {
-		return customerId;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
+	
 	
 	
 }

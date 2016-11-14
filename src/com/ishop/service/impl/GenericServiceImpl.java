@@ -18,31 +18,31 @@ import com.ishop.service.GenericService;
 public class GenericServiceImpl<E, K extends Serializable> implements GenericService<E, K> {
 	
 	@Autowired
-	private GenericDao<E, K> genericDao;
+	private GenericDao<E, K> dao;
 
 	@Override
 	public void add(E entity) {
-		genericDao.add(entity);
+		dao.add(entity);
 	}
 
 	@Override
 	public E find(K key) {
-		return genericDao.find(key);
+		return dao.find(key);
 	}
 
 	@Override
 	public void update(E entity) {
-		genericDao.update(entity);
+		dao.update(entity);
 	}
 
 	@Override
 	public void remove(E entity) {
-		genericDao.remove(entity);
+		dao.remove(entity);
 	}
 
 	@Override
 	public List<E> list() {
-		return genericDao.list();
+		return dao.list();
 	}
 
 }

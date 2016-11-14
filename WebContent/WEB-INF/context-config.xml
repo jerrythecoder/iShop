@@ -21,8 +21,6 @@
         
 	<context:component-scan base-package="com.ishop"/>
 	
-	<mvc:annotation-driven/>
-	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		
@@ -34,6 +32,7 @@
 		<property name="maxUploadSizePerFile" value="1000000"></property>
 	</bean>
 	
+	<mvc:annotation-driven/>
 	<mvc:resources location="WEB-INF/resources/" mapping="/resources/**"/>
 	
 	
@@ -75,11 +74,12 @@
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/customer/**" access="hasRole('ROLE_USER')"/>
 		
-		<security:form-login
+		<security:form-login 
 			login-page="/login"
 			default-target-url="/product/list"
 			authentication-failure-url="/login?error"/>
 		<security:logout 
+			logout-url="/logout"
 			logout-success-url="/login?logout"/>
 			
 		<security:csrf disabled="true"/>
