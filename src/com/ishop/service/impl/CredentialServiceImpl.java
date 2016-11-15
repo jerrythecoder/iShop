@@ -1,6 +1,10 @@
 package com.ishop.service.impl;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import com.ishop.model.Authority;
@@ -19,12 +23,14 @@ import com.ishop.service.UserService;
 public class CredentialServiceImpl implements CredentialService {
 	
 	private static final String ROLE_USER = "ROLE_USER";
+	private static final String ROLE_ADMIN = "ROLE_ADMIN";
 	
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private AuthorityService authorityService;
+	
 
 	@Override
 	public boolean verifyUsernameAvailability(User user) {
@@ -66,6 +72,33 @@ public class CredentialServiceImpl implements CredentialService {
 		authorityService.add(authority);
 		
 		return true;
+	}
+
+	@Override
+	public String getUsername(Authentication auth) {
+		return auth.getName();
+	}
+
+	/*
+	 * Loop to verify the destination authority.
+	 */
+	private boolean hasRole(Authentication auth, String role) {
+		for (GrantedAuthority authority : auth.getAuthorities()) {
+			if (role.equals(authority.getAuthority())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean hasRoleUser(Authentication auth) {
+		return hasRole(auth, ROLE_USER);
+	}
+
+	@Override
+	public boolean hasRoleAdmin(Authentication auth) {
+		return hasRole(auth, ROLE_ADMIN);
 	}
 	
 }

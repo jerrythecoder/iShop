@@ -24,15 +24,6 @@ public class Customer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long customerId;
 	
-//	@NotEmpty(message = "Username must be specified")
-//	private String username;
-//	
-//	@NotEmpty(message = "Password must be specified")
-//	private String password;
-//	
-//	@NotEmpty(message = "Customer name must be specified")
-//	private String customerName;
-	
 	@NotEmpty(message = "Customer first name must be specified")
 	private String customerFirstName;
 	
@@ -43,8 +34,6 @@ public class Customer implements Serializable {
 	private String customerEmail;
 	
 	private String customerPhone;
-	
-//	private boolean enabled;
 	
 	@OneToOne
 	@JoinColumn(name = "billingAddressId")

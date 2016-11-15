@@ -78,7 +78,7 @@
               	<sec:authentication var="user" property="principal"/>
 				<sec:authorize access="isAuthenticated()">
 					<li>
-						<a href="#">Welcome, ${user.username}</a>
+						<a href="<c:url value='/customer/home'/>">Welcome, ${user.username}</a>
 					</li>
 					<li>
 						<a href='<spring:url value="/logout"/>'>Logout</a>

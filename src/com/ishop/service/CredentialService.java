@@ -1,5 +1,7 @@
 package com.ishop.service;
 
+import org.springframework.security.core.Authentication;
+
 import com.ishop.model.Authority;
 import com.ishop.model.User;
 
@@ -16,5 +18,11 @@ public interface CredentialService {
 	boolean verifyAuthorityAvailability(Authority authority);
 	
 	boolean createUser(User user);
+	
+	String getUsername(Authentication auth);
+	
+	boolean hasRoleUser(Authentication auth);
+	
+	boolean hasRoleAdmin(Authentication auth);
 	
 }
