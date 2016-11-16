@@ -6,14 +6,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "User")
 public class User {
 
 	@Id
+	@NotEmpty(message = "Username cannot be empty")
 	private String username;
 	
+	@NotEmpty(message = "Password cannot be empty")
 	private String password;
 	
 	private boolean enabled;

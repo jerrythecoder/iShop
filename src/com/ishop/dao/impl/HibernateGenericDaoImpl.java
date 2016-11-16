@@ -50,7 +50,7 @@ public class HibernateGenericDaoImpl<E, K extends Serializable> implements Gener
 
 	@Override
 	public void update(E entity) {
-		session().saveOrUpdate(entity);
+		session().update(entity);
 	}
 
 	@Override

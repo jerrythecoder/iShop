@@ -1,6 +1,7 @@
 package com.ishop.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,23 +53,30 @@ public class RegisterController {
 	
 	@PostMapping("submit")
 	public String createNewUser(HttpServletRequest request, 
-			@ModelAttribute("user") User user,
+			@Valid @ModelAttribute("user") User user,
+			BindingResult result,
 			@RequestParam("confirmPassword") String confirmPassword, 
 			Model model) {
 		
+		/*
+		 * User credential validation process.
+		 */
+		if (!credentialService.createUser(user)) {
+			model.addAttribute("userError", ERROR_INVALID_USER);
+			return "register";
+		}
+		if (result.hasErrors()) {
+			return "register";
+		}
 		if (!user.getPassword().equals(confirmPassword)) {
 			model.addAttribute("passwordError", ERROR_MISMATCH_PASSWORD);
 			return "register";
 		}
 		
-		if (!credentialService.createUser(user)) {
-			model.addAttribute("userError", ERROR_INVALID_USER);
-			return "register";
-		}
 		
 		/*
-		 * Directly authenticate user after successful registration, so that the 
-		 * user is logged-in automatically. 
+		 * Directly authenticate the user after successful registration, so that the 
+		 * user will be logged-in automatically. 
 		 * 
 		 * Discussions for this solution can be found here: <http://stackoverflow.com/
 		 * questions/3813028/auto-login-after-successful-registeration>

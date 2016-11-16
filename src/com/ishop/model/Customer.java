@@ -2,7 +2,9 @@ package com.ishop.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +45,7 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "shippingAddressId")
 	private ShippingAddress shippingAddress;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;

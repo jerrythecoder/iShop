@@ -32,7 +32,7 @@
     <!-- Angular JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
-    <script src="<c:url value='/resources/js/basket-controller.js'/>"></script>
+    <script src="<c:url value='/resources/js/controller.js'/>"></script>
     
     <!-- Spring Security -->
     <sec:csrfMetaTags />
@@ -50,7 +50,7 @@
   </head>
 	<!-- NAVBAR
 	================================================== -->
-  <body ng-app="basketApp" ng-controller="basketCtrl">
+  <body ng-app="shoppingCartApp" ng-controller="cartCtrl">
     <div class="navbar-wrapper">
       <div class="container">
 
@@ -65,21 +65,31 @@
               </button>
               <a class="navbar-brand" href='<spring:url value="/"/>'>i SHOP</a>
             </div>
+            
             <div id="navbar" class="navbar-collapse collapse">
+            
               <ul class="nav navbar-nav">
-                <li><a href='<c:url value="/"/>'>Home</a></li>
-                <li><a href='<c:url value="/product/list"/>'>Product</a></li>
+                <li><a href='<spring:url value="/"/>'>Home</a></li>
+                <li><a href='<spring:url value="/product/list"/>'>Product</a></li>
                 <li><a href="#">Contact</a></li>
                 <sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
                 	<li><a href='<spring:url value="/admin"/>'>Admin Tools</a></li>
                 </sec:authorize>
               </ul>
+              
               <ul class="nav navbar-nav pull-right">
               	<sec:authentication var="user" property="principal"/>
 				<sec:authorize access="isAuthenticated()">
-					<li>
-						<a href="<c:url value='/customer/home'/>">Welcome, ${user.username}</a>
-					</li>
+					<sec:authorize access="hasRole('ROLE_USER')">
+						<li>
+							<a href="<spring:url value='/customer/home'/>">Welcome, ${user.username}</a>
+						</li>
+					</sec:authorize>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<li>
+							<a href="<spring:url value='/admin'/>">Welcome, ${user.username}</a>
+						</li>
+					</sec:authorize>
 					<li>
 						<a href='<spring:url value="/logout"/>'>Logout</a>
 					</li>
@@ -90,7 +100,9 @@
               		<li><a href='<spring:url value="/login"/>'>Login</a></li>
 				</sec:authorize>
               </ul>
+              
             </div>
+            
           </div>
         </nav>
 
@@ -105,7 +117,7 @@
 	      	
 	      		<div class="col-md-3" ng-init="updateTotalItemCount()">
 	      			<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-		      			<a href="<c:url value='/basket'/>">
+		      			<a href="<spring:url value='/customer/cart'/>">
 		      				<p class="text-right">
 		      					<button class="btn btn-warning" type="button">
 		      						<span class="badge">{{totalItemCount}}</span>

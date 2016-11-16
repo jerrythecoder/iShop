@@ -55,9 +55,8 @@ public class CustomerController {
 			return "customer/customer-info-form";
 		}
 		
-		User user = userService.find(username);
-		user.setCustomer(customer);
-		userService.update(user);
+		// Persist the Customer.
+		userService.bindCustomer(username, customer);
 		
 		return "redirect:/customer/home";
 	}
@@ -66,6 +65,14 @@ public class CustomerController {
 	public String showCustomerHomepage(
 			@ModelAttribute("sessionUsername") String username, 
 			Model model) {
+		
+		/*
+		 * If no customer is bound to the user, simply redirect to customer 
+		 * information form.
+		 */
+		if (!userService.isCustomerBoundToUser(username)) {
+			return "redirect:/customer/info-form";
+		}
 		
 		model.addAttribute("customer", userService.getCustomer(username));
 		return "customer/customer-home";

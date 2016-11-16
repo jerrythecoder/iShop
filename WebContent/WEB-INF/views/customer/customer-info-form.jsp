@@ -56,7 +56,6 @@
 					<br>
 					
 					<input type="submit" value="Submit" class="btn btn-primary"/>
-					<a href='<spring:url value="/home"/>' class="btn btn-primary">Cancel</a>
 					
 				</form:form>
     		

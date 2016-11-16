@@ -1,26 +1,15 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
-<%@include file="/WEB-INF/views/templates/header.jsp" %>
-
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <div class="container-wrapper">
-    
     	<div class="container">
     	
     		<div class="page-header">
 	    		<c:if test="${pageContext.request.userPrincipal.name != null}">
 	  				<h1>Welcome, ${pageContext.request.userPrincipal.name}</h1>
-	   				<form action='<c:url value="/logout"/>' method="post">
-	   					<input type="submit" value="Logout"/>
-	   					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	   				</form>
 	    		</c:if>
     		</div>
-    		
     		
     		<div class="row">
     			<div class="col-md-4">
@@ -37,6 +26,8 @@
     			</div>
     		</div>
     		
+    	</div> <!-- end tag of container -->
+    </div> <!-- end tag of container-wrapper -->
 
     		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>
