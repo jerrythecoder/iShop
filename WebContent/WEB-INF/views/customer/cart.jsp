@@ -24,14 +24,14 @@
 					<td>{{item.product.productPrice}} $</td>
 					<td>
 						<button style="height:25px;width:25px;"
-							ng-click="addItemToBasket(entry.item.id)">+</button>
+							ng-click="addProduct(item.product.productId)">+</button>
 						{{item.quantity}}
 						<button style="height:25px;width:25px;"
-							ng-click="removeItemFromBasket(entry.item.id)">-</button>
+							ng-click="removeProduct(item.product.productId)">-</button>
 					</td>
 					<td>{{item.totalPrice}} $</td>
 					<td>
-						<a href="" ng-click="removeEntryFromBasket(entry.item.id)">
+						<a href="" ng-click="removeCartItem(item.product.productId)">
 							<span class="glyphicon glyphicon-trash"></span>
 						</a>
 					</td>
@@ -47,7 +47,7 @@
 			</table>
 			
 			<p class="text-right">
-				<button class="btn btn-danger" type="button" ng-click="clearBasket()">
+				<button class="btn btn-danger" type="button" ng-click="clearCart()">
 					Clear Cart
 				</button>
 			</p>

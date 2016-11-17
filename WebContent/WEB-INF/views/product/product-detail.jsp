@@ -1,3 +1,4 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
@@ -27,18 +28,35 @@
    					<br>
    					
    					<div>
-						<a href='<c:url value="${url}"/>' class="btn btn-default">Back</a>
-						
-						<a href="" class="btn btn-warning btn-large" 
-							ng-click="addToCart('${product.productId}')">
-							<span class="glyphicon glyphicon-shopping-cart"></span>
-							Add to Cart
+   						
+						<sec:authorize access="hasRole('ROLE_ADMIN')">
+							<c:set var="productListUrl" 
+   									value="${pageContext.request.contextPath}/admin/product-inventory"/>
+						</sec:authorize>
+						<sec:authorize access="not hasRole('ROLE_ADMIN')">
+							<c:set var="productListUrl" 
+   									value="${pageContext.request.contextPath}/product/list"/>
+						</sec:authorize>
+   						
+   						
+						<a href="${productListUrl}" class="btn btn-primary">
+							<span class="glyphicon glyphicon-hand-left"></span>
+							Back
 						</a>
 						
-						<a href="<c:url value='/customer/cart'/>" class="btn btn-default">
-							<span class="glyphicon glyphicon-hand-right"></span>
-							View My Cart
-						</a>
+						<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+							<a href="" class="btn btn-warning" 
+								ng-click="addProduct('${product.productId}')">
+								<span class="glyphicon glyphicon-ok"></span>
+								Add to Cart
+							</a>
+							
+							<a href="<c:url value='/customer/cart'/>" class="btn btn-warning">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+								View Cart
+							</a>
+						</sec:authorize>
+						
 					</div>
 					
    				</div>

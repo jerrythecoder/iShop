@@ -52,10 +52,6 @@ public class Product implements Serializable {
 	@Transient
 	private MultipartFile productImage;
 	
-	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JsonIgnore
-	private List<CartItem> cartItemList;
-	
 	// ---------- Getters and Setters -----------
 
 	public Long getProductId() {
@@ -138,12 +134,76 @@ public class Product implements Serializable {
 		this.productImage = productImage;
 	}
 
-	public List<CartItem> getCartItemList() {
-		return cartItemList;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((productCategory == null) ? 0 : productCategory.hashCode());
+		result = prime * result + ((productCondition == null) ? 0 : productCondition.hashCode());
+		result = prime * result + ((productDescription == null) ? 0 : productDescription.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+		result = prime * result + ((productManufacturer == null) ? 0 : productManufacturer.hashCode());
+		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(productPrice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((productStatus == null) ? 0 : productStatus.hashCode());
+		result = prime * result + ((unitInStock == null) ? 0 : unitInStock.hashCode());
+		return result;
 	}
 
-	public void setCartItemList(List<CartItem> cartItemList) {
-		this.cartItemList = cartItemList;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (productCategory == null) {
+			if (other.productCategory != null)
+				return false;
+		} else if (!productCategory.equals(other.productCategory))
+			return false;
+		if (productCondition == null) {
+			if (other.productCondition != null)
+				return false;
+		} else if (!productCondition.equals(other.productCondition))
+			return false;
+		if (productDescription == null) {
+			if (other.productDescription != null)
+				return false;
+		} else if (!productDescription.equals(other.productDescription))
+			return false;
+		if (productId == null) {
+			if (other.productId != null)
+				return false;
+		} else if (!productId.equals(other.productId))
+			return false;
+		if (productManufacturer == null) {
+			if (other.productManufacturer != null)
+				return false;
+		} else if (!productManufacturer.equals(other.productManufacturer))
+			return false;
+		if (productName == null) {
+			if (other.productName != null)
+				return false;
+		} else if (!productName.equals(other.productName))
+			return false;
+		if (Double.doubleToLongBits(productPrice) != Double.doubleToLongBits(other.productPrice))
+			return false;
+		if (productStatus == null) {
+			if (other.productStatus != null)
+				return false;
+		} else if (!productStatus.equals(other.productStatus))
+			return false;
+		if (unitInStock == null) {
+			if (other.unitInStock != null)
+				return false;
+		} else if (!unitInStock.equals(other.unitInStock))
+			return false;
+		return true;
 	}
 	
 	

@@ -18,7 +18,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Welcome to E-Music Store</title>
+    <title>Welcome to i-SHOP</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${ctx}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -63,7 +63,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href='<spring:url value="/"/>'>i SHOP</a>
+              <a class="navbar-brand" href='<spring:url value="/"/>'>i-SHOP</a>
             </div>
             
             <div id="navbar" class="navbar-collapse collapse">
@@ -115,12 +115,12 @@
 	      		<div class="col-md-9">
 	      		</div>
 	      	
-	      		<div class="col-md-3" ng-init="updateTotalItemCount()">
+	      		<div class="col-md-3">
 	      			<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-		      			<a href="<spring:url value='/customer/cart'/>">
+		      			<a href="<spring:url value='/customer/cart'/>" ng-init="refreshCart()">
 		      				<p class="text-right">
 		      					<button class="btn btn-warning" type="button">
-		      						<span class="badge">{{totalItemCount}}</span>
+		      						<span class="badge">{{cart.totalQuantity}}</span>
 			      					<span class="glyphicon glyphicon-shopping-cart"></span>
 			      					My Shopping Cart
 		      					</button>

@@ -60,7 +60,46 @@ public class User {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + (enabled ? 1231 : 1237);
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
+		if (enabled != other.enabled)
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
 	
 	
 }

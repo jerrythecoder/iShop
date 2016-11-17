@@ -115,6 +115,73 @@ public class Customer implements Serializable {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((billingAddress == null) ? 0 : billingAddress.hashCode());
+		result = prime * result + ((cart == null) ? 0 : cart.hashCode());
+		result = prime * result + ((customerEmail == null) ? 0 : customerEmail.hashCode());
+		result = prime * result + ((customerFirstName == null) ? 0 : customerFirstName.hashCode());
+		result = prime * result + ((customerId == null) ? 0 : customerId.hashCode());
+		result = prime * result + ((customerLastName == null) ? 0 : customerLastName.hashCode());
+		result = prime * result + ((customerPhone == null) ? 0 : customerPhone.hashCode());
+		result = prime * result + ((shippingAddress == null) ? 0 : shippingAddress.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		if (billingAddress == null) {
+			if (other.billingAddress != null)
+				return false;
+		} else if (!billingAddress.equals(other.billingAddress))
+			return false;
+		if (cart == null) {
+			if (other.cart != null)
+				return false;
+		} else if (!cart.equals(other.cart))
+			return false;
+		if (customerEmail == null) {
+			if (other.customerEmail != null)
+				return false;
+		} else if (!customerEmail.equals(other.customerEmail))
+			return false;
+		if (customerFirstName == null) {
+			if (other.customerFirstName != null)
+				return false;
+		} else if (!customerFirstName.equals(other.customerFirstName))
+			return false;
+		if (customerId == null) {
+			if (other.customerId != null)
+				return false;
+		} else if (!customerId.equals(other.customerId))
+			return false;
+		if (customerLastName == null) {
+			if (other.customerLastName != null)
+				return false;
+		} else if (!customerLastName.equals(other.customerLastName))
+			return false;
+		if (customerPhone == null) {
+			if (other.customerPhone != null)
+				return false;
+		} else if (!customerPhone.equals(other.customerPhone))
+			return false;
+		if (shippingAddress == null) {
+			if (other.shippingAddress != null)
+				return false;
+		} else if (!shippingAddress.equals(other.shippingAddress))
+			return false;
+		return true;
+	}
 	
 	
 }

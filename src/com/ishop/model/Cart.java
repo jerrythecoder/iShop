@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "Cart")
@@ -22,10 +23,14 @@ public class Cart implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long cartId;
 	
-	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, 
+			fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<CartItem> cartItems;
 	
 	private double grandTotal;
+	
+	@Transient
+	private int totalQuantity;
 
 	// ---------- Getters and Setters -----------
 	
@@ -46,11 +51,56 @@ public class Cart implements Serializable {
 	}
 
 	public double getGrandTotal() {
-		return grandTotal;
+		double total = 0.0;
+		for (CartItem item : cartItems) {
+			total += item.getTotalPrice();
+		}
+		return total;
 	}
 
-	public void setGrandTotal(double grandTotal) {
-		this.grandTotal = grandTotal;
+	public int getTotalQuantity() {
+		int totalQuantity = 0;
+		for (CartItem item : cartItems) {
+			totalQuantity += item.getQuantity();
+		}
+		return totalQuantity;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cartId == null) ? 0 : cartId.hashCode());
+		result = prime * result + ((cartItems == null) ? 0 : cartItems.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(grandTotal);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cart other = (Cart) obj;
+		if (cartId == null) {
+			if (other.cartId != null)
+				return false;
+		} else if (!cartId.equals(other.cartId))
+			return false;
+		if (cartItems == null) {
+			if (other.cartItems != null)
+				return false;
+		} else if (!cartItems.equals(other.cartItems))
+			return false;
+		if (Double.doubleToLongBits(grandTotal) != Double.doubleToLongBits(other.grandTotal))
+			return false;
+		return true;
 	}
 	
 

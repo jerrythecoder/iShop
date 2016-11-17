@@ -1,6 +1,7 @@
 package com.ishop.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.ishop.exceptions.NullEntityObjectException;
 import com.ishop.model.Cart;
 import com.ishop.service.CartService;
 
@@ -20,22 +22,87 @@ public class ShoppingCartRestController {
 	@Autowired
 	private CartService cartService;
 	
-	@GetMapping("/refresh-cart")
+	@GetMapping("/retrieve-cart")
 	public Cart retrieveCart(@ModelAttribute("sessionUsername") String username) {
-		Cart cart = cartService.getCart(username);
-		if (cart == null) {
-			// TODO
-			throw new NullPointerException("Null Cart");
+		Cart cart = null;
+		try {
+			cart = cartService.getNonNullCart(username);
+		} catch (NullEntityObjectException e) {
+			// TODO ...
+			e.printStackTrace();
 		}
+		
 		return cart;
 	}
 	
-	@PutMapping("/add-to-cart/{productId}")
-	public void addToCart(
+	@GetMapping("/retrieve-quantity/{productId}")
+	public int retrieveProductQuantity(
 			@ModelAttribute("sessionUsername") String username, 
 			@PathVariable("productId") Long productId) {
 		
-		cartService.addProductToCart(username, productId);
+		int quantity = 0;
+		try {
+			quantity = cartService.getProductQuantity(username, productId);
+		} catch (NullEntityObjectException e) {
+			// TODO ...
+			e.printStackTrace();
+		}
+		
+		return quantity;
+	}
+	
+	@PutMapping("/add-product/{productId}")
+	public boolean addProduct(
+			@ModelAttribute("sessionUsername") String username, 
+			@PathVariable("productId") Long productId) {
+		
+		try {
+			cartService.addProduct(username, productId);
+		} catch (NullEntityObjectException e) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@DeleteMapping("/remove-product/{productId}")
+	public boolean removeProduct(
+			@ModelAttribute("sessionUsername") String username, 
+			@PathVariable("productId") Long productId) {
+		
+		try {
+			cartService.removeProduct(username, productId);
+		} catch (NullEntityObjectException e) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@DeleteMapping("/remove-item/{productId}")
+	public boolean removeCartItem(
+			@ModelAttribute("sessionUsername") String username, 
+			@PathVariable("productId") Long productId) {
+		
+		try {
+			cartService.removeCartItem(username, productId);
+		} catch (NullEntityObjectException e) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@DeleteMapping("/clear-cart")
+	public boolean clearCart(@ModelAttribute("sessionUsername") String username) {
+		
+		try {
+			cartService.clearCart(username);
+		} catch (NullEntityObjectException e) {
+			return false;
+		}
+		
+		return true;
 	}
 	
 }
