@@ -58,8 +58,7 @@ public class CartServiceImpl extends GenericServiceImpl<Cart, Long>
 		return cart;
 	}
 	
-	@Override
-	public CartItem getCartItem(String username, Long productId) 
+	private CartItem getCartItem(String username, Long productId) 
 			throws NullEntityObjectException {
 		
 		Cart cart = getNonNullCart(username);
@@ -70,7 +69,8 @@ public class CartServiceImpl extends GenericServiceImpl<Cart, Long>
 	 * Throws an NullEntityObjectException if CartItem is null.
 	 * @throws NullEntityObjectException 
 	 */
-	private CartItem getNoneNullCartItem(String username, Long productId) 
+	@Override
+	public CartItem getNoneNullCartItem(String username, Long productId) 
 			throws NullEntityObjectException {
 		
 		CartItem item = getCartItem(username, productId);
@@ -144,13 +144,6 @@ public class CartServiceImpl extends GenericServiceImpl<Cart, Long>
 		cart.getCartItems().clear();
 		update(cart);
 	}
-
-	@Override
-	public int getProductQuantity(String username, Long productId) 
-			throws NullEntityObjectException {
-		return getNoneNullCartItem(username, productId).getQuantity();
-	}
-
 
 
 }

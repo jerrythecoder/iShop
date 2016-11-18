@@ -1,56 +1,72 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-
-<%@include file="/WEB-INF/views/templates/header.jsp" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ include file="/WEB-INF/views/templates/header.jsp" %>
 	
 	
 	<c:set var="imagePath" value="${pageContext.request.contextPath}/resources/images/product-images"/>
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <div class="container-wrapper">
-    
-    	<div class="container">
-    	
-    		<div class="page-header">
-    			<h1>All Products in Store:</h1>
-    			<p class="lead">Checkout all the products available now!</p>
-    		</div>
-    		
-  			<table class="table table-striped table-hover">
-  			
+   	<div class="container main-content-container">
+   	
+   		<div class="page-header main-content-header">
+   			<div class="main-content-header-title">
+   				<h2 class="header-msg-default">
+   					<span class="glyphicon glyphicon-list-alt"></span>
+   					All Products in Shop
+   				</h2>
+   			</div>
+   			<p class="lead">Don't miss out on our latest electronic selections!</p>
+   		</div>
+   		
+   		<div class="main-content-body">
+			<table class="table table-striped table-hover">
+				
 				<thead>
 					<tr class="bg-success">
-						<th>Photo Thumb</th>
-						<th>Product Name</th>
-						<th>Category</th>
-						<th>Description</th>
-						<th>Condition</th>
-						<th>Price</th>
-						<th></th>
+						<th class="main-cell-md">Photo Thumb</th>
+						<th class="main-cell-lg">Product Name</th>
+						<th class="main-cell-sm">Category</th>
+						<th class="main-cell-sm">Condition</th>
+						<th class="main-cell-sm">Status</th>
+						<th class="main-cell-sm">Price</th>
+						<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+						<th class="main-cell-sm"></th>
+						</sec:authorize>
 					</tr>
 				</thead>
 				
 				<c:forEach var="product" items="${productList}">
-					<tr>
-						<td>
+					<tr>					
+						<td class="main-cell-sm">
 							<img src="${imagePath}/product_${product.productId}.png" alt="image" 
-								class="img-responsive img-thumbnail">
+							class="img-responsive img-thumbnail">
 						</td>
-						<td>${product.productName}</td>
-						<td>${product.productCategory}</td>
-						<td>${product.productDescription}</td>
-						<td>${product.productCondition}</td>
-						<td>${product.productPrice}</td>
-						<td>
+						<td class="main-cell-lg">
 							<a href='<spring:url value="/product/detail/${product.productId}"/>'>
-								<span class="glyphicon glyphicon-info-sign"/>
+								<span class="main-cell-font-bg">
+									${product.productName}
+								</span>
 							</a>
 						</td>
+						<td class="main-cell-sm">${product.productCategory}</td>
+						<td class="main-cell-sm">${product.productCondition}</td>
+						<td class="main-cell-sm">${product.productStatus}</td>
+						<td class="main-cell-sm">$${product.productPrice}</td>
+						<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+							<td>
+								<a href="" class="btn btn-warning btn-sm" 
+									ng-click="addProduct('${product.productId}')">
+									<span class="glyphicon glyphicon-shopping-cart"></span>
+									Add
+								</a>
+							</td>	
+						</sec:authorize>
 					</tr>
 				</c:forEach> 
+				
 			</table>
+		</div>
+		
+	</div> <!-- end tag of main content container -->
     		
     		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

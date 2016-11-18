@@ -42,7 +42,7 @@ public class ShoppingCartRestController {
 		
 		int quantity = 0;
 		try {
-			quantity = cartService.getProductQuantity(username, productId);
+			quantity = cartService.getNoneNullCartItem(username, productId).getQuantity();
 		} catch (NullEntityObjectException e) {
 			// TODO ...
 			e.printStackTrace();
@@ -102,6 +102,21 @@ public class ShoppingCartRestController {
 			return false;
 		}
 		
+		return true;
+	}
+	
+	@GetMapping("/verify-product-added/{productId}")
+	public boolean verifyProductAdded(
+			@ModelAttribute("sessionUsername") String username, 
+			@PathVariable("productId") Long productId) {
+		
+		try {
+			if (cartService.getNoneNullCartItem(username, productId).getQuantity() <= 0) {
+				return false;
+			}
+		} catch (NullEntityObjectException e) {
+			return false;
+		}
 		return true;
 	}
 	

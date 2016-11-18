@@ -1,6 +1,5 @@
 	
-	<div class="container-wrapper">
-    	<div class="container">
+	   	<div class="container main-footer-container">
 			
 			<!-- FOOTER -->
 			<footer>
@@ -8,9 +7,9 @@
 			  <p>&copy; 2016 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 			</footer>
 			
-    	</div> <!-- end tag of container -->
-    </div> <!-- end tag of container-wrapper -->
-
+	   	</div> <!-- end tag of container -->
+	
+	</div> <!-- main container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

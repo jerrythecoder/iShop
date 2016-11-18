@@ -50,12 +50,16 @@
 					<div class="form-group">
 						<label>Category: </label>
 						<label class="checkbox-inline">
-							<form:radiobutton path="productCategory" value="Instrument"/>
-							Instruments
+							<form:radiobutton path="productCategory" value="iPad"/>
+							iPad
 						</label>
 						<label class="checkbox-inline">
-							<form:radiobutton path="productCategory" value="Record"/>
-							Record
+							<form:radiobutton path="productCategory" value="Apple Mac"/>
+							Apple Mac
+						</label>
+						<label class="checkbox-inline">
+							<form:radiobutton path="productCategory" value="Apple Watch"/>
+							Apple Watch
 						</label>
 						<label class="checkbox-inline">
 							<form:radiobutton path="productCategory" value="Accessory"/>
@@ -89,12 +93,12 @@
 					<div class="form-group">
 						<label>Status: </label>
 						<label class="checkbox-inline">
-							<form:radiobutton path="productStatus" value="Active"/>
-							Active
+							<form:radiobutton path="productStatus" value="In Stock"/>
+							In Stock
 						</label>
 						<label class="checkbox-inline">
-							<form:radiobutton path="productStatus" value="Inactive"/>
-							Inactive
+							<form:radiobutton path="productStatus" value="Not Available"/>
+							Not Available
 						</label>
 					</div>
 					

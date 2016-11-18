@@ -19,7 +19,10 @@ public interface CartService extends GenericService<Cart, Long> {
 	 */
 	Cart getNonNullCart(String username) throws NullEntityObjectException;
 	
-	CartItem getCartItem(String username, Long productId) throws NullEntityObjectException;
+	/**
+	 * Throws an NullEntityObjectException if CartItem is null.
+	 */
+	CartItem getNoneNullCartItem(String username, Long productId) throws NullEntityObjectException;
 	
 	void addProduct(String username, Long productId) throws NullEntityObjectException;
 	
@@ -29,5 +32,4 @@ public interface CartService extends GenericService<Cart, Long> {
 	
 	void clearCart(String username) throws NullEntityObjectException;
 	
-	int getProductQuantity(String username, Long productId) throws NullEntityObjectException;
 }

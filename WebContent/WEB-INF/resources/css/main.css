@@ -17,14 +17,15 @@
 }
 
 .table th {
-	text-align: center;
+	text-align: left;
 }
 
 .table td {
-	text-align: center;
+	text-align: left;
 	overflow: auto;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	vertical-align: middle !important;
 }
 
 .login-box {
@@ -35,6 +36,139 @@
 	width: 40%;
 	margin: auto;
 	margin-top: 100px;
+}
+
+
+
+/***************** Buttons ****************/
+
+.main-credential-box {
+	margin-top: 50px;
+	margin-bottom: 80px;
+}
+
+.main-button-login {
+	margin-top: 30px;
+	width: 120px;
+}
+
+.main-button-detail-optional {
+	width: 150px;
+}
+
+.main-button-detail-primary {
+	width: 200px;
+}
+
+
+/***************** Table Cell ****************/
+
+th.main-cell-lg {
+	width: 30%;
+}
+
+td.main-cell-lg {
+	width: 30%;
+}
+
+th.main-cell-md {
+	width: 15%;
+}
+
+td.main-cell-md {
+	width: 15%;
+}
+
+th.main-cell-sm {
+	width: 11%;
+}
+
+td.main-cell-sm {
+	width: 11%;
+}
+
+
+span.main-cell-font-bg {
+	font-size: 18px;
+}
+
+
+/********** Containers ***********/
+body { 
+    padding-top: 70px; 
+}
+
+body.home { 
+    padding-top: 65px; 
+}
+
+div.main-container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+div.main-function-row-container {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+	text-align: right;
+}
+
+div.main-content-container {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+div.main-footer-container {
+	margin-top: 30px;
+	padding-top: 30px;
+}
+
+div.main-content-header {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+div.main-content-header-title {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+div.main-content-body {
+	margin-top: 0px;
+	padding-top: 0px;
+}
+
+
+/*********** Message ************/
+
+.header-test-test {
+	color: #4078c0;
+	color: #337ab7;
+	color: #729f98;
+	color: #252839;
+	color: #30231d;
+	color: #16174f;
+	color: #6534ff;
+	color: #729f98;
+	color: #22264b;
+	color: #173e43;
+}
+
+.header-msg-default {
+	color: #173e43;
+}
+
+.header-msg-info {
+	color: #337ab7;
+}
+
+.header-msg-warn {
+	color: #ec971f;
 }
 
 
