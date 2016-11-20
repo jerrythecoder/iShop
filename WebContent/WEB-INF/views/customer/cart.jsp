@@ -50,6 +50,10 @@
 				<button class="btn btn-danger" type="button" ng-click="clearCart()">
 					Clear Cart
 				</button>
+				<a href="<c:url value='order/checkout'/>" class="btn btn-warning">
+					Check Out
+					<span class="glyphicon glyphicon-hand-right"></span>
+				</a>
 			</p>
 			
     	</div> <!-- end tag of container -->

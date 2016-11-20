@@ -71,12 +71,18 @@
 									<sec:authorize access="isAuthenticated()">
 									<sec:authorize access="hasRole('ROLE_USER')">
 										<li>
-											<a href="<spring:url value='/customer/home'/>">Welcome, ${user.username}</a>
+											<a href="<spring:url value='/customer/home'/>">
+												<span class="glyphicon glyphicon-user"></span>
+												Welcome, ${user.username}
+											</a>
 										</li>
 									</sec:authorize>
 										<sec:authorize access="hasRole('ROLE_ADMIN')">
 										<li>
-											<a href="<spring:url value='/admin'/>">Welcome, ${user.username}</a>
+											<a href="<spring:url value='/admin'/>">
+												<span class="glyphicon glyphicon-user"></span>
+												Welcome, ${user.username}
+											</a>
 										</li>
 										</sec:authorize>
 										<li><a>|</a></li>
@@ -101,17 +107,4 @@
 			</div>
 			<!-- Navbar Ends -->
 			
-			<!-- Functional Bar Starts -->
-			<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-				<div class="container main-function-row-container">
-					<a href="<spring:url value='/customer/cart'/>" ng-init="refreshCart()">
-						<button class="btn btn-warning" type="button">
-							<span class="badge">{{cart.totalQuantity}}</span>
-							<span class="glyphicon glyphicon-shopping-cart"></span>
-							My Shopping Cart
-						</button>
-					</a>
-				</div>
-			</sec:authorize>
-			<!-- Functional Bar Ends -->
 			

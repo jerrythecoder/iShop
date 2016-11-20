@@ -6,6 +6,7 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:security="http://www.springframework.org/schema/security" 
+	xmlns:webflow="http://www.springframework.org/schema/webflow-config" 
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans
     	http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -16,10 +17,21 @@
         http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/security
-		http://www.springframework.org/schema/security/spring-security.xsd">
+		http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/webflow-config
+        http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd">
         
-        
+    
+   	<!-- =========================================================== -->
+	<!-- ========== Spring IoC container configuration ============= -->
+	<!-- =========================================================== -->
+    
 	<context:component-scan base-package="com.ishop"/>
+	
+	
+	<!-- =========================================================== -->
+	<!-- ================= Spring MVC configuration ================ -->
+	<!-- =========================================================== -->
 	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -36,7 +48,10 @@
 	<mvc:resources location="WEB-INF/resources/" mapping="/resources/**"/>
 	
 	
-	<!-- Hibernate configuration -->
+	
+	<!-- =========================================================== -->
+	<!-- ================== Hibernate configuration ================ -->
+	<!-- =========================================================== -->
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
@@ -68,7 +83,9 @@
 	<tx:annotation-driven/>
 	
 	
-	<!-- Spring Security configuration -->
+	<!-- =========================================================== -->
+	<!-- ============== Spring Security configuration ============== -->
+	<!-- =========================================================== -->
 	
 	<security:http>
 		<security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
@@ -92,6 +109,39 @@
 				authorities-by-username-query="select username, authority from Authority where username = ?"/>
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
+	
+	<!-- =========================================================== -->
+	<!-- ============= Spring Web Flow configuration =============== -->
+	<!-- =========================================================== -->
+	
+	<!-- Deploy a FlowExecutor -->
+	<webflow:flow-executor id="flowExecutor"/>
+	
+	<!-- Register flows -->
+	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
+		<webflow:flow-location 
+				id="customer/order/checkout" 
+				path="WEB-INF/flows/order-checkout-flow.xml"/>
+	</webflow:flow-registry>
+	
+	<!-- Enables FlowHandler URL mapping -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+	
+	<!-- Maps request paths to flows in the flowRegistry -->
+	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+		<property name="flowRegistry" ref="flowRegistry"/>
+		<property name="order" value="0"/>
+	</bean>
+	
+	<!-- Use the existing viewResolver, instead of locating JSPs only under the flow's working directory -->
+	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"/>
+
+	<bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers" ref="viewResolver"/>
+	</bean>
 
 </beans>
 

@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
+<%@include file="/WEB-INF/views/templates/func-bar.jsp" %>
 	
 	
 	<c:set var="imagePath" value="${pageContext.request.contextPath}/resources/images/product-images"/>
