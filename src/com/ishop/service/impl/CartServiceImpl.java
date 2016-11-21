@@ -17,7 +17,7 @@ import com.ishop.service.UserService;
  * @author Jerry
  *
  */
-@Service
+@Service("cartService")
 public class CartServiceImpl extends GenericServiceImpl<Cart, Long> 
 							implements CartService {
 	

@@ -4,6 +4,17 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 	
-	<view-state id="viewOrder" view="order-checkout/view-order">
+	<on-start>
+		<evaluate expression="cartService.getCart(currentUser.name)" result="flowScope.cart"/>
+	</on-start>
+	
+	<view-state id="viewProduct" view="order-checkout/view-product">
+		<transition on="back" to="backToCart"/>
+		<transition on="next" to="viewAddress"/>
 	</view-state>
+	
+	<view-state id="viewAddress" view="order-checkout/view-address">
+	</view-state>
+	
+	<end-state id="backToCart" view="externalRedirect:/customer/cart"></end-state>
 </flow>

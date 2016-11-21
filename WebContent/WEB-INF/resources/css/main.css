@@ -52,16 +52,20 @@
 	width: 120px;
 }
 
-.main-button-detail-optional {
-	width: 150px;
+.main-button-md {
+	width: 130px;
 }
 
 .main-button-detail-primary {
 	width: 200px;
 }
 
+.main-flow-action-button-row {
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
 
-/***************** Table Cell ****************/
+/***************** Tables ****************/
 
 th.main-cell-lg {
 	width: 30%;
@@ -90,6 +94,10 @@ td.main-cell-sm {
 
 span.main-cell-font-bg {
 	font-size: 18px;
+}
+
+tr.main-row-font-lg {
+	font-size: 20px;
 }
 
 
@@ -172,4 +180,18 @@ div.main-content-body {
 }
 
 
+/*********** Width ***********/
+.main-wd-80 {
+	width: 80%;
+}
+
+
+/*********** Align ***********/
+.main-align-center-parent {
+	text-align: center;
+}
+
+.main-align-center-child {
+	margin: auto;
+}
 

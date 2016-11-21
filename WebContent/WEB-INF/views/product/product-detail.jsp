@@ -63,14 +63,14 @@
 								
 								<p>
 									You can 
-									<a href="" class="btn btn-danger main-button-detail-optional" 
+									<a href="" class="btn btn-danger main-button-md" 
 										ng-click="removeCartItem('${product.productId}')">
 										<span class="glyphicon glyphicon-remove"></span>
-										Remove Product
+										Remove
 									</a>
 									 or 
 									<a href="<c:url value='/customer/cart'/>" 
-											class="btn btn-warning main-button-detail-optional">
+											class="btn btn-warning main-button-md">
 										<span class="glyphicon glyphicon-shopping-cart"></span>
 										View Cart
 									</a>
