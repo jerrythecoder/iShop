@@ -1,6 +1,7 @@
 package com.ishop.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,18 +41,21 @@ public class Customer implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "billingAddressId")
-	private BillingAddress billingAddress;
+	private CustomerAddress billingAddress;
 	
 	@OneToOne
 	@JoinColumn(name = "shippingAddressId")
-	private ShippingAddress shippingAddress;
+	private CustomerAddress shippingAddress;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
+			orphanRemoval = true)
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;
-
-	// ---------- Getters and Setters -----------
+	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CustomerOrder> orderList;
+	
 	
 	public Long getCustomerId() {
 		return customerId;
@@ -92,19 +97,19 @@ public class Customer implements Serializable {
 		this.customerPhone = customerPhone;
 	}
 
-	public BillingAddress getBillingAddress() {
+	public CustomerAddress getBillingAddress() {
 		return billingAddress;
 	}
 
-	public void setBillingAddress(BillingAddress billingAddress) {
+	public void setBillingAddress(CustomerAddress billingAddress) {
 		this.billingAddress = billingAddress;
 	}
 
-	public ShippingAddress getShippingAddress() {
+	public CustomerAddress getShippingAddress() {
 		return shippingAddress;
 	}
 
-	public void setShippingAddress(ShippingAddress shippingAddress) {
+	public void setShippingAddress(CustomerAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 
@@ -182,6 +187,6 @@ public class Customer implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 	
 }
