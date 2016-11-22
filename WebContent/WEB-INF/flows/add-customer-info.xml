@@ -10,10 +10,23 @@
 			<evaluate expression="userService.getOrCreateCustomer(currentUser.name)" 
 					result="viewScope.customer"/>
 		</on-entry>
-		<transition on="submit" to="billingAddress">
+		<transition on="submit" to="addCustomerAddress">
 			<evaluate expression="userService.bindCustomer(currentUser.name, customer)"/>
 		</transition>
 	</view-state>
 	
+	<subflow-state id="addCustomerAddress" subflow="customer/address-form">
+		<transition on="addressesAdded" to="welcomeNewCustomer"/>
+	</subflow-state>
 	
+	<view-state id="welcomeNewCustomer" view="customer/new-customer-welcome-page">
+		<on-entry>
+			<evaluate expression="userService.getCustomer(currentUser.name)" result="viewScope.customer"/>
+		</on-entry>
+		<transition on="goCustomerHome" to="goCustomerHome"/>
+		<transition on="goShopping" to="goShopping"/>
+	</view-state>
+	
+	<end-state id="goCustomerHome" view="externalRedirect:/customer/home"/>
+	<end-state id="goShopping" view="externalRedirect:/product/list"/>
 </flow>

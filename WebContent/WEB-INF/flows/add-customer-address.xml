@@ -22,11 +22,11 @@
 					result="viewScope.shippingAddress"/>
 		</on-entry>
 		
-		<transition on="submit" to="endAdding">
+		<transition on="submit" to="addressesAdded">
 			<evaluate expression="customerService.saveShippingAddress(currentUser.name, shippingAddress)"/>
 		</transition>
 	</view-state>
 	
-	<end-state id="endAdding" view="externalRedirect:/customer/home"></end-state>
+	<end-state id="addressesAdded" view="externalRedirect:/customer/home"></end-state>
 	
 </flow>
