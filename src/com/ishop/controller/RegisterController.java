@@ -61,11 +61,11 @@ public class RegisterController {
 		/*
 		 * User credential validation process.
 		 */
-		if (!credentialService.createUser(user)) {
-			model.addAttribute("userError", ERROR_INVALID_USER);
+		if (result.hasErrors()) {
 			return "register";
 		}
-		if (result.hasErrors()) {
+		if (!credentialService.createUser(user)) {
+			model.addAttribute("userError", ERROR_INVALID_USER);
 			return "register";
 		}
 		if (!user.getPassword().equals(confirmPassword)) {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	
+	
+	<view-state id="addBillingAddress" view="customer/customer-billing-address-form" model="billingAddress">
+		<on-entry>
+			<evaluate expression="customerService.getOrCreateBillingAddress(currentUser.name)" 
+					result="viewScope.billingAddress"/>
+		</on-entry>
+		
+		<transition on="submit" to="addShippingAddress">
+			<evaluate expression="customerService.saveBillingAddress(currentUser.name, billingAddress)"/>
+		</transition>
+	</view-state>
+	
+	<view-state id="addShippingAddress" view="customer/customer-shipping-address-form" model="shippingAddress">
+		<on-entry>
+			<evaluate expression="customerService.getOrCreateShippingAddress(currentUser.name)" 
+					result="viewScope.shippingAddress"/>
+		</on-entry>
+		
+		<transition on="submit" to="endAdding">
+			<evaluate expression="customerService.saveShippingAddress(currentUser.name, shippingAddress)"/>
+		</transition>
+	</view-state>
+	
+	<end-state id="endAdding" view="externalRedirect:/customer/home"></end-state>
+	
+</flow>

@@ -39,11 +39,11 @@ public class Customer implements Serializable {
 	
 	private String customerPhone;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "billingAddressId")
 	private CustomerAddress billingAddress;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "shippingAddressId")
 	private CustomerAddress shippingAddress;
 	

@@ -15,7 +15,7 @@ import com.ishop.service.UserService;
  * @author Jerry
  *
  */
-@Service
+@Service("userService")
 public class UserServiceImpl extends GenericServiceImpl<User, String> 
 							implements UserService {
 

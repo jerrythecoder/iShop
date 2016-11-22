@@ -119,10 +119,10 @@
 	<webflow:flow-executor id="flowExecutor"/>
 	
 	<!-- Register flows -->
-	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
-		<webflow:flow-location 
-				id="customer/order/checkout" 
-				path="WEB-INF/flows/order-checkout-flow.xml"/>
+	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices" base-path="WEB-INF/flows/">
+		<webflow:flow-location id="customer/order/checkout" path="order-checkout.xml"/>
+		<webflow:flow-location id="customer/info-form" path="add-customer-info.xml"/>
+		<webflow:flow-location id="customer/address-form" path="add-customer-address.xml"/>
 	</webflow:flow-registry>
 	
 	<!-- Enables FlowHandler URL mapping -->
@@ -136,12 +136,17 @@
 		<property name="order" value="0"/>
 	</bean>
 	
-	<!-- Use the existing viewResolver, instead of locating JSPs only under the flow's working directory -->
-	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator"/>
+	<webflow:flow-builder-services id="flowBuilderServices" 
+			view-factory-creator="mvcViewFactoryCreator" 
+			validator="validator"/>
 
+	<!-- Use the existing viewResolver, instead of locating JSPs only under the flow's working directory -->
 	<bean id="mvcViewFactoryCreator" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 		<property name="viewResolvers" ref="viewResolver"/>
 	</bean>
+	
+	<!-- Enable flow view-state model validation by JSR-303 -->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
 </beans>
 

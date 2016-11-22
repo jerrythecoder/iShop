@@ -26,7 +26,10 @@
     				</div>
     				
     				<div class="col-md-5">
-						
+						<a href="<c:url value="/customer/address-form"/>" class="btn btn-primary main-button-md">
+							Add Addresses
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
     				</div>
     			</div>
     		</div>

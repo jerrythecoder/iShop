@@ -1,7 +1,7 @@
 package com.ishop.exceptions;
 
 /**
- * Customized checked exception class to indicate a destination entity 
+ * Customized checked exception to indicate a destination entity 
  * object is null but shouldn't be.
  * 
  * @author Jerry

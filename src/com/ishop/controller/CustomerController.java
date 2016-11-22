@@ -30,36 +30,6 @@ public class CustomerController {
 	@Autowired
 	private UserService userService;
 	
-	/**
-	 * Customer detail submission form.
-	 * 
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/info-form")
-	public String showCustomerInfoForm(
-			@ModelAttribute("sessionUsername") String username, 
-			Model model) {
-		
-		model.addAttribute("customer", userService.getOrCreateCustomer(username));
-		return "customer/customer-info-form";
-	}
-	
-	@PostMapping("/info-form/submit")
-	public String submitCustomerInfoForm(
-			@Valid @ModelAttribute("customer") Customer customer, 
-			BindingResult result, 
-			@ModelAttribute("sessionUsername") String username) {
-		
-		if (result.hasErrors()) {
-			return "customer/customer-info-form";
-		}
-		
-		// Persist the Customer.
-		userService.bindCustomer(username, customer);
-		
-		return "redirect:/customer/home";
-	}
 	
 	@GetMapping("/home")
 	public String showCustomerHomepage(
