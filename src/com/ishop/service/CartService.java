@@ -19,6 +19,8 @@ public interface CartService extends GenericService<Cart, Long> {
 	 */
 	Cart getNonNullCart(String username) throws NullEntityObjectException;
 	
+	boolean isCartEmpty(String username) throws NullEntityObjectException;
+	
 	/**
 	 * Throws an NullEntityObjectException if CartItem is null.
 	 */

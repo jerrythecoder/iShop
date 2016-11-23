@@ -65,6 +65,12 @@ public class CartServiceImpl extends GenericServiceImpl<Cart, Long>
 		return cartItemDao.getItemByCartIdAndProductId(cart.getCartId(), productId);
 	}
 	
+
+	@Override
+	public boolean isCartEmpty(String username) throws NullEntityObjectException {
+		return this.getNonNullCart(username).getCartItems().isEmpty();
+	}
+	
 	/**
 	 * Throws an NullEntityObjectException if CartItem is null.
 	 * @throws NullEntityObjectException 
@@ -120,7 +126,7 @@ public class CartServiceImpl extends GenericServiceImpl<Cart, Long>
 		 */
 		Integer quantity = item.getQuantity();
 		
-		if (quantity >= 1) {
+		if (quantity > 1) {
 			item.setQuantity(quantity - 1);
 			// Persist CartItem.
 			cartItemDao.update(item);

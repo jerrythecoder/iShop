@@ -5,18 +5,31 @@
 angular.module('shoppingCartApp', ['ngCookies'])
 .controller('cartCtrl', function($scope, $http, $cookies) {
 	
+	
 	/*
-	 * Refresh Cart by retrieving the latest Cart data.
+	 * Tests if cart is empty.
+	 */
+	$scope.verifyCartEmpty = function() {
+		$http.get('/ishop/customer/cart/rest/verify-cart-empty')
+		.then(function successCallback(response) {
+			$scope.cartEmpty = response.data;
+		});
+	};
+	
+	/*
+	 * Refreshes Cart by retrieving the latest Cart data.
 	 */
 	$scope.refreshCart = function() {
 		$http.get('/ishop/customer/cart/rest/retrieve-cart')
 		.then(function successCallback(response) {
 			$scope.cart = response.data;
+			// Tests if cart is empty.
+			$scope.verifyCartEmpty();
 		});
 	};
 	
 	/*
-	 * Test if a product is in cart or not.
+	 * Tests if a product is in cart or not.
 	 */
 	$scope.verifyProductAdded = function(productId) {
 		$http.get('/ishop/customer/cart/rest/verify-product-added/' + productId)
@@ -36,7 +49,7 @@ angular.module('shoppingCartApp', ['ngCookies'])
 //		};
 	
 	/*
-	 * Add a Product to Cart.
+	 * Adds a Product to Cart.
 	 */
 	$scope.addProduct = function(productId) {
 		$http.put('/ishop/customer/cart/rest/add-product/' + productId)
@@ -51,7 +64,7 @@ angular.module('shoppingCartApp', ['ngCookies'])
 	};
 	
 	/*
-	 * Remove a Product from Cart.
+	 * Removes a Product from Cart.
 	 */
 	$scope.removeProduct = function(productId) {
 		$http.delete('/ishop/customer/cart/rest/remove-product/' + productId)
@@ -66,7 +79,7 @@ angular.module('shoppingCartApp', ['ngCookies'])
 	};
 	
 	/*
-	 * Remove a CartItem from Cart.
+	 * Removes a CartItem from Cart.
 	 */
 	$scope.removeCartItem = function(productId) {
 		$http.delete('/ishop/customer/cart/rest/remove-item/' + productId)
@@ -81,7 +94,7 @@ angular.module('shoppingCartApp', ['ngCookies'])
 	};
 	
 	/*
-	 * Clear all CartItems from Cart.
+	 * Clears all CartItems from Cart.
 	 */
 	$scope.clearCart = function() {
 		$http.delete('/ishop/customer/cart/rest/clear-cart')

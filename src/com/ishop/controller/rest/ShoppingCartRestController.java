@@ -22,16 +22,31 @@ public class ShoppingCartRestController {
 	@Autowired
 	private CartService cartService;
 	
+	@GetMapping("/verify-cart-empty")
+	public boolean verifyCartEmpty(@ModelAttribute("sessionUsername") String username) {
+		
+		boolean result = true;
+		
+		try {
+			result = cartService.isCartEmpty(username);
+		} catch (NullEntityObjectException e) {
+			// TODO ...
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 	@GetMapping("/retrieve-cart")
 	public Cart retrieveCart(@ModelAttribute("sessionUsername") String username) {
+		
 		Cart cart = null;
+		
 		try {
 			cart = cartService.getNonNullCart(username);
 		} catch (NullEntityObjectException e) {
 			// TODO ...
 			e.printStackTrace();
 		}
-		
 		return cart;
 	}
 	
