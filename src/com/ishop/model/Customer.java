@@ -47,13 +47,12 @@ public class Customer implements Serializable {
 	@JoinColumn(name = "shippingAddressId")
 	private CustomerAddress shippingAddress;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, 
-			orphanRemoval = true)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "cartId")
 	@JsonIgnore
 	private Cart cart;
 	
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy="customer", orphanRemoval = true)
 	private List<CustomerOrder> orderList;
 	
 	

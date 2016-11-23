@@ -25,4 +25,10 @@ public interface CustomerService extends GenericService<Customer, Long> {
 	void saveShippingAddress(String username, CustomerAddress shippingAddress) 
 			throws NullEntityObjectException, InvalidCustomerAddressCategoryException;
 	
+	CustomerAddress getBillingAddress(String username) throws NullEntityObjectException;
+	
+	CustomerAddress getShippingAddress(String username) throws NullEntityObjectException;
+	
+	void saveCustomerOrder(String username) throws NullEntityObjectException;
+	
 }

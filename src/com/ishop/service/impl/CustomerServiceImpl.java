@@ -1,12 +1,21 @@
 package com.ishop.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ishop.dao.CustomerOrderDao;
 import com.ishop.exceptions.InvalidCustomerAddressCategoryException;
 import com.ishop.exceptions.NullEntityObjectException;
+import com.ishop.model.CartItem;
 import com.ishop.model.Customer;
 import com.ishop.model.CustomerAddress;
+import com.ishop.model.CustomerOrder;
+import com.ishop.model.OrderItem;
+import com.ishop.service.CartService;
 import com.ishop.service.CustomerService;
 import com.ishop.service.UserService;
 
@@ -24,14 +33,23 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 	private static final int SHIPPING_ADDRESS_CAT_CODE = 1;
 	private static final int ORDER_ADDRESS_CAT_CODE = 2;
 	
+	private static final String ORDER_STATUS_NEW = "New Order";
+	
 	private static final String ERROR_CUSTOMER_NOT_FOUND = 
 			"Customer was not found, username: %s";
-	
 	private static final String ERROR_INVALID_ADDRESS_CODE =
 			"Invalid customer address category code, expected code: %s";
 	
+	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CartService cartService;
+	
+	@Autowired
+	private CustomerOrderDao customerOrderDao;
+	
 
 	@Override
 	public Customer getNonNullCustomer(String username) throws NullEntityObjectException {
@@ -95,6 +113,109 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 		Customer customer = this.getNonNullCustomer(username);
 		customer.setShippingAddress(shippingAddress);
 		this.update(customer);
+	}
+
+	@Override
+	public CustomerAddress getBillingAddress(String username) throws NullEntityObjectException {
+		return this.getNonNullCustomer(username).getBillingAddress();
+	}
+
+	@Override
+	public CustomerAddress getShippingAddress(String username) throws NullEntityObjectException {
+		return this.getNonNullCustomer(username).getShippingAddress();
+	}
+	
+	/**
+	 * Utility method that converts cart items to order items.
+	 */
+	private List<OrderItem> convertCartItemsToOrderItems(Customer customer, CustomerOrder order) {
+		
+		// Create a new OrderItem List.
+		ArrayList<OrderItem> orderItemList = new ArrayList<>();
+		
+		for (CartItem cartItem : customer.getCart().getCartItems()) {
+			// Create a new OrderItem and populate all fields from the data of CartItem.
+			OrderItem orderItem = new OrderItem();
+			
+			orderItem.setCustomerOrder(order);
+			orderItem.setItemProductId(cartItem.getProduct().getProductId());
+			orderItem.setItemProductName(cartItem.getProduct().getProductName());
+			orderItem.setItemProductPrice(cartItem.getProduct().getProductPrice());
+			orderItem.setItemProductQuantity(cartItem.getQuantity());
+			// Price deduction is a dummy data for now.
+			orderItem.setItemPriceDeduction(0.0);
+			orderItem.setItemTotalPrice(cartItem.getTotalPrice());
+			
+			// Save OrderItem to list.
+			orderItemList.add(orderItem);
+		}
+		
+		return orderItemList;
+	}
+	
+	/**
+	 * Utility method that gets an OrderAddress copy of CustomerAddress object
+	 * from another category.
+	 */
+	private CustomerAddress getOrderAddressCopy(CustomerAddress address) {
+		
+		// Create a new order address and set the appropriate category code.
+		CustomerAddress orderAddress = new CustomerAddress();
+		orderAddress.setCategoryCode(ORDER_ADDRESS_CAT_CODE);
+		
+		// Copy other fields.
+		orderAddress.setApartmentNumber(address.getApartmentNumber());
+		orderAddress.setStreetName(address.getStreetName());
+		orderAddress.setCity(address.getCity());
+		orderAddress.setState(address.getState());
+		orderAddress.setCountry(address.getCountry());
+		orderAddress.setZipCode(address.getZipCode());
+		
+		return orderAddress;
+	}
+	
+	/**
+	 * Utility method that generate a new CustomerOrder object from current 
+	 * Customer's data (profile, shopping cart, addresses etc.)
+	 */
+	private CustomerOrder createCustomerOrderObject(Customer customer) {
+		
+		// Create a new order.
+		CustomerOrder order = new CustomerOrder();
+		
+		// Bind order to the current customer.
+		order.setCustomer(customer);
+		
+		// Set current date and time to be order creation time.
+		order.setCreationTime(new Date());
+		
+		// Populate order items.
+		order.setOrderItems(this.convertCartItemsToOrderItems(customer, order));
+		
+		order.setGrandTotal(customer.getCart().getGrandTotal());
+		order.setRecipientFirstName(customer.getCustomerFirstName());
+		order.setRecipientLastName(customer.getCustomerLastName());
+		
+		order.setBillingAddress(this.getOrderAddressCopy(customer.getBillingAddress()));
+		order.setShippingAddress(this.getOrderAddressCopy(customer.getShippingAddress()));
+		
+		// Set status to new.
+		order.setOrderStatus(ORDER_STATUS_NEW);
+		
+		return order;
+	}
+	
+	@Override
+	public void saveCustomerOrder(String username) throws NullEntityObjectException {
+		Customer customer = this.getNonNullCustomer(username);
+		
+		// Generate new order object.
+		CustomerOrder order = this.createCustomerOrderObject(customer);
+		// Persist the order.
+		this.customerOrderDao.add(order);
+		
+		// Clear cart after new order persisted.
+		this.cartService.clearCart(username);
 	}
 
 }

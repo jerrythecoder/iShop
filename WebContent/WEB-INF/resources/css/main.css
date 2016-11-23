@@ -60,10 +60,6 @@
 	width: 200px;
 }
 
-.main-flow-action-button-row {
-	margin-top: 50px;
-	margin-bottom: 15px;
-}
 
 /***************** Tables ****************/
 
@@ -151,6 +147,23 @@ div.main-content-body {
 	padding-top: 0px;
 }
 
+div.main-flow-address-container {
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 10px;
+	border-radius: 5px;
+	color: #333;
+}
+
+.main-flow-action-button-row {
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
+
+.main-flow-action-button-row-inner {
+	margin-top: 30px;
+}
+
 
 /*********** Message ************/
 
@@ -194,4 +207,19 @@ div.main-content-body {
 .main-align-center-child {
 	margin: auto;
 }
+
+.main-align-left-parent {
+	text-align: left;
+}
+
+.main-align-left-child {
+	margin: 0px;
+}
+
+
+/*********** Backgroud Color **********/
+div.main-bg-color-1 {
+	background-color: #fefff9;
+}
+
 
