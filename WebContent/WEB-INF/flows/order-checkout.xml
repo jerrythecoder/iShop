@@ -3,24 +3,36 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+                          
 	
 	<on-start>
-		<evaluate expression="cartService.getCart(currentUser.name)" result="flowScope.cart"/>
 		<evaluate expression="userService.getCustomer(currentUser.name)" result="flowScope.customer"/>
+		<set name="externalContext.sessionMap.accessingExpiredCheckout" value="false" type="boolean"/>
+		<!-- Define 2 order status variables -->
+		<set name="flowScope.orderActive" value="true" type="boolean"/>
+		<evaluate expression="!cartService.isCartEmpty(currentUser.name)" 
+				result="flowScope.orderValid" result-type="boolean"/>
 	</on-start>
 	
 	<view-state id="viewProduct" view="order-checkout/view-product">
+		<on-render>
+			<evaluate expression="!externalContext.sessionMap.accessingExpiredCheckout" 
+					result="flowScope.orderActive" result-type="boolean"/>
+			<evaluate expression="cartService.getCart(currentUser.name)" result="viewScope.cart"/>
+		</on-render>
 		<transition on="back" to="backToCart"/>
 		<transition on="next" to="viewAddress"/>
 	</view-state>
 	
 	<view-state id="viewAddress" view="order-checkout/view-address">
-		<on-entry>
+		<on-render>
+			<evaluate expression="!externalContext.sessionMap.accessingExpiredCheckout" 
+					result="flowScope.orderActive" result-type="boolean"/>
 			<evaluate expression="customerService.getBillingAddress(currentUser.name)" 
 					result="flowScope.billingAddress"/>
 			<evaluate expression="customerService.getShippingAddress(currentUser.name)" 
 					result="flowScope.shippingAddress"/>
-		</on-entry>
+		</on-render>
 		
 		<transition on="back" to="viewProduct"/>
 		<transition on="next" to="confirmOrder"/>
@@ -32,19 +44,31 @@
 	</subflow-state>
 	
 	<view-state id="confirmOrder" view="order-checkout/confirm-order">
+		<on-render>
+			<evaluate expression="!externalContext.sessionMap.accessingExpiredCheckout" 
+					result="flowScope.orderActive" result-type="boolean"/>
+			<evaluate expression="cartService.getCart(currentUser.name)" result="viewScope.cart"/>
+		</on-render>
 		<transition on="back" to="viewAddress"/>
 		<transition on="confirm" to="success">
 			<evaluate expression="customerService.saveCustomerOrder(currentUser.name)"/>
 		</transition>
 	</view-state>
 	
-	<view-state id="success" view="order-checkout/success">
-		<transition on="keepShopping" to="keepShopping"/>
-		<transition on="viewOrderList" to="viewOrderList"/>
+	<view-state id="success" view="order-checkout/order-success">
+		<on-entry>
+			<set name="externalContext.sessionMap.accessingExpiredCheckout" value="true" type="boolean"/>
+		</on-entry>
 	</view-state>
 	
 	<end-state id="backToCart" view="externalRedirect:/customer/cart"/>
 	<end-state id="keepShopping" view="externalRedirect:/product/list"/>
 	<end-state id="viewOrderList" view="externalRedirect:/customer/order-list"/>
+	
+	<global-transitions>
+		<transition on="switchToShopping" to="keepShopping"/>
+		<transition on="switchToCart" to="backToCart"/>
+		<transition on="switchToOrderList" to="viewOrderList"/>
+	</global-transitions>
 	
 </flow>

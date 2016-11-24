@@ -24,12 +24,12 @@
 			<div class="row main-flow-action-button-row">
 				<div class="col-md-3"></div>
 				<div class="col-md-3">
-					<a href="${flowExecutionUrl}&_eventId=keepShopping" class="btn btn-primary main-button-md">
+					<a href="${flowExecutionUrl}&_eventId=switchToShopping" class="btn btn-primary main-button-md">
 						Keep Shopping
 					</a>
 				</div>
 				<div class="col-md-3">
-					<a href="${flowExecutionUrl}&_eventId=viewOrderList" class="btn btn-primary main-button-md">
+					<a href="${flowExecutionUrl}&_eventId=switchToOrderList" class="btn btn-primary main-button-md">
 						View My Order List
 					</a>
 				</div>

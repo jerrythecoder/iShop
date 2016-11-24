@@ -7,7 +7,7 @@
 	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
    	<div class="container main-content-container">
-   	
+   		
    		<div class="page-header main-content-header">
    			<div class="main-content-header-title">
    				<h2 class="header-msg-default">
@@ -18,7 +18,34 @@
    			<p class="lead">Below is the details of your order:</p>
    		</div>
    		
-   		<div class="main-content-body main-align-center-parent">
+   		<div class="main-content-body main-align-center-parent" ng-hide="${orderActive}">
+			<p>The check-out session you're accessing has expired.</p>
+		</div>
+   		
+   		<div class="main-content-body main-align-center-parent" ng-show="${orderActive}">
+   			<div ng-hide="${orderValid}">
+   				<p>The content of the order is invalid.</p>
+   			</div>
+   		</div>
+   		
+   		<div class="main-content-body main-align-center-parent" ng-hide="${orderActive && orderValid}">
+			<div class="row main-flow-action-button-row">
+				<div class="col-md-3"></div>
+				<div class="col-md-3">
+					<a href="${flowExecutionUrl}&_eventId=switchToShopping" class="btn btn-primary main-button-md">
+						Keep Shopping
+					</a>
+				</div>
+				<div class="col-md-3">
+					<a href="${flowExecutionUrl}&_eventId=switchToOrderList" class="btn btn-primary main-button-md">
+						View My Order List
+					</a>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+   		
+   		<div class="main-content-body main-align-center-parent" ng-show="${orderActive && orderValid}">
 			<div class="jumbotron main-wd-80 main-align-center-child">
 				<table class="table table-condensed">
 					<tr>
