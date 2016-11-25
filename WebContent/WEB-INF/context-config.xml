@@ -55,8 +55,8 @@
 	
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-		<property name="jdbcUrl" value="jdbc:mysql://192.168.245.157:3306/ishop_main_db?useSSL=false"/>
-		<property name="user" value="root"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ishop_main_db?useSSL=false"/>
+		<property name="user" value="ishop"/>
 		<property name="password" value="qwer1234"/>
 		
 		<property name="minPoolSize" value="5" />
