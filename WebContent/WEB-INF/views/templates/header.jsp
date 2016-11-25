@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 
 	<c:set var="ctx" value="${pageContext.request.contextPath}"/>
@@ -71,7 +71,7 @@
 									<sec:authorize access="isAuthenticated()">
 									<sec:authorize access="hasRole('ROLE_USER')">
 										<li>
-											<a href="<spring:url value='/customer/home'/>">
+											<a href="<spring:url value='/customer/home'/>" style="color: white;">
 												<span class="glyphicon glyphicon-user"></span>
 												Welcome, ${user.username}
 											</a>
@@ -79,7 +79,7 @@
 									</sec:authorize>
 										<sec:authorize access="hasRole('ROLE_ADMIN')">
 										<li>
-											<a href="<spring:url value='/admin'/>">
+											<a href="<spring:url value='/admin'/>" style="color: white;">
 												<span class="glyphicon glyphicon-user"></span>
 												Welcome, ${user.username}
 											</a>
