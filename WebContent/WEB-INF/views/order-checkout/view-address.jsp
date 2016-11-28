@@ -4,104 +4,127 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 	
 
-   	<div class="container main-content-container">
-   	
-   		<div class="page-header main-content-header main-content-header-checkout">
-   			<div class="main-content-header-title">
-   				<h2 class="header-msg-default">
-   					<span class="glyphicon glyphicon-check"></span>
-   					Order Checkout
-   				</h2>
-   			</div>
-	   		<div class="row" ng-show="${orderActive && orderValid}">
-	   			<div class="col-md-1"></div>
+<div class="container">
+	
+	<div class="page-header">
+		<div class="main-content-header-title">
+			<h2 class="header-msg-default">
+				<span class="glyphicon glyphicon-check"></span>
+				Customer Checkout
+			</h2>
+		</div>
+	</div>   
+   		
+   		
+   	<%@ include file="/WEB-INF/views/templates/checkout-flow-validation-block.jsp" %>
+	   	
+	   	
+ 	<div class="i-center-parent" ng-show="${orderActive && orderValid}">
+  		<div class="jumbotron i-wd-80 i-center-child">
+  		
+	  		<div class="row text-right i-flow-label-row">
+	   			<div class="col-md-2 i-vertical-center">
+	   				<span class="label label-primary i-flow-label">Your Items</span>
+	   			</div>
+	   			<div class="col-md-1 i-vertical-center">
+	   				<span class="glyphicon glyphicon-triangle-right" style="padding-top: 6px"></span>
+	   			</div>
 	   			<div class="col-md-2">
-	   				<p class="lead main-flow-done">
-	   					View Product
-	   				</p>
+	   				<span class="label label-warning i-flow-label">Addresses</span>
 	   			</div>
 	   			<div class="col-md-1">
-	   				<p class="lead"><span class="glyphicon glyphicon-triangle-right"></span></p>
+	   				<span class="glyphicon glyphicon-triangle-right" style="padding-top: 6px"></span>
 	   			</div>
 	   			<div class="col-md-2">
-	   				<p class="lead main-flow-active">Verify Address</p>
+	   				<span class="label label-default i-flow-label">Confirm</span>
 	   			</div>
 	   			<div class="col-md-1">
-	   				<p class="lead"><span class="glyphicon glyphicon-triangle-right"></span></p>
+	   				<span class="glyphicon glyphicon-triangle-right" style="padding-top: 6px"></span>
 	   			</div>
 	   			<div class="col-md-2">
-	   				<p class="lead main-flow-undone">Confirm Order</p>
-	   			</div>
-	   			<div class="col-md-1">
-	   				<p class="lead"><span class="glyphicon glyphicon-triangle-right"></span></p>
-	   			</div>
-	   			<div class="col-md-2">
-	   				<p class="lead main-flow-undone">Ordered !</p>
+	   				<span class="label label-default i-flow-label">Ordered !</span>
 	   			</div>
 	   			<div class="col-md-1"></div>
 	   		</div>
+  		
+  			
+   			<div class="row">
    			
-   		</div> <!-- end of header -->
-   		
-   		<%@ include file="/WEB-INF/views/templates/checkout-flow-validation-block.jsp" %>
-	   	
-   		<div class="main-content-body main-align-center-parent" ng-show="${orderActive && orderValid}">
-   			<div class="panel panel-default">
-   			
-	   			<div class="jumbotron main-wd-80 main-align-center-child">
-		   			<div class="row">
-		   				<div class="col-md-6">
-			   				<p>Billing Address</p>
-			   				<br>
-			   				<div class="main-align-left-parent main-flow-address-container main-bg-color-1">
-								<div>${billingAddress.apartmentNumber} ${billingAddress.streetName}</div>
-								<div>${billingAddress.city}, ${billingAddress.state}</div>
-								<div>${billingAddress.country}</div>
-								<div>${billingAddress.zipCode}</div>
-							</div>
-		   				</div>
-		   				
-		   				<div class="col-md-6">
-			   				<p>Shipping Address</p>
-			   				<br>
-			   				<div class="main-align-left-parent main-flow-address-container main-bg-color-1">
-								<div>${shippingAddress.apartmentNumber} ${shippingAddress.streetName}</div>
-								<div>${shippingAddress.city}, ${shippingAddress.state}</div>
-								<div>${shippingAddress.country}</div>
-								<div>${shippingAddress.zipCode}</div>
-							</div>
-		   				</div>
-		   			</div> <!-- end of row 1 -->
-		   			
-		   			<div class="row main-align-center-parent main-flow-action-button-row-inner">
-		  				<a href="${flowExecutionUrl}&_eventId=edit" 
-		  						class="btn btn-primary main-align-center-child">
-							
-							Edit Billing/Shipping Addresses
-						</a>
-		   			</div> <!-- end of row 2 -->
-	   			</div> <!-- end of jumbotron -->
-	   			
-	   			<div class="row main-flow-action-button-row">
-					<div class="col-md-3"></div>
-					<div class="col-md-3">
-						<a href="${flowExecutionUrl}&_eventId=back" class="btn btn-warning main-button-md">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-							Back
-						</a>
+   				<div class="col-md-6">	
+					<div class="panel panel-default">
+						<table class="table table-hover text-left">
+		   					<tr class="info i-font-16 text-center">
+			   					<td>
+		   							<span class="glyphicon glyphicon-credit-card"></span>
+		   							Billing Address
+			   					</td>
+		   					</tr>
+		   					<tr>
+			   					<td>
+									<p class="i-font-14">${billingAddress.apartmentNumber} ${billingAddress.streetName}</p>
+									<p class="i-font-14">${billingAddress.city}, ${billingAddress.state}</p>
+									<p class="i-font-14">${billingAddress.country}</p>
+									<p class="i-font-14">${billingAddress.zipCode}</p>
+								</td>
+							</tr>
+						</table>
+						<div class="i-panel-button-row">
+							<a href="${flowExecutionUrl}&_eventId=edit" class="btn btn-default btn-sm i-btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Edit
+							</a>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<a href="${flowExecutionUrl}&_eventId=next" class="btn btn-warning main-button-md">
-							Next
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
+   				</div>
+   				
+   				<div class="col-md-6">
+					<div class="panel panel-default">
+						<table class="table table-hover text-left">
+		   					<tr class="info i-font-16 text-center">
+			   					<td>
+		   							<span class="glyphicon glyphicon-plane"></span>
+	   								Shipping Address
+			   					</td>
+		   					</tr>
+		   					<tr>
+			   					<td>
+									<p class="i-font-14">${shippingAddress.apartmentNumber} ${shippingAddress.streetName}</p>
+									<p class="i-font-14">${shippingAddress.city}, ${shippingAddress.state}</p>
+									<p class="i-font-14">${shippingAddress.country}</p>
+									<p class="i-font-14">${shippingAddress.zipCode}</p>
+								</td>
+							</tr>
+						</table>
+						<div class="i-panel-button-row">
+							<a href="${flowExecutionUrl}&_eventId=edit" class="btn btn-default btn-sm i-btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Edit
+							</a>
+						</div>
 					</div>
-					<div class="col-md-3"></div>
-				</div> <!-- end of row 3 -->
-			</div> <!-- end of panel -->
-		</div>
+   				</div>
+   				
+   			</div> <!-- row -->
+  		</div> <!-- end of jumbotron -->
+  			
+  		<div class="row i-button-row i-wd-80 i-center-child">
+			<div class="col-md-8"></div>
+			<div class="col-md-2">
+				<a href="${flowExecutionUrl}&_eventId=back" class="btn btn-default pull-right i-btn-md">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					Back
+				</a>
+			</div>
+			<div class="col-md-2">
+				<a href="${flowExecutionUrl}&_eventId=next" class="btn btn-warning pull-right i-btn-md">
+					Next
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+		</div> <!-- row -->
 		
-	</div> <!-- end tag of main content container -->
+	</div> <!-- center-parent -->
+</div> <!-- container -->
     		
     		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

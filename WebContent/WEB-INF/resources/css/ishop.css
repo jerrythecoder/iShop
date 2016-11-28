@@ -1,0 +1,217 @@
+.xxx-color-template {
+	background-color: #f08804;
+	background-color: #101010; /* navbar origianl */
+	background-color: #dddddd; /* panel border-color */
+}
+
+
+/************ Override Bootstrap ************/
+
+.table td {
+	text-overflow: ellipsis;
+	vertical-align: middle !important;
+}
+
+--body {
+	padding-bottom: 0px;
+}
+
+/*********** navbar ***********/
+.i-navbar {
+	margin-bottom: 0px;
+	background-color: #333333;
+}
+
+
+/********* footer ***********/
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -120px;
+  /* Pad bottom by footer height */
+  padding: 0 0 120px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  	height: 120px;
+	margin-top: 50px;
+	background-color: #333333;
+	padding: 50px;
+}
+
+
+/************ Alignment *************/
+
+/*
+div.i-header {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	
+	background-color: #fcb14f;
+	overflow: hidden;
+	margin-bottom: 10px;
+	border-radius: 3px;
+}
+*/
+
+div.i-vertical-center {
+	vertical-align: middle;
+}
+
+.i-center-parent {
+	text-align: center !important;
+}
+
+.i-center-child {
+	margin: auto;
+}
+
+
+/************ Width *************/
+
+.i-wd-90 {
+	width: 90%;
+}
+
+.i-wd-85 {
+	width: 85%;
+}
+
+.i-wd-80 {
+	width: 80%;
+}
+
+.i-wd-50 {
+	width: 50%;
+}
+
+.i-wd-40 {
+	width: 40%;
+}
+
+.i-wd-35 {
+	width: 35%;
+}
+
+.i-wd-30 {
+	width: 30%;
+}
+
+.i-wd-25 {
+	width: 25%;
+}
+
+.i-wd-20 {
+	width: 20%;
+}
+
+.i-wd-15 {
+	width: 15%;
+}
+
+.i-wd-10 {
+	width: 10%;
+}
+
+.i-wd-8 {
+	width: 8%;
+}
+
+.i-wd-5 {
+	width: 5%;
+}
+
+
+/************** Font *************/
+
+tr.i-font-14, 
+span.i-font-14, 
+p.i-font-14 {
+	font-size: 14px;
+}
+
+tr.i-font-16, 
+span.i-font-16, 
+p.i-font-16 {
+	font-size: 16px;
+}
+
+.i-font-18 {
+	font-size: 18px;
+}
+
+.i-font-20 {
+	font-size: 20px;
+}
+
+.i-font-22 {
+	font-size: 22px;
+}
+
+.i-font-bold {
+	font-weight: bold;
+}
+
+/*
+.i-font-black {
+	color: black;
+}
+*/
+
+
+/*********** Buttons ***********/
+
+.i-button-row {
+	margin-top: 50px;
+	margin-bottom: 15px;
+}
+
+.i-panel-button-row {
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.i-btn-xlg {
+	width: 230px;
+}
+
+.i-btn-lg {
+	width: 200px;
+}
+
+.i-btn-md {
+	width: 130px;
+}
+
+.i-btn-sm {
+	width: 110px;
+}
+
+.i-btn-xsm {
+	width: 80px;
+}
+
+
+/************ Labels *************/
+div.i-flow-label-row {
+	font-size: 20px;
+	padding-top: 10px;
+	padding-bottom: 70px;
+	padding-left: 50px;
+}
+
+.i-flow-label {
+	width: 200px !important;
+}
