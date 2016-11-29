@@ -46,7 +46,26 @@
 	   			</div>
 	   			<div class="col-md-1"></div>
 	   		</div>
-  		
+  			
+  			
+  			<!-- variables for AngularJS -->
+			<c:choose>
+				<c:when test="${billingAddress == null}">
+					<c:set var="billingAddressExist" value="false"></c:set>
+				</c:when>
+				<c:otherwise>
+					<c:set var="billingAddressExist" value="true"></c:set>
+				</c:otherwise>
+			</c:choose>
+			<c:choose>
+				<c:when test="${shippingAddress == null}">
+					<c:set var="shippingAddressExist" value="false"></c:set>
+				</c:when>
+				<c:otherwise>
+					<c:set var="shippingAddressExist" value="true"></c:set>
+				</c:otherwise>
+			</c:choose>
+  			
   			
    			<div class="row">
    			
@@ -60,18 +79,27 @@
 			   					</td>
 		   					</tr>
 		   					<tr>
-			   					<td>
+			   					<td ng-hide="${billingAddressExist} === false">
 									<p class="i-font-14">${billingAddress.apartmentNumber} ${billingAddress.streetName}</p>
 									<p class="i-font-14">${billingAddress.city}, ${billingAddress.state}</p>
 									<p class="i-font-14">${billingAddress.country}</p>
 									<p class="i-font-14">${billingAddress.zipCode}</p>
 								</td>
+								<td ng-show="${billingAddressExist} === false">
+									<p class="i-font-14">No billing address.</p>
+								</td>
 							</tr>
 						</table>
 						<div class="i-panel-button-row">
-							<a href="${flowExecutionUrl}&_eventId=edit" class="btn btn-default btn-sm i-btn-sm">
+							<a href="${flowExecutionUrl}&_eventId=editBillingAddress" class="btn btn-default btn-sm i-btn-sm"
+									ng-hide="${billingAddressExist} === false">
 								<span class="glyphicon glyphicon-pencil"></span>
 								Edit
+							</a>
+							<a href="${flowExecutionUrl}&_eventId=editBillingAddress" class="btn btn-default btn-sm i-btn-sm"
+									ng-show="${billingAddressExist} === false">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Add
 							</a>
 						</div>
 					</div>
@@ -87,18 +115,27 @@
 			   					</td>
 		   					</tr>
 		   					<tr>
-			   					<td>
+			   					<td ng-hide="${shippingAddressExist} === false">
 									<p class="i-font-14">${shippingAddress.apartmentNumber} ${shippingAddress.streetName}</p>
 									<p class="i-font-14">${shippingAddress.city}, ${shippingAddress.state}</p>
 									<p class="i-font-14">${shippingAddress.country}</p>
 									<p class="i-font-14">${shippingAddress.zipCode}</p>
 								</td>
+								<td ng-show="${shippingAddressExist} === false">
+									<p class="i-font-14">No shipping address.</p>
+								</td>
 							</tr>
 						</table>
 						<div class="i-panel-button-row">
-							<a href="${flowExecutionUrl}&_eventId=edit" class="btn btn-default btn-sm i-btn-sm">
+							<a href="${flowExecutionUrl}&_eventId=editShippingAddress" class="btn btn-default btn-sm i-btn-sm"
+									ng-hide="${shippingAddressExist} === false">
 								<span class="glyphicon glyphicon-pencil"></span>
 								Edit
+							</a>
+							<a href="${flowExecutionUrl}&_eventId=editShippingAddress" class="btn btn-default btn-sm i-btn-sm"
+									ng-show="${shippingAddressExist} === false">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Add
 							</a>
 						</div>
 					</div>
@@ -116,10 +153,11 @@
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a href="${flowExecutionUrl}&_eventId=next" class="btn btn-warning pull-right i-btn-md">
+				<button onclick="location.href='${flowExecutionUrl}&_eventId=next'" class="btn btn-warning pull-right i-btn-md" 
+						ng-disabled="${shippingAddressExist} === false || ${billingAddressExist} === false">
 					Next
 					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
+				</button>
 			</div>
 		</div> <!-- row -->
 		

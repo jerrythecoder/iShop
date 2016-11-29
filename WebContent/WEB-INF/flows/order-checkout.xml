@@ -36,12 +36,26 @@
 		
 		<transition on="back" to="viewProduct"/>
 		<transition on="next" to="confirmOrder"/>
-		<transition on="edit" to="editAddress"/>
+		<transition on="editBillingAddress" to="editBillingAddress"/>
+		<transition on="editShippingAddress" to="editShippingAddress"/>
 	</view-state>
 	
+	
+	<subflow-state id="editBillingAddress" subflow="customer/billing-address-form">
+		<transition on="addressAdded" to="viewAddress"/>
+		<transition on="cancelled" to="viewAddress"/>
+	</subflow-state>
+	
+	<subflow-state id="editShippingAddress" subflow="customer/shipping-address-form">
+		<transition on="addressAdded" to="viewAddress"/>
+		<transition on="cancelled" to="viewAddress"/>
+	</subflow-state>
+	
+	<!--
 	<subflow-state id="editAddress" subflow="customer/address-form">
 		<transition on="addressesAdded" to="viewAddress"></transition>
 	</subflow-state>
+	-->
 	
 	<view-state id="confirmOrder" view="order-checkout/confirm-order">
 		<on-render>

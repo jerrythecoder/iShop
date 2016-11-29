@@ -51,6 +51,10 @@
 						<form:input path="zipCode" class="form-control"/>
 					</div>
 					
+					<a href="${flowExecutionUrl}&_eventId=cancel" class="btn btn-default">
+						Cancel
+					</a>
+					
 					<input type="submit" value="Submit" class="btn btn-primary">
 					
 				</form:form>

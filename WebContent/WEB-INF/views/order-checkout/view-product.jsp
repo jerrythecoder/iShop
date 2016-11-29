@@ -107,10 +107,11 @@
 				</a>
 			</div>
 			<div class="col-md-2">
-				<a href="${flowExecutionUrl}&_eventId=next" class="btn btn-warning pull-right i-btn-md">
+				<button onclick="location.href='${flowExecutionUrl}&_eventId=next'" class="btn btn-warning pull-right i-btn-md" 
+						ng-disabled="cart.totalQuantity === 0">
 					Next
 					<span class="glyphicon glyphicon-chevron-right"></span>
-				</a>
+				</button>
 			</div>
 		</div> <!-- row -->
 		
