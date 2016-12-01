@@ -64,7 +64,7 @@ public class RegisterController {
 		if (result.hasErrors()) {
 			return "register";
 		}
-		if (!credentialService.createUser(user)) {
+		if (!credentialService.verifyUsernameAvailability(user)) {
 			model.addAttribute("userError", ERROR_INVALID_USER);
 			return "register";
 		}
@@ -73,6 +73,8 @@ public class RegisterController {
 			return "register";
 		}
 		
+		// Validation passed, create the user.
+		credentialService.createUser(user);
 		
 		/*
 		 * Directly authenticate the user after successful registration, so that the 

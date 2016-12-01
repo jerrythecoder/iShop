@@ -3,6 +3,24 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
+
+<!-- Modal Dialog -->
+<div class="modal fade" id="clearCartDialog" tabindex="-1" role="dialog" aria-labelledby="clearCartDialog">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content i-modal-content">
+			<div class="modal-body i-modal-body">
+				Remove all items in cart?
+			</div>
+			<div class="modal-footer i-center-parent">
+				<button type="button" class="btn btn-default i-btn-xsm" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-primary i-btn-xsm" ng-click="clearCart()" data-dismiss="modal">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
 <div class="container" ng-init="refreshCart(); cartEmpty = true">
 
 	<div class="page-header">
@@ -54,7 +72,7 @@
 					<td>{{item.product.productCondition}}</td>
 					<td>${moneySign} {{item.product.productPrice}}</td>
 					<td>
-						<button style="height:25px;width:25px;"
+						<button style="height:25px;width:25px;" 
 							ng-click="addProduct(item.product.productId)">+</button>
 						<span class="btn text-center" style="padding: 0px; width: 20px;">{{item.quantity}}</span>
 						<button style="height:25px;width:25px;"
@@ -86,10 +104,10 @@
 	    	
 		<div class="row i-button-row">
 			<div class="col-md-6 text-left">
-				<a href="" class="btn btn-danger i-btn-sm" ng-click="clearCart()">
+				<button class="btn btn-danger i-btn-sm" data-toggle="modal" data-target="#clearCartDialog">
 					<span class="glyphicon glyphicon-remove"></span>
 					Clear Cart
-				</a>
+				</button>
 			</div>
 			<div class="col-md-3 text-right">
 				<a href="<c:url value='/product/list'/>" class="btn btn-warning i-btn-lg">

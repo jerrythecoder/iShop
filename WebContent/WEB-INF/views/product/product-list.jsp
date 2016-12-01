@@ -4,9 +4,16 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
+<div id="snackbar">
+	<span class="glyphicon glyphicon-shopping-cart"></span>
+	Product Added to Cart<br>
+	Total: ${moneySign}{{cart.grandTotal}}
+</div>
+
 <div class="container">
+	
 	<div class="page-header">
-		<h2 class="-i-font-black">
+		<h2>
 			<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="50" height="50">
 			All Products in Shop
 		</h2>
@@ -50,11 +57,11 @@
 					<td>${moneySign} ${product.productPrice}</td>
 					<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
 						<td>
-							<a href="" class="btn btn-warning btn-sm" 
-								ng-click="addProduct('${product.productId}')">
+							<button id="add-btn-${product.productId}" class="btn btn-warning btn-sm" onclick="showToastBar('add-btn-${product.productId}');"
+									ng-click="addProduct('${product.productId}'); ">
 								<span class="glyphicon glyphicon-shopping-cart"></span>
 								Add
-							</a>
+							</button>
 						</td>	
 					</sec:authorize>
 				</tr>

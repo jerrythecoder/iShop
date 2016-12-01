@@ -20,32 +20,7 @@
 	   	
 	   	
  	<div class="i-center-parent" ng-show="${orderActive && orderValid}">
-  		<div class="jumbotron i-wd-80 i-center-child">
-  		
-	  		<div class="row text-right i-flow-label-row">
-	   			<div class="col-md-2 i-vertical-center">
-	   				<span class="label label-primary i-flow-label">Your Items</span>
-	   			</div>
-	   			<div class="col-md-1 i-vertical-center">
-	   				<span class="glyphicon glyphicon-triangle-right" style="padding-top: 6px"></span>
-	   			</div>
-	   			<div class="col-md-2">
-	   				<span class="label label-primary i-flow-label">Addresses</span>
-	   			</div>
-	   			<div class="col-md-1">
-	   				<span class="glyphicon glyphicon-triangle-right" style="padding-top: 6px"></span>
-	   			</div>
-	   			<div class="col-md-2">
-	   				<span class="label label-primary i-flow-label">Confirm</span>
-	   			</div>
-	   			<div class="col-md-1">
-	   				<span class="glyphicon glyphicon-triangle-right" style="padding-top: 6px"></span>
-	   			</div>
-	   			<div class="col-md-2">
-	   				<span class="label label-warning i-flow-label">Ordered !</span>
-	   			</div>
-	   			<div class="col-md-1"></div>
-	   		</div>
+  		<div class="jumbotron i-wd-80 i-center-child i-flow-jumbotron">
   		
   			<p>Order Success!</p>
   			

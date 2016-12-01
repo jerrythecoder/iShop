@@ -3,57 +3,56 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-    <div class="container main-content-container">
-    	
-   		<div class="page-header main-content-header">
- 			<div class="main-content-header-title">
-   				<h2 class="header-msg-info">
-   					<span class="glyphicon glyphicon-star"></span>
-   					Sign up as a new customer
-   				</h2>
-   			</div>
-   			<p class="lead">Please enter your username and password</p>
-    	</div>
-    			
-    	<div class="main-content-body">
-			<div class="row main-credential-box"> <!-- Register box -->
-			
-				<div class="col-md-4"></div>
-	  				<div class="col-md-4">
-					<form:form action="${pageContext.request.contextPath}/register/submit" modelAttribute="user" method="post">
-						<div class="form-group">
-							<label>Username: </label>
-							<c:if test="${not empty userError}">
-								<div class="error" style="color:#ff0000;">${userError}</div>
-							</c:if>
-							<form:errors path="username" cssStyle="color: #ff0000;"/>
-							<form:input path="username" type="text" name="username" class="form-control"/>
-						</div>
-						
-						<div class="form-group">
-							<label>Password:</label>
-							<form:errors path="password" cssStyle="color: #ff0000;"/>
-							<form:input path="password" type="password" name="password" class="form-control"/>
-						</div>
-						
-						<div class="form-group">
-							<label>Confirm password:</label>					
-							<c:if test="${not empty passwordError}">
-								<div class="error" style="color:#ff0000;">${passwordError}</div>
-							</c:if>
-							<input type="password" name="confirmPassword" class="form-control"/>
-						</div>
-						
-						<input type="submit" value="Register" class="btn btn-primary center-block main-button-login"/>
-					</form:form>
-				</div>
-	  				<div class="col-md-4"></div>
-				
-			</div> <!-- end tag of register box -->
+<div class="container">
+	<div class="jumbotron i-wd-35 i-center-child i-login-jumbotron">
+		<div class="text-center">
+			<h4>
+				<span class="glyphicon glyphicon-star"></span>
+   				Create new account
+				<br><br>
+			</h4>
 		</div>
-    		
-    		
-	</div> <!-- end tag of main content container -->
+
+		<form:form action="${pageContext.request.contextPath}/register/submit" class="i-center-child"
+				modelAttribute="user" method="post">
+			
+			<div class="i-error-msg-wrapper">
+				<form:errors path="username" class="i-error-msg-box" style="display: inherit"/>
+			</div>
+			<div class="form-group">
+				<c:if test="${not empty userError}">
+					<div class="i-error-msg-wrapper i-error-msg-box">${userError}</div>
+				</c:if>
+				
+				<form:input path="username" type="text" name="username" 
+						class="form-control" placeholder="Username"/>
+			</div>
+			
+			
+			<div class="i-error-msg-wrapper">
+				<form:errors path="password" class="i-error-msg-box" style="display: inherit"/>
+			</div>
+			<div class="form-group">
+				<form:input path="password" type="password" name="password" 
+						class="form-control" placeholder="Password"/>
+			</div>
+			
+			<div class="form-group">				
+				<c:if test="${not empty passwordError}">
+					<div class="i-error-msg-wrapper i-error-msg-box">${passwordError}</div>
+				</c:if>
+				<input type="password" name="confirmPassword" 
+						class="form-control" placeholder="Confirm Password"/>
+			</div>
+			
+			<br>
+			<div class="form-group text-center">
+				<input type="submit" value="Sign Up" class="btn btn-primary i-btn-md"/>
+			</div>
+		</form:form>
+
+	</div> <!-- jumbotron -->
+</div> <!-- container -->
     		
 	
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

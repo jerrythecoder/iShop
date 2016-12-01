@@ -2,6 +2,16 @@
 	background-color: #f08804;
 	background-color: #101010; /* navbar origianl */
 	background-color: #dddddd; /* panel border-color */
+	background-color: #286090; /* button-primary */
+	
+	color: #ec971f; /* msg-warn */
+	color: #337ab7; /* msg-info */
+}
+
+
+/*********** Color **********/
+.i-color-warn {
+	color: #ed9c2c;
 }
 
 
@@ -16,10 +26,32 @@
 	padding-bottom: 0px;
 }
 
+.btn {
+	border-radius: 0px !important;
+}
+
+input {
+	border-radius: 0px !important;
+}
+
+.panel {
+	border-radius: 0px !important;
+}
+
+button {
+	border-radius: 0px;
+}
+
+.jumbotron {
+	border-radius: 0px !important;
+}
+
+
 /*********** navbar ***********/
 .i-navbar {
 	margin-bottom: 0px;
-	background-color: #333333;
+	/*background-color: #333333;*/
+	background-color: #595959;
 }
 
 
@@ -45,7 +77,7 @@ body {
 #footer {
   	height: 120px;
 	margin-top: 50px;
-	background-color: #333333;
+	background-color: #595959;
 	padding: 50px;
 }
 
@@ -206,12 +238,134 @@ p.i-font-16 {
 
 /************ Labels *************/
 div.i-flow-label-row {
-	font-size: 20px;
+	font-size: 18px;
 	padding-top: 10px;
 	padding-bottom: 70px;
-	padding-left: 50px;
 }
 
-.i-flow-label {
-	width: 200px !important;
+div.i-flow-label {
+	padding-top: 0px;
+	padding-bottom: 1px;
+	
+	padding-left: 0.5px;
+	padding-right: 0.5px;
+	
+	display: inline-block;
+	border-bottom: 3.5px;
 }
+
+div.i-flow-label-active {
+	border-bottom: 3.5px solid #fb9004;
+}
+
+
+/************ Jumbotron **************/
+
+div.i-flow-jumbotron {
+	border-radius: 0px !important;
+	background-color: #ffffcc;
+}
+
+div.i-login-jumbotron {
+	border-radius: 0px !important;
+	/*background-color: #eaf1fa;*/
+	background-color: #ffffcc;
+	
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+
+
+/************ error msg ***********/
+
+.i-error-msg-box {
+	background: #ffebeb none repeat scroll 0 0;
+    /*border: 1px solid #faccc6;*/
+    color: #e4393c;
+    text-align: center;
+}
+
+.i-error-msg-wrapper {
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
+
+/************* Modal dialog *************/
+
+.modal {
+	text-align: center;
+	padding: 0!important;
+}
+
+.modal:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin-right: -4px; /* Adjusts for spacing */
+}
+
+.modal-dialog {
+	margin-top: -50px;
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.i-modal-content {
+	border-radius: 0px !important;
+}
+
+.i-modal-body {
+	padding-top: 25px;
+	padding-bottom: 25px;
+	font-size: 16px !important;
+}
+
+
+/************* Toast snackbar ***********/
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #efa743;
+    color: #fff;
+    text-align: center;
+    border-radius: 0px;
+    padding: 15px;
+    
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 16px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+

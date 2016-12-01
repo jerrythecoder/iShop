@@ -36,6 +36,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
 		<script src="<c:url value='/resources/js/controller.js'/>"></script>
+		<script src="<c:url value='/resources/js/ishop.js'/>"></script>
 	</head>
 
 	<body ng-app="shoppingCartApp" ng-controller="cartCtrl">
@@ -113,9 +114,9 @@
 			<div id="row-2" class="row">
 				<div class="container">
 				
-					<div class="col-md-4">
+					<div class="col-md-4" style="margin-right: -23px;">
 						<div class="navbar-brand pull-right" 
-								style="padding-top: 1px; padding-bottom: 5px; padding-right: 0px; margin-right: -15px;">
+								style="padding-top: 1px; padding-bottom: 5px; padding-right: 0px; margin-right: 0px;">
 							<a href="#">
 								<img alt="devices" src="${imagePath}/device-gallery.png" width="210" height="60">
 							</a>
@@ -124,9 +125,9 @@
 					
 					<form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search" style="width: 430px;">
+							<input type="text" class="form-control" placeholder="All electronic devices" style="width: 400px;">
 						</div>
-						<button type="submit" class="btn btn-warning" style="width: 70px;">Go</button>
+						<button type="submit" class="btn btn-warning" style="width: 100px; margin-left: 5px;">Search</button>
 					</form>
 					
 					<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">

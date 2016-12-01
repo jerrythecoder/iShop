@@ -2,60 +2,59 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-    <div class="container main-content-container">
-    	
-   		<div class="page-header main-content-header">
-	   			<c:if test="${not empty logout}">
-	   				<br>
-		   				<h3 class="header-msg-warn">
-		   					<span class="glyphicon glyphicon-ok-circle"></span>
-		   					${logout}
-		   				</h3>
-	   				<br>
-	   			</c:if>
-   		
-   		   	<div class="main-content-header-title">
-   				<h2 class="header-msg-info">
-   					<span class="glyphicon glyphicon-user"></span>
-   					Sign in with your username and password
-   				</h2>
-   			</div>
-   			
-    	</div>
-    	
-    	<div class="main-content-body">
-	    	<div class="row main-credential-box"> <!-- login box -->
-	    		<div class="col-md-4"></div>
-	  				<div class="col-md-4">
-	    			<form action='<c:url value="/login"/>' method="post">
-	    				
-	    				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-	    				
-	    				<c:if test="${not empty error}">
-	    					<div class="error" style="color:#ff0000;">${error}</div>
-	    				</c:if>
+<div class="container">
+
+	<c:if test="${not empty logout}">
+		<div class="page-header text-center">
+			<h4 class="i-color-warn">
+				<span class="glyphicon glyphicon-ok-circle"></span>
+				${logout}
+				<br><br>
+			</h4>
+		</div>
+	</c:if>
+
 	
-	    				<div class="form-group">
-	    					<label>Username: </label>
-	    					<input type="text" name="username" class="form-control"/>
-	    				</div>
-	    				
-	    				<div class="form-group">
-	    					<label>Password: </label>
-	    					<input type="password" name="password" class="form-control"/>
-	    				</div>
-						
-						<div class="form-group">
-	    					<input type="submit" value="Login" 
-	    							class="btn btn-primary text-center center-block main-button-login"/>
-	    				</div>
-	    			</form>
-	   			</div>
-	   			<div class="col-md-4"></div>
-	   		</div> <!-- end tag of login box -->
-   		</div>
-    		
-	</div> <!-- end tag of main content container -->
+	<div class="jumbotron i-wd-35 i-center-child i-login-jumbotron">
+		<div class="text-center">
+			<h4>
+				<span class="glyphicon glyphicon-user"></span>
+				Please sign in
+				<br><br>
+			</h4>
+		</div>
+	
+		<form action='<c:url value="/login"/>' method="post" class="i-center-child">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			
+			<c:if test="${not empty error}">
+				<div class="i-error-msg-wrapper i-error-msg-box">${error}</div>
+			</c:if>
+			
+			
+			<div class="form-group">
+				<input type="text" name="username" class="form-control" placeholder="Username"/>
+			</div>
+			
+			<div class="form-group">
+				<input type="password" name="password" class="form-control" placeholder="Password"/>
+			</div>
+			
+			<div class="checkbox">
+			<label>
+				<!-- To be implemented ... -->
+				<input type="checkbox"/>Remember Me
+			</label>
+			</div>
+			
+			<br>
+			<div class="form-group text-center">
+				<input type="submit" value="Sign In" class="btn btn-primary i-btn-md"/>
+			</div>
+ 		</form>
+ 		
+	</div> <!-- jumbotron -->
+</div> <!-- container -->
     
     
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

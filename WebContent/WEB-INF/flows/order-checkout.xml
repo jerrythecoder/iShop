@@ -20,7 +20,7 @@
 					result="flowScope.orderActive" result-type="boolean"/>
 			<evaluate expression="cartService.getCart(currentUser.name)" result="viewScope.cart"/>
 		</on-render>
-		<transition on="back" to="backToCart"/>
+		<transition on="cancel" to="backToCart"/>
 		<transition on="next" to="viewAddress"/>
 	</view-state>
 	
@@ -34,6 +34,7 @@
 					result="flowScope.shippingAddress"/>
 		</on-render>
 		
+		<transition on="cancel" to="backToCart"/>
 		<transition on="back" to="viewProduct"/>
 		<transition on="next" to="confirmOrder"/>
 		<transition on="editBillingAddress" to="editBillingAddress"/>
@@ -51,18 +52,14 @@
 		<transition on="cancelled" to="viewAddress"/>
 	</subflow-state>
 	
-	<!--
-	<subflow-state id="editAddress" subflow="customer/address-form">
-		<transition on="addressesAdded" to="viewAddress"></transition>
-	</subflow-state>
-	-->
-	
 	<view-state id="confirmOrder" view="order-checkout/confirm-order">
 		<on-render>
 			<evaluate expression="!externalContext.sessionMap.accessingExpiredCheckout" 
 					result="flowScope.orderActive" result-type="boolean"/>
 			<evaluate expression="cartService.getCart(currentUser.name)" result="viewScope.cart"/>
 		</on-render>
+		
+		<transition on="cancel" to="backToCart"/>
 		<transition on="back" to="viewAddress"/>
 		<transition on="confirm" to="success">
 			<evaluate expression="customerService.saveCustomerOrder(currentUser.name)"/>
