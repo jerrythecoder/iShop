@@ -4,60 +4,87 @@
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-    <div class="container main-content-container">
-    
-    	<div class="page-header main-content-header">
-   			<div class="main-content-header-title">
-   				<h2 class="header-msg-default">
-   					<span class="glyphicon glyphicon-list-alt"></span>
-   					Customer Profile Form
-   				</h2>
-   			</div>
-   			<p class="lead">Please enter your information:</p>
-   		</div>
-    	
-		<div class="main-content-body">
-		
-			<!-- ------ use when CSRF enabled -----------
-			<form:form action="product-form-submit?${_csrf.parameterName}=${_csrf.token}" 
-					modelAttribute="product" enctype="multipart/form-data">
-			</form:form>
-			-->
+<div class="container i-wd-50">
+	
+	<div class="page-header -text-center">
+		<c:choose>
+			<c:when test="${sessionScope.sessionNewRegister == true}">
+				<p class="lead i-color-warn">
+					<span class="glyphicon glyphicon-ok-circle"></span>
+					Your i-Shop account has been successfully created with username:
+				</p>
+				<p class="lead text-center">
+					<span class="i-font-18 i-font-bold"> ${username}</span>
+				</p>
+				<p class="lead i-color-warn">To activate your shopping cart, you will need to enter your profile information below:</p>
+			</c:when>
+			<c:otherwise>
+				<p class="lead text-center">Please enter your profile information:</p>
+			</c:otherwise>
+		</c:choose>
+	</div>
+	
+
+	<div class="jumbotron i-center-child i-login-jumbotron i-wd-75">
+	
+		<form:form action="${flowExecutionUrl}&_eventId=submit" modelAttribute="customer" method="post" 
+				class="form-horizontal i-center-parent">
+				
+			<form:hidden path="customerId"/>
 			
-			<form:form action="${flowExecutionUrl}&_eventId=submit" modelAttribute="customer" method="post">
-				
-				<form:hidden path="customerId"/>
-				
-				<div class="form-group">
-					<label>First Name: </label>
-					<form:errors path="customerFirstName" cssStyle="color: #ff0000;"/>
+			<div class="row i-error-msg-wrapper">
+				<div class="col-sm-8 col-sm-offset-4">
+					<form:errors path="customerFirstName" class="i-error-msg-box"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">First Name: </label>
+				<div class="col-sm-8">
 					<form:input path="customerFirstName" class="form-control"/>
 				</div>
-				
-				<div class="form-group">
-					<label>Last Name: </label>
-					<form:errors path="customerLastName" cssStyle="color: #ff0000;"/>
+			</div>
+			
+			<div class="row i-error-msg-wrapper">
+				<div class="col-sm-8 col-sm-offset-4">
+					<form:errors path="customerLastName" class="i-error-msg-box"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Last Name: </label>
+				<div class="col-sm-8">
 					<form:input path="customerLastName" class="form-control"/>
 				</div>
-				
-				<div class="form-group">
-					<label>Email Address: </label>
-					<form:errors path="customerEmail" cssStyle="color: #ff0000;"/>
+			</div>
+			
+			<div class="row i-error-msg-wrapper">
+				<div class="col-sm-8 col-sm-offset-4">
+					<form:errors path="customerEmail" class="i-error-msg-box"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Email Address: </label>
+				<div class="col-sm-8">
 					<form:input path="customerEmail" class="form-control"/>
 				</div>
-				
-				<div class="form-group">
-					<label>Phone Number: </label>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-4 control-label">Phone Number: </label>
+				<div class="col-sm-8">
 					<form:input path="customerPhone" class="form-control"/>
 				</div>
-				
-				<br>
-				
-				<input type="submit" value="Submit" class="btn btn-primary"/>
-				
-			</form:form>
-		</div>
+			</div>
+			
+			<br>
+			<div class="col-sm-12 i-center-child">
+				<input type="submit" value="OK" class="btn btn-primary i-btn-md"/>
+			</div>
+			<br>
+			
+		</form:form>
 	
-	</div> <!-- end tag of main content container -->
+	</div> <!-- jumbotron -->
+</div> <!-- container -->
+
     		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

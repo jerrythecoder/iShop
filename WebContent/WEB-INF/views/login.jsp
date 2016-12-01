@@ -2,20 +2,20 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-<div class="container">
+<div class="container i-wd-50">
 
 	<c:if test="${not empty logout}">
 		<div class="page-header text-center">
-			<h4 class="i-color-warn">
+			<p class="lead i-color-warn">
 				<span class="glyphicon glyphicon-ok-circle"></span>
 				${logout}
-				<br><br>
-			</h4>
+				<br>
+			</p>
 		</div>
 	</c:if>
 
 	
-	<div class="jumbotron i-wd-35 i-center-child i-login-jumbotron">
+	<div class="jumbotron i-wd-55 i-center-child i-login-jumbotron">
 		<div class="text-center">
 			<h4>
 				<span class="glyphicon glyphicon-user"></span>
@@ -43,7 +43,7 @@
 			<div class="checkbox">
 			<label>
 				<!-- To be implemented ... -->
-				<input type="checkbox"/>Remember Me
+				<input type="checkbox"/>Remember me
 			</label>
 			</div>
 			

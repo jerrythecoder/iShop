@@ -30,11 +30,11 @@ import com.ishop.service.CredentialService;
  */
 @Controller
 @RequestMapping("/register")
-@SessionAttributes("sessionUsername")
+@SessionAttributes(value = {"sessionUsername", "sessionNewRegister"})
 public class RegisterController {
 	
 	private static final String ERROR_INVALID_USER 
-			= "Invalid username, please try another one";
+			= "Username already exists, please try another one";
 	private static final String ERROR_MISMATCH_PASSWORD
 			= "Passwords mismatch";
 	
@@ -87,6 +87,9 @@ public class RegisterController {
 		
 		// Set username as a SessionAttribute.
 		model.addAttribute("sessionUsername", user.getUsername());
+		
+		// Set the new registration flag.
+		model.addAttribute("sessionNewRegister", true);
 		
 		// Redirect to Customer form page to guide the user submit more information.
 		return "redirect:/customer/info-form";

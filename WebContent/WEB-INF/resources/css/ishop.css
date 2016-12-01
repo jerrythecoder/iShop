@@ -46,6 +46,10 @@ button {
 	border-radius: 0px !important;
 }
 
+.form-control {
+	border-radius: 0px !important;
+}
+
 
 /*********** navbar ***********/
 .i-navbar {
@@ -123,6 +127,22 @@ div.i-vertical-center {
 
 .i-wd-80 {
 	width: 80%;
+}
+
+.i-wd-75 {
+	width: 75%;
+}
+
+.i-wd-70 {
+	width: 70%;
+}
+
+.i-wd-60 {
+	width: 60%;
+}
+
+.i-wd-55 {
+	width: 55%;
 }
 
 .i-wd-50 {
@@ -237,6 +257,7 @@ p.i-font-16 {
 
 
 /************ Labels *************/
+
 div.i-flow-label-row {
 	font-size: 18px;
 	padding-top: 10px;
@@ -283,6 +304,8 @@ div.i-login-jumbotron {
     /*border: 1px solid #faccc6;*/
     color: #e4393c;
     text-align: center;
+    
+    display: inherit
 }
 
 .i-error-msg-wrapper {

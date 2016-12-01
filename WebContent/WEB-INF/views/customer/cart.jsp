@@ -31,7 +31,7 @@
 	</div>
 			
 	<div class="text-center" ng-show="cartEmpty">
-		<div class="jumbotron">
+		<div class="jumbotron i-flow-jumbotron">
 			<p>Your cart is empty.</p>
 		</div>
 		<div class="row">
