@@ -212,6 +212,10 @@ p.i-font-16 {
 	font-size: 22px;
 }
 
+.i-font-24 {
+	font-size: 24px;
+}
+
 .i-font-bold {
 	font-weight: bold;
 }
@@ -294,6 +298,40 @@ div.i-login-jumbotron {
 	
 	margin-top: 60px;
 	margin-bottom: 20px;
+}
+
+div.i-cus-jumbotron {
+	background-color: #ffffcc;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/********** Panel ***********/
+
+div.i-cus-panel {
+	/*background-color: #ffffcc;*/
+	background-color: #fafafa;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	
+	
+}
+
+div.i-cus-panel-heading {
+	background-color: #ffffcc;
+	border-radius: 0px;
+	font-size: 16px;
+}
+
+a.i-cus-panel-link {
+	font-size: 14px !important;
+	font-style: normal !important;
+	color: #808080;
 }
 
 

@@ -79,14 +79,14 @@
 						<ul class="nav navbar-nav pull-right">
 							<sec:authentication var="user" property="principal"/>
 							<sec:authorize access="isAuthenticated()">
-							<sec:authorize access="hasRole('ROLE_USER')">
-								<li>
-									<a href="<spring:url value='/customer/home'/>" style="color: white;">
-										<span class="glyphicon glyphicon-user"></span>
-										Welcome, ${user.username}
-									</a>
-								</li>
-							</sec:authorize>
+								<sec:authorize access="hasRole('ROLE_USER')">
+									<li>
+										<a href="<spring:url value='/customer/home'/>" style="color: white;">
+											<span class="glyphicon glyphicon-user"></span>
+											Welcome, ${user.username}
+										</a>
+									</li>
+								</sec:authorize>
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 								<li>
 									<a href="<spring:url value='/admin'/>" style="color: white;">
@@ -125,7 +125,7 @@
 					
 					<form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="All electronic devices" style="width: 400px;">
+							<input type="text" class="form-control" placeholder="All electronics" style="width: 400px;">
 						</div>
 						<button type="submit" class="btn btn-warning" style="width: 100px; margin-left: 5px;">Search</button>
 					</form>

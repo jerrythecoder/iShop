@@ -29,7 +29,7 @@
 			<c:when test="${sessionScope.sessionNewRegister == true}">
 				<p class="lead i-color-warn">
 					<span class="glyphicon glyphicon-ok-circle"></span>
-					Now, you have your shopping cart activated!<br><br>
+					Now you have your shopping cart activated!<br><br>
 					However, your billing / shipping addresses will be required during cart item checkout. 
 					You can provide them either now or later.
 				</p>

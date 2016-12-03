@@ -4,27 +4,43 @@
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-    <div class="container main-content-container">
-    
-    	<div class="page-header main-content-header">
-   			<div class="main-content-header-title">
-   				<h2 class="header-msg-default">
-   					<span class="glyphicon glyphicon-list-alt"></span>
-   					Thank you, ${customer.customerFirstName}!
-   				</h2>
-   			</div>
-   			<p class="lead">We're honored to ...</p>
-   		</div>
-    	
-		<div class="main-content-body">
-			<a href="${flowExecutionUrl}&_eventId=goCustomerHome" class="btn btn-warning">
-				View My Profile
-			</a>
-			<a href="${flowExecutionUrl}&_eventId=goShopping" class="btn btn-warning">
-				Shopping Now!
-			</a>
+
+<div class="container i-wd-50">
+	<div class="page-header">
+		<p class="lead i-color-warn text-center i-font-24">
+			<span class="glyphicon glyphicon-ok-circle"></span>
+			Thank you, ${customer.customerFirstName}
+		</p>
+		<p class="lead i-color-warn">
+			We are very pleased to welcome you as our new customer.<br>
+			Here in i-Shop, you will just find everything about trendy digital electronics!
+		</p>
+		
+		<div class="row">
+			<div class="col-md-6">
+				<div class="jumbotron i-center-child i-login-jumbotron text-center">
+					<p class="lead">
+						Want to revisit your profile? Click on 
+					</p>
+					<a href="${flowExecutionUrl}&_eventId=goCustomerHome" class="btn btn-warning i-btn-md">
+						View My Profile
+					</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="jumbotron i-center-child i-login-jumbotron text-center">
+					<p class="lead">
+						Or, no more wait. Just go  
+					</p>
+					<a href="${flowExecutionUrl}&_eventId=goShopping" class="btn btn-warning i-btn-md">
+						Shopping Now!
+					</a>
+				</div>
+			</div>
 		</div>
-	
-	</div> <!-- end tag of main content container -->
+			
+	</div>
+</div> <!-- container -->
+
     		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

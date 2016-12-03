@@ -44,10 +44,10 @@
 						<td></td>
 					</tr>
 					<tr>
-						<td>
+						<td class="i-wd-50">
 							E-mail: ${customer.customerEmail}
 						</td>
-						<td>
+						<td class="i-wd-50">
 							Phone: ${customer.customerPhone}
 						</td>
 					</tr>

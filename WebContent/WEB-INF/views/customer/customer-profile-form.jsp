@@ -6,7 +6,7 @@
 
 <div class="container i-wd-50">
 	
-	<div class="page-header -text-center">
+	<div class="page-header">
 		<c:choose>
 			<c:when test="${sessionScope.sessionNewRegister == true}">
 				<p class="lead i-color-warn">
