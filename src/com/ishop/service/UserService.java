@@ -1,5 +1,6 @@
 package com.ishop.service;
 
+import com.ishop.exceptions.CustomerIdMismatchException;
 import com.ishop.model.Customer;
 import com.ishop.model.User;
 
@@ -22,5 +23,10 @@ public interface UserService extends GenericService<User, String> {
 	 * initialization work.
 	 */
 	void bindCustomer(String username, Customer customer);
+	
+	/**
+	 * Either binds a new customer or updates the already bounded customer.
+	 */
+	void bindOrUpdateCustomer(String username, Customer customer) throws CustomerIdMismatchException;
 
 }

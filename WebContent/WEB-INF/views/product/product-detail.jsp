@@ -2,7 +2,6 @@
 
 
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
-<%@include file="/WEB-INF/views/templates/func-bar.jsp" %>
 
 
 	<c:set var="imagePath" value="${pageContext.request.contextPath}/resources/images/product-images"/>
@@ -11,7 +10,7 @@
     	<div class="container">
     	
     		<div class="page-header">
-    			<h1>All Products in Store:</h1>
+    			<h1>Product Detai:</h1>
     			<p class="lead">Checkout all the products available now!</p>
     			
     			<div class="text-right">

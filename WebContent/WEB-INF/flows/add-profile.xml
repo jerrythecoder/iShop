@@ -14,7 +14,7 @@
 					result="viewScope.customer"/>
 		</on-entry>
 		<transition on="submit" to="profileAdded">
-			<evaluate expression="userService.bindCustomer(currentUser.name, customer)"/>
+			<evaluate expression="userService.bindOrUpdateCustomer(currentUser.name, customer)"/>
 		</transition>
 	</view-state>
 	

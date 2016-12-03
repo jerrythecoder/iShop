@@ -188,6 +188,16 @@
 				</div> <!-- panel -->
 					
 			</div> <!-- right row 1 -->
+			
+			<div class="row" ng-init="cartEmpty == true">
+				<div class="jumbotron i-cus-jumbotron text-center">
+					<p class="lead">
+						<span class="-glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
+						You have no active orders.
+					</p>
+				</div>
+					
+			</div> <!-- right row 2 -->
 		</div> <!-- right column -->
 		
 	</div> <!-- outer row -->
