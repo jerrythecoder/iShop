@@ -71,12 +71,12 @@
 					</td>
 					<td>{{item.product.productCondition}}</td>
 					<td>${moneySign} {{item.product.productPrice}}</td>
-					<td>
-						<button style="height:25px;width:25px;" 
-							ng-click="addProduct(item.product.productId)">+</button>
+					<td>						
+						<button class="btn btn-sm btn-default i-font-bold active" style="height:30px;width:30px;" 
+								ng-click="addProduct(item.product.productId)">+</button>
 						<span class="btn text-center" style="padding: 0px; width: 20px;">{{item.quantity}}</span>
-						<button style="height:25px;width:25px;"
-							ng-click="removeProduct(item.product.productId)">-</button>
+						<button class="btn btn-sm btn-default i-font-bold active" style="height:30px;width:30px;" 
+								ng-click="removeProduct(item.product.productId)">-</button>
 					</td>
 					<td>${moneySign} {{item.totalPrice}}</td>
 					<td>

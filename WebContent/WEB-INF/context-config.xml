@@ -121,7 +121,8 @@
 	<!-- Register flows -->
 	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices" base-path="WEB-INF/flows/">
 		<webflow:flow-location id="customer/order/checkout" path="order-checkout.xml"/>
-		<webflow:flow-location id="customer/info-form" path="add-customer-info.xml"/>		
+		<webflow:flow-location id="customer/register-wizard" path="register-wizard.xml"/>
+		<webflow:flow-location id="customer/profile-form" path="add-profile.xml"/>		
 		<webflow:flow-location id="customer/billing-address-form" path="add-billing-address.xml"/>
 		<webflow:flow-location id="customer/shipping-address-form" path="add-shipping-address.xml"/>
 	</webflow:flow-registry>

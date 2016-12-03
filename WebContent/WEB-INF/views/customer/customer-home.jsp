@@ -24,7 +24,7 @@
 						<div class="panel-heading i-cus-panel-heading">
 							<span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span>
 							My Profile
-							<a class="i-cus-panel-link pull-right">
+							<a href="<c:url value='/customer/profile-form'/>" class="i-cus-panel-link pull-right">
 								<span class="glyphicon glyphicon-pencil"></span>
 								<span>Edit</span>
 							</a>

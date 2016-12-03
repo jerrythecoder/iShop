@@ -22,6 +22,23 @@ public class ShoppingCartRestController {
 	@Autowired
 	private CartService cartService;
 	
+	@GetMapping("/verify-cart-exists")
+	public boolean verifyCartExists(@ModelAttribute("sessionUsername") String username) {
+		
+		boolean result = false;
+		
+		try {
+			cartService.getNonNullCart(username);
+			
+			// Cart exists.
+			result = true;
+			
+		} catch (NullEntityObjectException e) {
+			// Do nothing here.
+		}
+		return result;
+	}
+	
 	@GetMapping("/verify-cart-empty")
 	public boolean verifyCartEmpty(@ModelAttribute("sessionUsername") String username) {
 		

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	
+	<!--
+	<on-start>
+		<set name="flowScope.username" value="currentUser.name"></set>
+	</on-start>
+	
+	<view-state id="addCustomerProfile" view="customer/customer-profile-form" model="customer">
+		<on-entry>
+			<evaluate expression="userService.getOrCreateCustomer(currentUser.name)" 
+					result="viewScope.customer"/>
+		</on-entry>
+		<transition on="submit" to="addBillingAddress">
+			<evaluate expression="userService.bindCustomer(currentUser.name, customer)"/>
+		</transition>
+	</view-state>
+	-->
+	
+	<subflow-state id="addProfile" subflow="customer/profile-form">
+		<transition on="profileAdded" to="addBillingAddress"></transition>
+	</subflow-state>
+	
+	<subflow-state id="addBillingAddress" subflow="customer/billing-address-form">
+		<transition on="addressAdded" to="addShippingAddress"/>
+		<transition on="cancelled" to="welcomeNewCustomer"/>
+		
+		<!-- Clear new registration flag -->
+		<on-exit>
+			<set name="externalContext.sessionMap.sessionNewRegister" value="false" type="boolean"></set>
+		</on-exit>
+	</subflow-state>
+	
+	<subflow-state id="addShippingAddress" subflow="customer/shipping-address-form">
+		<transition on="addressAdded" to="welcomeNewCustomer"/>
+		<transition on="cancelled" to="welcomeNewCustomer"/>
+	</subflow-state>
+	
+	<view-state id="welcomeNewCustomer" view="customer/new-customer-welcome-page">
+		<on-entry>
+			<evaluate expression="userService.getCustomer(currentUser.name)" result="viewScope.customer"/>
+		</on-entry>
+		<transition on="goCustomerHome" to="goCustomerHome"/>
+		<transition on="goShopping" to="goShopping"/>
+	</view-state>
+	
+	<end-state id="goCustomerHome" view="externalRedirect:/customer/home"/>
+	<end-state id="goShopping" view="externalRedirect:/product/list"/>
+</flow>

@@ -4,10 +4,15 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-<div id="snackbar">
-	<span class="glyphicon glyphicon-shopping-cart"></span>
-	Product Added to Cart<br>
-	Total: ${moneySign}{{cart.grandTotal}}
+<div id="snackbar" ng-init="verifyCartExists()">
+	<div ng-show="cartExists">
+		<span class="glyphicon glyphicon-shopping-cart"></span>
+		Item added to cart<br>
+		Total: ${moneySign}{{cart.grandTotal}}
+	</div>
+	<div ng-hide="cartExists">
+		Shopping cart not activated
+	</div>
 </div>
 
 <div class="container">

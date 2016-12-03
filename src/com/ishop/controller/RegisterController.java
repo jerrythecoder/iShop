@@ -91,8 +91,8 @@ public class RegisterController {
 		// Set the new registration flag.
 		model.addAttribute("sessionNewRegister", true);
 		
-		// Redirect to Customer form page to guide the user submit more information.
-		return "redirect:/customer/info-form";
+		// Redirect to customer register wizard flow to guide the user submit more information.
+		return "redirect:/customer/register-wizard";
 	}
 	
 	/**

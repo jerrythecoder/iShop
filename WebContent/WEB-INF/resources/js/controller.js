@@ -7,6 +7,16 @@ angular.module('shoppingCartApp', ['ngCookies'])
 	
 	
 	/*
+	 * Tests if cart exists.
+	 */
+	$scope.verifyCartExists = function() {
+		$http.get('/ishop/customer/cart/rest/verify-cart-exists')
+		.then(function successCallback(response) {
+			$scope.cartExists = response.data;
+		});
+	};
+	
+	/*
 	 * Tests if cart is empty.
 	 */
 	$scope.verifyCartEmpty = function() {

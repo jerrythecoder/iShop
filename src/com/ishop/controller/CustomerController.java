@@ -32,10 +32,10 @@ public class CustomerController {
 		
 		/*
 		 * If no customer is bound to the user, simply redirect to customer 
-		 * information form.
+		 * register wizard flow.
 		 */
 		if (!userService.isCustomerBoundToUser(username)) {
-			return "redirect:/customer/info-form";
+			return "redirect:/customer/register-wizard";
 		}
 		
 		model.addAttribute("customer", userService.getCustomer(username));

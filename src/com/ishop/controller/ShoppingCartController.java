@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.ishop.exceptions.NullEntityObjectException;
 import com.ishop.model.Cart;
 import com.ishop.service.CartService;
+import com.ishop.service.UserService;
 
 /**
  * Handling customer shopping cart operations.
@@ -26,22 +27,28 @@ public class ShoppingCartController {
 	@Autowired
 	private CartService cartService;
 	
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping
 	public String showCartContent(
 			@ModelAttribute("sessionUsername") String username, 
 			Model model) {
 		
+		/*
+		 * If no customer is bound to the user, simply redirect to customer 
+		 * register wizard flow.
+		 */
+		if (!userService.isCustomerBoundToUser(username)) {
+			return "redirect:/customer/register-wizard";
+		}
+		
 		Cart cart = null;
 		
 		try {
-			// Tests if cart is empty.
-			if (!cartService.isCartEmpty(username)) {
-				cart = cartService.getNonNullCart(username);
-			}
+			cart = cartService.getNonNullCart(username);
 		} catch (NullEntityObjectException e) {
-			// Customer information was not entered correctly, redirect to 
-			// info-form page.
-			return "redirect:/customer/info-form";
+			// TODO ...
 		}
 		
 		model.addAttribute("cart", cart);

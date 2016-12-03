@@ -80,14 +80,12 @@
 							</tr>
 						</table>
 						<div class="i-panel-button-row">
-							<a href="${flowExecutionUrl}&_eventId=editBillingAddress" class="btn btn-default btn-sm i-btn-sm"
+							<a href="${flowExecutionUrl}&_eventId=editBillingAddress" class="btn btn-default btn-sm i-btn-xsm"
 									ng-hide="${billingAddressExist} === false">
-								<span class="glyphicon glyphicon-pencil"></span>
 								Edit
 							</a>
-							<a href="${flowExecutionUrl}&_eventId=editBillingAddress" class="btn btn-default btn-sm i-btn-sm"
+							<a href="${flowExecutionUrl}&_eventId=editBillingAddress" class="btn btn-default btn-sm i-btn-xsm"
 									ng-show="${billingAddressExist} === false">
-								<span class="glyphicon glyphicon-pencil"></span>
 								Add
 							</a>
 						</div>
@@ -116,14 +114,12 @@
 							</tr>
 						</table>
 						<div class="i-panel-button-row">
-							<a href="${flowExecutionUrl}&_eventId=editShippingAddress" class="btn btn-default btn-sm i-btn-sm"
+							<a href="${flowExecutionUrl}&_eventId=editShippingAddress" class="btn btn-default btn-sm i-btn-xsm"
 									ng-hide="${shippingAddressExist} === false">
-								<span class="glyphicon glyphicon-pencil"></span>
 								Edit
 							</a>
-							<a href="${flowExecutionUrl}&_eventId=editShippingAddress" class="btn btn-default btn-sm i-btn-sm"
+							<a href="${flowExecutionUrl}&_eventId=editShippingAddress" class="btn btn-default btn-sm i-btn-xsm"
 									ng-show="${shippingAddressExist} === false">
-								<span class="glyphicon glyphicon-pencil"></span>
 								Add
 							</a>
 						</div>
