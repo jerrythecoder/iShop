@@ -4,21 +4,6 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 	
-	<!--
-	<on-start>
-		<set name="flowScope.username" value="currentUser.name"></set>
-	</on-start>
-	
-	<view-state id="addCustomerProfile" view="customer/customer-profile-form" model="customer">
-		<on-entry>
-			<evaluate expression="userService.getOrCreateCustomer(currentUser.name)" 
-					result="viewScope.customer"/>
-		</on-entry>
-		<transition on="submit" to="addBillingAddress">
-			<evaluate expression="userService.bindCustomer(currentUser.name, customer)"/>
-		</transition>
-	</view-state>
-	-->
 	
 	<subflow-state id="addProfile" subflow="customer/profile-form">
 		<transition on="profileAdded" to="addBillingAddress"></transition>

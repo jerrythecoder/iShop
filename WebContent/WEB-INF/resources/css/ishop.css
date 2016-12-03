@@ -300,22 +300,35 @@ div.i-login-jumbotron {
 	margin-bottom: 20px;
 }
 
-div.i-cus-jumbotron {
+div.i-cus-jumbotron-active {
 	background-color: #ffffcc;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	
 	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 	padding-left: 15px;
 	padding-right: 15px;
 }
+
+div.i-cus-jumbotron {
+	background-color: #f9f9f9;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	
+	padding-top: 60px;
+	padding-bottom: 60px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+
 
 /********** Panel ***********/
 
 div.i-cus-panel {
 	/*background-color: #ffffcc;*/
-	background-color: #fafafa;
+	background-color: #f9f9f9;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	

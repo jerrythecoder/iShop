@@ -9,7 +9,7 @@
 		<div class="col-md-5">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="jumbotron i-cus-jumbotron text-center">
+					<div class="jumbotron i-cus-jumbotron-active text-center">
 						<p class="lead i-color-warn">
 							<span class="glyphicon glyphicon-home" style="margin-right: 10px;"></span>
 							${customer.customerFirstName}'s home in i-Shop
@@ -132,17 +132,61 @@
 		
 		<!-- right column -->
 		<div class="col-md-7">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="jumbotron i-cus-jumbotron text-center">
-						<p class="lead">
-							Want to revisit your profile? Click on 
-						</p>
-						<a href="${flowExecutionUrl}&_eventId=goCustomerHome" class="btn btn-warning i-btn-md">
-							View My Profile
-						</a>
-					</div>
+			<div class="row" ng-init="cartEmpty == true">
+				<div class="jumbotron i-cus-jumbotron text-center" ng-show="cartEmpty">
+					<p class="lead">
+						<span class="glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
+						There's no item in your shopping cart right now 
+					</p>
+					<a href="<c:url value='/product/list'/>" class="btn btn-warning i-btn-lg">
+						Alright, go shopping
+					</a>
 				</div>
+				
+				<div class="panel i-cus-panel i-center-child" ng-hide="cartEmpty">
+					<div class="panel-heading i-cus-panel-heading">
+						<span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span>
+						My Shopping Cart
+					</div>
+					<div class="panel-body text-center">
+						<div class="panel panel-default i-wd-90 i-center-child">
+				    		<table class="table table-hover table-condensed text-left">
+								<tr class="active">
+									<th class="i-wd-50 text-center">Name</th>
+									<th class="i-wd-15">Price</th>
+									<th class="i-wd-20">Quantity</th>
+									<th class="i-wd-15">Total Price</th>
+								</tr>
+								<tr ng-repeat="item in cart.cartItems">
+									<td>
+										<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
+											{{item.product.productName}}
+										</a>
+									</td>
+									<td>${moneySign} {{item.product.productPrice}}</td>
+									<td>{{item.quantity}}</td>
+									<td>${moneySign} {{item.totalPrice}}</td>
+								</tr>
+								<tr class="i-font-bold">
+									<td></td>
+									<td></td>
+									<td>
+										Grand Total:
+									</td>
+									<td>
+										${moneySign} {{cart.grandTotal}}
+									</td>
+								</tr>
+							</table>
+				  		</div> <!-- table panel -->
+				  		
+				  		<br>
+				  		<a href="<c:url value='/customer/cart'/>" class="btn btn-warning i-btn-lg">
+							View Cart Details
+						</a>
+					</div> <!-- panel body -->
+				</div> <!-- panel -->
+					
 			</div> <!-- right row 1 -->
 		</div> <!-- right column -->
 		
