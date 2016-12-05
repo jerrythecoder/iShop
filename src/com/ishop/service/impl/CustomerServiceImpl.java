@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ishop.dao.CustomerOrderDao;
+import com.ishop.exceptions.CustomerIdMismatchException;
 import com.ishop.exceptions.InvalidCustomerAddressCategoryException;
 import com.ishop.exceptions.NullEntityObjectException;
 import com.ishop.model.CartItem;
@@ -39,7 +40,10 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 			"Customer was not found, username: %s";
 	private static final String ERROR_INVALID_ADDRESS_CODE =
 			"Invalid customer address category code, expected code: %s";
-	
+	private static final String ERROR_CUSTOMER_ORDER_NOT_FOUND = 
+			"Customer order was not found, order ID: %s";
+	private static final String ERROR_CUSTOMER_ID_MISMATCH = 
+			"Customer ID mismatch, expected ID: %s, actual ID: %s";
 	
 	@Autowired
 	private UserService userService;
@@ -216,6 +220,29 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 		
 		// Clear cart after new order persisted.
 		this.cartService.clearCart(username);
+	}
+
+	@Override
+	public CustomerOrder getNonNullCustomerOrder(String username, Long orderId)
+			throws NullEntityObjectException, CustomerIdMismatchException {
+		
+		CustomerOrder order = this.customerOrderDao.find(orderId);
+		
+		if (order == null) {
+			throw new NullEntityObjectException(
+					String.format(ERROR_CUSTOMER_ORDER_NOT_FOUND, orderId));
+		}
+		
+		// Verify if the order being accessed has a matching customer ID of the current user.
+		Long expectedId = this.userService.getCustomer(username).getCustomerId();
+		Long actualId = order.getCustomer().getCustomerId();
+		
+		if (actualId != expectedId) {
+			throw new CustomerIdMismatchException(
+					String.format(ERROR_CUSTOMER_ID_MISMATCH, expectedId, actualId));
+		}
+		
+		return order;
 	}
 
 }

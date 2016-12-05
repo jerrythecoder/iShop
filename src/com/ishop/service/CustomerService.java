@@ -1,9 +1,11 @@
 package com.ishop.service;
 
+import com.ishop.exceptions.CustomerIdMismatchException;
 import com.ishop.exceptions.InvalidCustomerAddressCategoryException;
 import com.ishop.exceptions.NullEntityObjectException;
 import com.ishop.model.Customer;
 import com.ishop.model.CustomerAddress;
+import com.ishop.model.CustomerOrder;
 
 /**
  * Customer service interface.
@@ -30,5 +32,8 @@ public interface CustomerService extends GenericService<Customer, Long> {
 	CustomerAddress getShippingAddress(String username) throws NullEntityObjectException;
 	
 	void saveCustomerOrder(String username) throws NullEntityObjectException;
+	
+	CustomerOrder getNonNullCustomerOrder(String username, Long orderId) 
+			throws NullEntityObjectException, CustomerIdMismatchException;
 	
 }

@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@include file="/WEB-INF/views/templates/header.jsp" %>
 
 
@@ -136,7 +139,7 @@
 				<div class="jumbotron i-cus-jumbotron text-center" ng-show="cartEmpty">
 					<p class="lead">
 						<span class="glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
-						There's no item in your shopping cart right now 
+						There's no item in your shopping cart right now.
 					</p>
 					<a href="<c:url value='/product/list'/>" class="btn btn-warning i-btn-lg">
 						Alright, go shopping
@@ -145,7 +148,7 @@
 				
 				<div class="panel i-cus-panel i-center-child" ng-hide="cartEmpty">
 					<div class="panel-heading i-cus-panel-heading">
-						<span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span>
+						<span class="glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
 						My Shopping Cart
 					</div>
 					<div class="panel-body text-center">
@@ -164,7 +167,7 @@
 										</a>
 									</td>
 									<td>${moneySign} {{item.product.productPrice}}</td>
-									<td>{{item.quantity}}</td>
+									<td>x {{item.quantity}}</td>
 									<td>${moneySign} {{item.totalPrice}}</td>
 								</tr>
 								<tr class="i-font-bold">
@@ -180,7 +183,7 @@
 							</table>
 				  		</div> <!-- table panel -->
 				  		
-				  		<br>
+				  		<br><br>
 				  		<a href="<c:url value='/customer/cart'/>" class="btn btn-warning i-btn-lg">
 							View Cart Details
 						</a>
@@ -189,14 +192,83 @@
 					
 			</div> <!-- right row 1 -->
 			
-			<div class="row" ng-init="cartEmpty == true">
-				<div class="jumbotron i-cus-jumbotron text-center">
-					<p class="lead">
-						<span class="-glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
-						You have no active orders.
-					</p>
-				</div>
+			<div class="row">
+				
+				<c:choose>
+					<c:when test="${orderListEmpty}">
+						<div class="jumbotron i-cus-jumbotron text-center">
+							<p class="lead">
+								<span class="glyphicon glyphicon-list-alt" style="margin-right: 10px;"></span>
+								You have no recent orders.
+							</p>
+						</div>
+					</c:when>
 					
+					<c:otherwise>
+						<div class="panel i-cus-panel i-center-child">
+							<div class="panel-heading i-cus-panel-heading">
+								<span class="glyphicon glyphicon-list-alt" style="margin-right: 10px;"></span>
+								My Recent Orders
+							</div>
+							<div class="panel-body text-center">
+							
+								<c:set var="maxOrderDisplay" value="5"></c:set>
+								
+								<c:forEach var="order" items="${orderList}" begin="0" end="${maxOrderDisplay - 1}">
+									<div class="panel panel-default">
+										<table class="table table-condensed table-bordered">
+											<tr>
+												<c:set var="max" value="3"></c:set>
+												<c:forEach items="${order.orderItems}" begin="0" end="${max - 1}" step="${max}" varStatus="i">
+												    <td class="i-wd-40">
+												        <c:forEach begin="0" end="${max}" varStatus="j">
+												        	<c:set var="index" value="${i.index * max + j.index}"/>
+												        	
+											            	<!-- 
+											               	${index < fn:length(order.orderItems) ? order.orderItems[index].itemProductId : "-1"}
+											               	-->
+											               	
+											               	<c:if test="${index < fn:length(order.orderItems) && index < max}">
+											               		<img src="${imagePath}/product-images/product_${order.orderItems[index].itemProductId}.png" 
+											               				alt="image" class="img-responsive img-thumbnail" width="60px" style="margin: 5px;">
+											               	</c:if>
+											               	<c:if test="${fn:length(order.orderItems) > max && index == max}">
+											               		<span class="glyphicon glyphicon-option-horizontal i-font-18" style="margin: 5px;"></span>
+											               	</c:if>
+												        </c:forEach>
+												    </td>
+												</c:forEach>
+												
+												<td class="i-wd-20">${order.creationTime}</td>
+												<td class="i-wd-15">${moneySign} ${order.grandTotal}</td>
+												<td class="i-wd-15">${order.orderStatus}</td>
+												<td class="i-wd-10">
+													<a href="<c:url value='/customer/order/${order.orderId}'/>" >
+														<span class="glyphicon glyphicon-th-list"></span>
+														<br>
+														Detail
+													</a>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</c:forEach>
+								
+								<c:if test="${fn:length(orderList) > maxOrderDisplay}">
+								<div class="text-left">
+									<p class="i-fonrt-bold i-font-16"> and ${fn:length(orderList) - maxOrderDisplay} more ...</p>
+								</div>
+								</c:if>
+								
+								<br>
+								<a href="<c:url value='/customer/order-list'/>" class="btn btn-warning i-btn-lg">
+									View My Orders
+								</a>
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
+				
 			</div> <!-- right row 2 -->
 		</div> <!-- right column -->
 		

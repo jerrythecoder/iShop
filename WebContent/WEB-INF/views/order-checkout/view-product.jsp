@@ -56,7 +56,7 @@
 							</td>
 							<td>${item.product.productName}</td>
 							<td>${item.product.productPrice}</td>
-							<td>${item.quantity}</td>
+							<td>x ${item.quantity}</td>
 							<td>${moneySign} ${item.totalPrice}</td>
 						</tr>
 					</c:forEach>

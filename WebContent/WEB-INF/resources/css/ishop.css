@@ -188,12 +188,14 @@ div.i-vertical-center {
 
 /************** Font *************/
 
+.i-font-14,
 tr.i-font-14, 
 span.i-font-14, 
 p.i-font-14 {
 	font-size: 14px;
 }
 
+.i-font-16,
 tr.i-font-16, 
 span.i-font-16, 
 p.i-font-16 {
@@ -347,6 +349,20 @@ a.i-cus-panel-link {
 	color: #808080;
 }
 
+
+div.i-order-panel {
+	background-color: #f9f9f9;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+div.i-order-panel-heading {
+	background-color: #ebf3f9;
+	border-radius: 0px;
+	font-size: 16px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
 
 /************ error msg ***********/
 

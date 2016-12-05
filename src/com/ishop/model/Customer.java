@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -52,7 +54,8 @@ public class Customer implements Serializable {
 	@JsonIgnore
 	private Cart cart;
 	
-	@OneToMany(mappedBy="customer", orphanRemoval = true)
+	@OneToMany(mappedBy="customer", orphanRemoval = true, fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<CustomerOrder> orderList;
 	
 	
@@ -118,6 +121,14 @@ public class Customer implements Serializable {
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	}
+	
+	public List<CustomerOrder> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<CustomerOrder> orderList) {
+		this.orderList = orderList;
 	}
 
 	@Override
