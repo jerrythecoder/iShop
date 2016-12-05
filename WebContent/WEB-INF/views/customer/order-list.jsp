@@ -13,7 +13,7 @@
 	
 	<div>
 	<c:forEach var="order" items="${orderList}">
-		<div class="panel i-order-panel i-center-child">
+		<div class="panel panel-info i-order-panel i-center-child">
 		
 			<div class="panel-heading i-order-panel-heading">
 				<div class="row">
@@ -62,7 +62,7 @@
 							</table>
 						</div>
 					
-						<a href="<c:url value='/customer/order/${order.orderId}'/>" class="-btn -btn-link -i-btn-md i-font-16">
+						<a href="<c:url value='/customer/order/detail/${order.orderId}'/>" class="-btn -btn-link -i-btn-md i-font-16">
 							<span class="glyphicon glyphicon-th-list"></span>
 							View Order Detail
 						</a>

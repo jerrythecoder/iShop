@@ -7,7 +7,7 @@
 <div class="container">
 
 	<div class="i-center-parent">
-  		<div class="panel panel-info i-order-panel i-wd-80 i-center-child">
+  		<div class="panel panel-info i-order-panel i-wd-80 i-center-child i-top-elem">
   		
   			<div class="panel-heading i-font-18">
 				<div class="row">
@@ -146,7 +146,7 @@
 				</a>
 			</div>
 			<div class="col-md-6">
-				<a href='<c:url value="/customer/order-list"/>' class="btn btn-warning i-btn-lg">
+				<a href='<c:url value="/customer/order/list"/>' class="btn btn-warning i-btn-lg">
 					Back to Order List
 				</a>
 			</div>

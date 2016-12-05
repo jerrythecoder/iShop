@@ -2,6 +2,8 @@ package com.ishop.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,7 +66,7 @@ public class CustomerController {
 		return "customer/customer-home";
 	}
 	
-	@GetMapping("/order-list")
+	@GetMapping("/order/list")
 	public String showOrderList(
 			@ModelAttribute("sessionUsername") String username, 
 			Model model) {
@@ -73,7 +75,7 @@ public class CustomerController {
 		return "customer/order-list";
 	}
 	
-	@GetMapping("/order/{orderId}")
+	@GetMapping("/order/detail/{orderId}")
 	public String showOrderDetail(@PathVariable("orderId") Long orderId, 
 			@ModelAttribute("sessionUsername") String username, 
 			Model model) {
@@ -82,12 +84,12 @@ public class CustomerController {
 		
 		try {
 			order = this.customerService.getNonNullCustomerOrder(username, orderId);
-		} catch (NullEntityObjectException e) {
-			// TODO ...
-		} catch (CustomerIdMismatchException e) {
+		} catch (NullEntityObjectException | CustomerIdMismatchException e) {
 			e.printStackTrace();
-			// Simply return to order list.
-			return "customer/order-list";
+			
+			// Either non-existing or invalid order access will redirect to the error page.
+			model.addAttribute("backLink", "/customer/order-list");
+			return "error/page-not-exist";
 		}
 		
 		model.addAttribute("order", order);

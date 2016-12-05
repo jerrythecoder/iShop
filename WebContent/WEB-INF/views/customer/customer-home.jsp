@@ -185,7 +185,7 @@
 				  		
 				  		<br><br>
 				  		<a href="<c:url value='/customer/cart'/>" class="btn btn-warning i-btn-lg">
-							View Cart Details
+							View Cart Detail
 						</a>
 					</div> <!-- panel body -->
 				</div> <!-- panel -->
@@ -243,7 +243,7 @@
 												<td class="i-wd-15">${moneySign} ${order.grandTotal}</td>
 												<td class="i-wd-15">${order.orderStatus}</td>
 												<td class="i-wd-10">
-													<a href="<c:url value='/customer/order/${order.orderId}'/>" >
+													<a href="<c:url value='/customer/order/detail/${order.orderId}'/>" >
 														<span class="glyphicon glyphicon-th-list"></span>
 														<br>
 														Detail
@@ -261,8 +261,8 @@
 								</c:if>
 								
 								<br>
-								<a href="<c:url value='/customer/order-list'/>" class="btn btn-warning i-btn-lg">
-									View My Orders
+								<a href="<c:url value='/customer/order/list'/>" class="btn btn-warning i-btn-lg">
+									View All Orders
 								</a>
 							</div>
 						</div>

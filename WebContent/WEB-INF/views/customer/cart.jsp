@@ -115,7 +115,7 @@
 				</a>
 			</div>
 			<div class="col-md-3 text-right">
-				<a href="<c:url value='order/checkout'/>" class="btn btn-warning i-btn-lg text-center">
+				<a href="<c:url value='/customer/order/checkout'/>" class="btn btn-warning i-btn-lg text-center">
 					Go Checkout
 				</a>
 			</div>

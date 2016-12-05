@@ -134,7 +134,7 @@
 						<form class="navbar-form pull-right" action="<spring:url value='/customer/cart'/>" 
 								method="get" ng-init="cart.totalQuantity = 0; refreshCart()">
 							<button type="submit" class="btn btn-warning i-btn-md">
-								<span class="badge">{{cart.totalQuantity}}</span>
+								<span class="badge" ng-hide="isNaN(cart.totalQuantity)">{{cart.totalQuantity}}</span>
 								<span class="glyphicon glyphicon-shopping-cart"></span>
 								My Cart
 							</button>
