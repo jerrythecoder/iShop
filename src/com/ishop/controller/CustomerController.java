@@ -88,7 +88,7 @@ public class CustomerController {
 			e.printStackTrace();
 			
 			// Either non-existing or invalid order access will redirect to the error page.
-			model.addAttribute("backLink", "/customer/order-list");
+			model.addAttribute("backLink", "/customer/order/list");
 			return "error/page-not-exist";
 		}
 		

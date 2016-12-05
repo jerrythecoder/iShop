@@ -1,12 +1,18 @@
    		<div class="i-center-parent" ng-hide="${orderActive}">
 	   		<div class="jumbotron i-flow-jumbotron">
-				<p>The checkout session you're accessing has expired.</p>
+				<p>
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					The checkout session you're accessing has expired.
+				</p>
 			</div>
 		</div>
    		
    		<div class="i-center-parent" ng-show="${orderActive}">
    			<div class="jumbotron i-flow-jumbotron" ng-hide="${orderValid}">
-   				<p>The content of the order is invalid.</p>
+   				<p>
+   					<span class="glyphicon glyphicon-remove-sign"></span>
+   					The content of the order is invalid.
+   				</p>
    			</div>
    		</div>
    		

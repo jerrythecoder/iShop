@@ -9,7 +9,7 @@
 
 <div class="container">
    		
-	<div class="page-header">
+	<div class="page-header i-top-elem">
 		<div class="main-content-header-title">
 			<h2 class="header-msg-default">
 				<span class="glyphicon glyphicon-check"></span>

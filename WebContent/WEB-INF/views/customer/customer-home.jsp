@@ -13,10 +13,10 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="jumbotron i-cus-jumbotron-active text-center">
-						<p class="lead i-color-warn">
+						<h3 class=" i-color-warn">
 							<span class="glyphicon glyphicon-home" style="margin-right: 10px;"></span>
 							${customer.customerFirstName}'s home in i-Shop
-						</p>
+						</h3>
 					</div>
 				</div>
 			</div> <!-- left row 1 -->

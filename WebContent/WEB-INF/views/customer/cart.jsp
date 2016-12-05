@@ -23,18 +23,24 @@
 
 <div class="container" ng-init="refreshCart(); cartEmpty = true">
 
-	<div class="page-header">
+	<div class="page-header i-top-elem">
 		<h2 class="header-msg-default">
-			<img alt="devices" src="${ctx}/resources/images/cart-title-image.png" width="50" height="50">
+			<img alt="devices" src="${ctx}/resources/images/cart-title-image.png" width="40" height="40">
 			My Shopping Cart
 		</h2>
+		<p class="lead text-right i-center-child" ng-init="cart.totalQuantity = 0; refreshCart()">
+			<span class="label label-primary">Total Quantity: {{cart.totalQuantity}}</span>
+		</p>
 	</div>
 			
 	<div class="text-center" ng-show="cartEmpty">
-		<div class="jumbotron i-flow-jumbotron">
-			<p>Your cart is empty.</p>
+		<div class="jumbotron i-flow-jumbotron i-center-child">
+			<p>
+				<span class="glyphicon glyphicon-exclamation-sign"></span>
+				Your cart is empty.
+			</p>
 		</div>
-		<div class="row">
+		<div class="row i-button-row">
 			<div class="col-md-12">
 				<a href="<c:url value='/product/list'/>" class="btn btn-warning i-btn-lg">
 					Go Shopping
@@ -44,7 +50,7 @@
 	</div>
 	   			
 	<div ng-hide="cartEmpty">
-  		<div class="panel panel-default">
+  		<div class="panel panel-warning">
     		<table class="table table-hover">
 				<tr class="active">
 					<th class="i-wd-10 text-center">ID</th>
@@ -92,10 +98,10 @@
 					<td></td>
 					<td></td>
 					<td>
-						<p>Grand Total:</p>
+						Grand Total:
 					</td>
 					<td>
-						<p>${moneySign} {{cart.grandTotal}}</p>
+						${moneySign} {{cart.grandTotal}}
 					</td>
 					<td></td>
 				</tr>

@@ -6,7 +6,7 @@
 
 <div class="container">
 	
-	<div class="page-header">
+	<div class="page-header i-top-elem">
 		<div class="main-content-header-title">
 			<h2 class="header-msg-default">
 				<span class="glyphicon glyphicon-check"></span>
@@ -20,9 +20,10 @@
 	   	
 	   	
  	<div class="i-center-parent" ng-show="${orderActive && orderValid}">
-  		<div class="jumbotron i-wd-80 i-center-child i-flow-jumbotron">
+  		<div class="jumbotron i-center-child i-flow-jumbotron">
   		
-  			<p>Order Success!</p>
+  			<p>Thank you, ${customer.customerFirstName}!</p>
+  			<p>Your order has been created successfully.</p>
   			
   		</div> <!-- end of jumbotron -->
   			

@@ -17,15 +17,15 @@
 
 <div class="container">
 	
-	<div class="page-header">
+	<div class="page-header i-top-elem">
 		<h2>
-			<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="50" height="50">
+			<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
 			All Products in Shop
 		</h2>
 		<p class="lead">Don't miss out on our latest electronic selections!</p>
 	</div>
   		
-	<div class="panel panel-default">
+	<div class="panel panel-warning">
 		<table class="table table-hover">
 			<thead>
 				<tr class="active">
@@ -73,6 +73,18 @@
 			</c:forEach> 
 		</table>
 	</div> <!-- end of table wrapper panel -->
+	
+	<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+		<div class="row i-button-row i-center-child">
+			<div class="col-md-12">
+				<a href='<c:url value="/customer/cart"/>' class="btn btn-warning i-btn-lg pull-right">
+					<span class="badge" ng-hide="isNaN(cart.totalQuantity)">{{cart.totalQuantity}}</span>
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+					My Cart
+				</a>
+			</div>
+		</div> <!-- row -->
+	</sec:authorize>
 </div>
     		
     		

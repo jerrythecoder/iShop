@@ -6,13 +6,13 @@
 <div class="container" ng-init="refreshCart(); cartEmpty = true">
 			
 	<div class="text-center">
-		<div class="jumbotron i-flow-jumbotron i-top-elem">
+		<div class="jumbotron i-flow-jumbotron i-top-elem i-center-child">
 			<p>
 				<span class="glyphicon glyphicon-remove-sign"></span>
-				The page you're accessing does not exist.
+				Sorry, the page you're accessing does not exist.
 			</p>
 		</div>
-		<div class="row">
+		<div class="row i-button-row">
 			<div class="col-md-12">
 				<a href="<c:url value='${backLink}'/>" class="btn btn-default i-btn-md">
 					Go back

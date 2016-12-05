@@ -115,7 +115,7 @@ div.i-vertical-center {
 }
 
 .i-top-elem {
-	margin-top: 50px !important;
+	margin-top: 30px !important;
 }
 
 
@@ -312,11 +312,11 @@ div.i-login-jumbotron {
 
 div.i-cus-jumbotron-active {
 	background-color: #ffffcc;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	
-	padding-top: 30px;
-	padding-bottom: 20px;
+	padding-top: 15px;
+	padding-bottom: 25px;
 	padding-left: 15px;
 	padding-right: 15px;
 	
@@ -327,15 +327,35 @@ div.i-cus-jumbotron-active {
 
 div.i-cus-jumbotron {
 	background-color: #f9f9f9;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	
 	padding-top: 60px;
 	padding-bottom: 60px;
 	padding-left: 15px;
 	padding-right: 15px;
+	
+	border: 1px !important;
+	border-style: solid !important;
+	border-color: #faebcc !important;
 }
 
+div.i-uni-jumbotron {
+	background-color: #ffffcc;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	
+	padding-top: 15px !important;
+	padding-bottom: 15px !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	
+	/*
+	border: 1px !important;
+	border-style: solid !important;
+	border-color: #faebcc !important;
+	*/
+}
 
 
 /********** Panel ***********/
@@ -343,8 +363,8 @@ div.i-cus-jumbotron {
 div.i-cus-panel {
 	/*background-color: #ffffcc;*/
 	background-color: #f9f9f9;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	border-color: #faebcc;
 	
 }
