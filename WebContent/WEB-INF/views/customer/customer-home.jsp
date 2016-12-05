@@ -155,12 +155,19 @@
 						<div class="panel panel-default i-wd-90 i-center-child">
 				    		<table class="table table-hover table-condensed text-left">
 								<tr class="active">
-									<th class="i-wd-50 text-center">Name</th>
+									<th class="i-wd-10"></th>
+									<th class="i-wd-40 text-center">Name</th>
 									<th class="i-wd-15">Price</th>
 									<th class="i-wd-20">Quantity</th>
 									<th class="i-wd-15">Total Price</th>
 								</tr>
 								<tr ng-repeat="item in cart.cartItems">
+									<td>
+										<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
+											<img src="${imagePath}/product-images/product_{{item.product.productId}}.png" alt="image" 
+												class="img-responsive img-thumbnail">
+										</a>
+									</td>
 									<td>
 										<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
 											{{item.product.productName}}
@@ -171,6 +178,7 @@
 									<td>${moneySign} {{item.totalPrice}}</td>
 								</tr>
 								<tr class="i-font-bold">
+									<td></td>
 									<td></td>
 									<td></td>
 									<td>

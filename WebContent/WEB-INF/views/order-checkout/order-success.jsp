@@ -23,8 +23,10 @@
   		<div class="jumbotron i-center-child i-flow-jumbotron">
   		
   			<p>Thank you, ${customer.customerFirstName}!</p>
-  			<p>Your order has been created successfully.</p>
-  			
+  			<p>
+  				Your order has been created successfully. 
+  				<a href='<c:url value="/customer/order/detail/${newOrderId}"/>'>Order ID: ${newOrderId}</a>
+  			</p>
   		</div> <!-- end of jumbotron -->
   			
   		<div class="row i-button-row">
@@ -36,7 +38,7 @@
 			</div>
 			<div class="col-md-3">
 				<a href="${flowExecutionUrl}&_eventId=switchToOrderList" class="btn btn-warning i-btn-lg">
-					View My Orders
+					View All My Orders
 				</a>
 			</div>
 			<div class="col-md-3"></div>

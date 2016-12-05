@@ -31,7 +31,7 @@ public interface CustomerService extends GenericService<Customer, Long> {
 	
 	CustomerAddress getShippingAddress(String username) throws NullEntityObjectException;
 	
-	void saveCustomerOrder(String username) throws NullEntityObjectException;
+	Long saveCustomerOrder(String username) throws NullEntityObjectException;
 	
 	CustomerOrder getNonNullCustomerOrder(String username, Long orderId) 
 			throws NullEntityObjectException, CustomerIdMismatchException;

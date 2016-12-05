@@ -210,7 +210,7 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 	}
 	
 	@Override
-	public void saveCustomerOrder(String username) throws NullEntityObjectException {
+	public Long saveCustomerOrder(String username) throws NullEntityObjectException {
 		Customer customer = this.getNonNullCustomer(username);
 		
 		// Generate new order object.
@@ -220,6 +220,8 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 		
 		// Clear cart after new order persisted.
 		this.cartService.clearCart(username);
+		
+		return order.getOrderId();
 	}
 
 	@Override

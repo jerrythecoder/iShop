@@ -62,7 +62,8 @@
 		<transition on="cancel" to="backToCart"/>
 		<transition on="back" to="viewAddress"/>
 		<transition on="confirm" to="success">
-			<evaluate expression="customerService.saveCustomerOrder(currentUser.name)"/>
+			<evaluate expression="customerService.saveCustomerOrder(currentUser.name)" 
+					result="flowScope.newOrderId" result-type="java.lang.Long"/>
 		</transition>
 	</view-state>
 	
@@ -74,7 +75,7 @@
 	
 	<end-state id="backToCart" view="externalRedirect:/customer/cart"/>
 	<end-state id="keepShopping" view="externalRedirect:/product/list"/>
-	<end-state id="viewOrderList" view="externalRedirect:/customer/order-list"/>
+	<end-state id="viewOrderList" view="externalRedirect:/customer/order/list"/>
 	
 	<global-transitions>
 		<transition on="switchToShopping" to="keepShopping"/>
