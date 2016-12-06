@@ -24,3 +24,13 @@ function showToastBar(btnId) {
     x.style.top = rect.top + 30 +'px';
     */
 }
+
+function showToastBarRemoveItem(btnId) {
+    var x = document.getElementById("snackbar-remove-item")
+    
+    x.className = "show";
+    
+    setTimeout(function(){
+    	x.className = x.className.replace("show", "");
+    }, 3000);
+}

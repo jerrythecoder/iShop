@@ -222,6 +222,10 @@ p.i-font-16 {
 	font-size: 24px;
 }
 
+.i-font-30 {
+	font-size: 30px;
+}
+
 .i-font-bold {
 	font-weight: bold;
 }
@@ -452,7 +456,7 @@ div.i-order-panel-heading {
 
 /************* Toast snackbar ***********/
 
-#snackbar {
+#snackbar, #snackbar-remove-item {
     visibility: hidden;
     min-width: 250px;
     margin-left: -125px;
@@ -469,7 +473,7 @@ div.i-order-panel-heading {
     font-size: 16px;
 }
 
-#snackbar.show {
+#snackbar.show, #snackbar-remove-item.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
