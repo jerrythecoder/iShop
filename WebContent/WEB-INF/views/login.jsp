@@ -54,6 +54,13 @@
  		</form>
  		
 	</div> <!-- jumbotron -->
+	
+	<div class="i-wd-55 i-center-child">
+		<p>
+			Don't have an account? please  
+			<a href='<c:url value="/register"/>' class="i-font-bold">sign up here.</a>
+		</p>
+	</div>
 </div> <!-- container -->
     
     

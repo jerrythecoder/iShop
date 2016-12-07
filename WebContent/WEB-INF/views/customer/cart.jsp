@@ -28,7 +28,7 @@
 			<img alt="devices" src="${ctx}/resources/images/cart-title-image.png" width="40" height="40">
 			My Shopping Cart
 		</h2>
-		<p class="lead text-right i-center-child" ng-init="cart.totalQuantity = 0; refreshCart()">
+		<p class="text-right i-center-child i-font-18" ng-init="cart.totalQuantity = 0; refreshCart()">
 			<span class="label label-primary">Total Quantity: {{cart.totalQuantity}}</span>
 		</p>
 	</div>

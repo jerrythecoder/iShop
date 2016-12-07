@@ -69,8 +69,15 @@
 						<ul class="nav navbar-nav">
 							<li><a></a></li>
 							<li><a href='<spring:url value="/"/>'>Home</a></li>
+							
 							<li><a href='<spring:url value="/product/list"/>'>Product</a></li>
+							
+							<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+							<li><a href='<spring:url value="/customer/order/list"/>'>My Orders</a></li>
+							</sec:authorize>
+							
 							<li><a href="#">Contact</a></li>
+							
 							<sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
 							<li><a href='<spring:url value="/admin"/>'>Admin Tools</a></li>
 							</sec:authorize>

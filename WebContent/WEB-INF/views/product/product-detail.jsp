@@ -1,29 +1,30 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
-
-<div id="snackbar" ng-init="verifyCartExists()">
-	<div ng-show="cartExists">
-		<span class="glyphicon glyphicon-shopping-cart"></span>
-		Item added to cart<br>
-		Total: ${moneySign}{{cart.grandTotal}}
+<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+	<div id="snackbar" ng-init="verifyCartExists()">
+		<div ng-show="cartExists">
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+			Item added to cart<br>
+			Total: ${moneySign}{{cart.grandTotal}}
+		</div>
+		<div ng-hide="cartExists">
+			Shopping cart not activated
+		</div>
 	</div>
-	<div ng-hide="cartExists">
-		Shopping cart not activated
+	
+	<div id="snackbar-remove-item" ng-init="verifyCartExists()">
+		<div ng-show="cartExists">
+			<span class="glyphicon glyphicon-shopping-cart"></span>
+			Item removed from cart<br>
+			Total: ${moneySign}{{cart.grandTotal}}
+		</div>
+		<div ng-hide="cartExists">
+			Shopping cart not activated
+		</div>
 	</div>
-</div>
-
-<div id="snackbar-remove-item" ng-init="verifyCartExists()">
-	<div ng-show="cartExists">
-		<span class="glyphicon glyphicon-shopping-cart"></span>
-		Item removed from cart<br>
-		Total: ${moneySign}{{cart.grandTotal}}
-	</div>
-	<div ng-hide="cartExists">
-		Shopping cart not activated
-	</div>
-</div>
-
+</sec:authorize>
 
 <div class="container">
 	<div class="i-wd-80 i-center-child">
@@ -54,7 +55,7 @@
 			</div>
 		</div>
 		
-		<div class="-page-header i-top-elem">
+		<div class="page-header i-top-elem">
 			<div class="row">
 				<div class="col-md-6 -col-md-offset-1">
 					<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
@@ -77,8 +78,9 @@
 							Price: <span class="i-font-bold">${moneySign} ${product.productPrice}</span>
 						</p>
 						
-						<sec:authorize access="!isAuthenticated()">
-							<a href='<c:url value="/login" />' class="btn btn-warning i-btn-lg">
+						<sec:authorize access="not isAuthenticated()">
+							<a href='<spring:url value="/customer/product/detail/${product.productId}" />' 
+									class="btn btn-warning i-btn-lg">
 								Sign In to Buy
 							</a>
 						</sec:authorize>
@@ -96,17 +98,17 @@
 									onclick="showToastBar('add-btn-${product.productId}');" 
 									ng-click="addProduct('${product.productId}')">
 									<span class="glyphicon glyphicon-plus"></span>
-									Add One More
+									Add 1 More
 								</a>
 								
 								<div ng-show="productAdded">
 									<br><br>
-									<p>
-										<span class="glyphicon glyphicon-ok-sign"></span>
-										This product has been added to your cart.
+									<p class="i-font-16">
+										<span class="glyphicon glyphicon-ok i-color-warn"></span>
+										This product is already in your cart.
 									</p>
 									
-									<p>
+									<p class="i-font-16">
 										You can 
 										<a href="" class="btn btn-danger btn-sm" style="margin-left: 5px; margin-right: 5px;" 
 											onclick="showToastBarRemoveItem('add-btn-${product.productId}');" 
@@ -130,9 +132,8 @@
 			</div> <!-- row 1 -->
 		</div>
 		
-		<div class="page-header"></div>
 		
-		<div class="page-header -i-top-elem">
+		<div class="page-header i-top-elem">
 			<div class="row">
 				<div class="col-md-10 -col-md-offset-1">
 					<p class="lead">${product.productDescription}</p>

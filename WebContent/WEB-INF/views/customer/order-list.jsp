@@ -1,27 +1,42 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
 <div class="container">
 
-	<div class="page-header">
+	<div class="page-header i-top-elem">
 		<h2 class="header-msg-default">
+			<span class="glyphicon glyphicon-list-alt"></span>
 			My Orders
 		</h2>
+		<p class="text-right i-center-child i-font-18">
+			<span class="label label-primary">Total Orders: ${fn:length(orderList)}</span>
+		</p>
 	</div>
 	
-	<div>
+	<c:choose>
+		<c:when test="${empty orderList}">
+			<div class="jumbotron i-flow-jumbotron text-center">
+				<p>
+					<span class="glyphicon glyphicon-exclamation-sign"></span>
+					You don't have any order yet.
+				</p>
+			</div>
+		</c:when>
+	</c:choose>
+	
 	<c:forEach var="order" items="${orderList}">
 		<div class="panel panel-info i-order-panel i-center-child">
 		
 			<div class="panel-heading i-order-panel-heading">
 				<div class="row">
 					<div class="col-md-3">
-						<span class="i-font-bold">Ordered on: </span>${order.creationTime}
+						<p><span class="i-font-bold">Ordered on: </span>${order.creationTime}</p>
 					</div>
 					<div class="col-md-3">
-						<span class="i-font-bold">Ordered ID: </span>${order.orderId}
+						<p><span class="i-font-bold">Ordered ID: </span>${order.orderId}</p>
 					</div>
 				</div>
 			</div>
@@ -72,26 +87,23 @@
 			
 		</div> <!-- order panel -->
 	</c:forEach>
-	</div>
 	
 	    	
 	<div class="row i-button-row">
-		<div class="col-md-6 text-left">
-		</div>
-		<div class="col-md-3 text-right">
+		<div class="col-md-3"></div>
+		<div class="col-md-3 text-center">
 			<a href="<c:url value='/customer/home'/>" class="btn btn-warning i-btn-lg text-center">
 				Back to Customer Home
 			</a>
 		</div>
-		<div class="col-md-3 text-right">
+		<div class="col-md-3 text-center">
 			<a href="<c:url value='/product/list'/>" class="btn btn-warning i-btn-lg">
 				Keep Shopping
 			</a>
 		</div>
+		<div class="col-md-3"></div>
 	</div>	<!-- button row -->
 	
 </div> <!-- container -->
-    		
 
 <%@ include file="/WEB-INF/views/templates/footer.jsp" %>
-    		

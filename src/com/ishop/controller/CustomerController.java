@@ -3,6 +3,7 @@ package com.ishop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.ishop.exceptions.CustomerIdMismatchException;
 import com.ishop.exceptions.NullEntityObjectException;
 import com.ishop.model.CustomerOrder;
+import com.ishop.service.CredentialService;
 import com.ishop.service.CustomerService;
 import com.ishop.service.UserService;
 
@@ -34,6 +36,14 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
+	@Autowired
+	private CredentialService credentialService;
+	
+	// Add the session attribute before every request.
+	@ModelAttribute("sessionUsername")
+	public String getSessionUsername(Authentication auth) {
+		return credentialService.getUsername(auth);
+	}
 	
 	@GetMapping("/home")
 	public String showCustomerHomepage(
@@ -92,6 +102,16 @@ public class CustomerController {
 		
 		model.addAttribute("order", order);
 		return "customer/order-detail";
+	}
+	
+	/**
+	 * This handler serves as redirector. If the user hasn't log in and clicks on "Sign in
+	 * to buy" button, the sign in page will be displayed. After successfully signed in, view 
+	 * will be redirected to normal product detail page.
+	 */
+	@GetMapping("/product/detail/{productId}")
+	public String showProductDetailAfterLogin(@PathVariable("productId") Long productId) {
+		return "redirect:/product/detail/" + productId;
 	}
 	
 }

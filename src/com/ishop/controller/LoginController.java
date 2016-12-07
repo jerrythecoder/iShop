@@ -25,7 +25,6 @@ public class LoginController {
 	@Autowired
 	private CredentialService credentialService;
 	
-	
 	@GetMapping
 	public String login(
 			@RequestParam(value = "error", required = false) String error, 
