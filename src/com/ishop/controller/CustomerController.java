@@ -114,4 +114,14 @@ public class CustomerController {
 		return "redirect:/product/detail/" + productId;
 	}
 	
+	/**
+	 * This handler serves as redirector. If the user hasn't log in and clicks on "Sign in
+	 * to buy" button, the sign in page will be displayed. After successfully signed in, view 
+	 * will be redirected to normal product list page.
+	 */
+	@GetMapping("/product/list")
+	public String showProductListAfterLogin() {
+		return "redirect:/product/list";
+	}
+	
 }

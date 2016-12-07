@@ -29,7 +29,7 @@
 <div class="container">
 	<div class="i-wd-80 i-center-child">
 		
-		<div class="page-header">
+		<div class="page-header i-top-elem">
 			<div class="row">
 				<div class="col-md-8">
 					<h2>${product.productName}</h2>
@@ -70,8 +70,7 @@
 					<p><span class="i-font-bold">Manufacturer: </span>${product.productManufacturer}</p>
 					<p><span class="i-font-bold">Status: </span>${product.productStatus}</p>
 						
-					<br><br>
-					
+					<div class="page-header i-top-elem"></div>
 					
 					<div class="text-center">
 						<p class="lead">
@@ -135,7 +134,7 @@
 		
 		<div class="page-header i-top-elem">
 			<div class="row">
-				<div class="col-md-10 -col-md-offset-1">
+				<div class="col-md-12 -col-md-offset-1">
 					<p class="lead">${product.productDescription}</p>
 				</div>
 			</div> <!-- row 2 -->

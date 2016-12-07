@@ -18,12 +18,23 @@
 
 <div class="container">
 	
-	<div class="page-header i-top-elem">
-		<h2>
-			<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
-			All Products in Shop
-		</h2>
-		<p class="lead">Don't miss out on our latest electronic selections!</p>
+	<div class="page-header i-top-elem" style="margin-top: 10px !important;">
+		<div class="row">
+			<div class="col-md-8">
+				<h2>
+					<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
+					All Products in Shop
+				</h2>
+				<p class="lead">Don't miss out on our latest electronic selections!</p>
+			</div>
+			<div class="col-md-4 text-right">
+				<sec:authorize access="not isAuthenticated()">
+					<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg" style="margin-top: 25px;">
+						Sign In to Buy
+					</a>
+				</sec:authorize>
+			</div>
+		</div>
 	</div>
   		
 	<div class="panel panel-warning">
@@ -85,6 +96,12 @@
 				</a>
 			</div>
 		</div> <!-- row -->
+	</sec:authorize>
+	<sec:authorize access="not isAuthenticated()">
+		<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg pull-right" 
+				style="margin-top: 25px;">
+			Sign In to Buy
+		</a>
 	</sec:authorize>
 </div>
     		
