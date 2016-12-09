@@ -21,5 +21,11 @@ public interface GenericService<E, K> {
 	void remove(E entity);
 	
 	List<E> list();
+	
+	Long getTotalCount();
+	
+	Long getPageCount(int pageSize);
+	
+	List<E> getPagedList(int pageNumber, int pageSize);
 
 }

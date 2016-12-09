@@ -18,7 +18,7 @@ import com.ishop.service.GenericService;
 public class GenericServiceImpl<E, K extends Serializable> implements GenericService<E, K> {
 	
 	@Autowired
-	private GenericDao<E, K> dao;
+	protected GenericDao<E, K> dao;
 
 	@Override
 	public void add(E entity) {
@@ -43,6 +43,31 @@ public class GenericServiceImpl<E, K extends Serializable> implements GenericSer
 	@Override
 	public List<E> list() {
 		return dao.list();
+	}
+
+	@Override
+	public Long getTotalCount() {
+		return dao.count();
+	}
+
+	@Override
+	public Long getPageCount(int pageSize) {
+		if (pageSize <= 0) {
+			throw new IllegalArgumentException("Page size must be greater than 0.");
+		}
+		return (this.getTotalCount() / pageSize) + 1;
+	}
+
+	@Override
+	public List<E> getPagedList(int pageNumber, int pageSize) {
+		if (pageNumber < 1 || pageNumber > this.getPageCount(pageSize)) {
+			throw new IllegalArgumentException("Invalid page number: " + pageNumber);
+		}
+		
+		// Index of first row.
+		int first = (pageNumber - 1) * pageSize + 1;
+		
+		return dao.rangedList(first, pageSize);
 	}
 
 }

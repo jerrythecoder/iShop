@@ -3,6 +3,11 @@ package com.ishop.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +68,33 @@ public class HibernateGenericDaoImpl<E, K extends Serializable> implements Gener
 	public List<E> list() {
 		String hql = "from " + entityClass.getSimpleName();
 		return (List<E>)session().createQuery(hql, entityClass).getResultList();
+	}
+
+	@Override
+	public Long count() {
+		CriteriaBuilder builder = session().getCriteriaBuilder();
+		CriteriaQuery<Long> countQuery = builder.createQuery(Long.class);
+		countQuery.select(builder.count(countQuery.from(entityClass)));
+		
+		return session().createQuery(countQuery).getSingleResult();
+	}
+
+	@Override
+	public List<E> rangedList(int first, int max) {
+		CriteriaBuilder builder = session().getCriteriaBuilder();
+		CriteriaQuery<E> criteriaQuery = (CriteriaQuery<E>) builder.createQuery(entityClass);
+		
+		Root<? extends E> root = criteriaQuery.from(entityClass);
+		
+		CriteriaQuery<? extends E> select = criteriaQuery.select(root);
+		
+		TypedQuery<E> typedQuery = (TypedQuery<E>) session().createQuery(select);
+		
+		// Zero based index.
+		typedQuery.setFirstResult(first - 1);
+		typedQuery.setMaxResults(max);
+		
+		return typedQuery.getResultList();
 	}
 
 }

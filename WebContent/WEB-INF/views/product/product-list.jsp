@@ -18,8 +18,7 @@
 
 <div class="container">
 	
-	<div class="page-header i-top-elem" style="margin-top: 10px !important;">
-		<div class="row">
+	<div class="row page-header i-top-elem" style="margin-top: 10px !important;">
 			<div class="col-md-8">
 				<h2>
 					<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
@@ -29,12 +28,11 @@
 			</div>
 			<div class="col-md-4 text-right">
 				<sec:authorize access="not isAuthenticated()">
-					<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg" style="margin-top: 25px;">
+					<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg" style="margin-top: 30px;">
 						Sign In to Buy
 					</a>
 				</sec:authorize>
 			</div>
-		</div>
 	</div>
   		
 	<div class="panel panel-warning">
@@ -86,23 +84,74 @@
 		</table>
 	</div> <!-- end of table wrapper panel -->
 	
-	<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-		<div class="row i-button-row i-center-child">
-			<div class="col-md-12">
-				<a href='<c:url value="/customer/cart"/>' class="btn btn-warning i-btn-lg pull-right">
+	<div class="row i-button-row i-center-child">
+		<div class="col-md-6 col-md-offset-3 text-center">
+			<nav aria-label="Page navigation">
+				<ul class="pagination" style="margin-top: 0px !important">
+						
+					<c:choose>
+						<c:when test="${currentPageNumber == 1}">
+							<li class="disabled">
+								<a aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href='<c:url value="/product/list/page/${currentPageNumber - 1}"/>' aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:forEach var="pageNumber"  begin="1" end="${pageCount}" varStatus="loop">
+						<c:choose>
+							<c:when test="${loop.index == currentPageNumber}">
+								<li class="active"><a href='<c:url value="/product/list/page/${loop.index}"/>'>${loop.index}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href='<c:url value="/product/list/page/${loop.index}"/>'>${loop.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${currentPageNumber == pageCount}">
+							<li class="disabled">
+								<a aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href='<c:url value="/product/list/page/${currentPageNumber + 1}"/>' aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3 text-right">
+			<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+				<a href='<c:url value="/customer/cart"/>' class="btn btn-warning i-btn-lg">
 					<span class="badge" ng-hide="isNaN(cart.totalQuantity)">{{cart.totalQuantity}}</span>
 					<span class="glyphicon glyphicon-shopping-cart"></span>
 					My Cart
 				</a>
-			</div>
-		</div> <!-- row -->
-	</sec:authorize>
-	<sec:authorize access="not isAuthenticated()">
-		<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg pull-right" 
-				style="margin-top: 25px;">
-			Sign In to Buy
-		</a>
-	</sec:authorize>
+			</sec:authorize>
+			<sec:authorize access="not isAuthenticated()">
+				<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg">
+					Sign In to Buy
+				</a>
+			</sec:authorize>
+		</div>
+	</div> <!-- row -->
+	
 </div>
     		
     		

@@ -21,4 +21,14 @@ public interface GenericDao<E, K> {
 	void remove(E entity);
 	
 	List<E> list();
+	
+	/**
+	 * Gets entity total count.
+	 */
+	Long count();
+	
+	/**
+	 * Gets entity list of a given range.
+	 */
+	List<E> rangedList(int first, int max);
 }
