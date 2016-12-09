@@ -16,6 +16,12 @@
 	</div>
 </sec:authorize>
 
+
+<c:url var="redirectingProductList" value='/customer/product/list'>
+	<c:param name="destPageNumber" value="${currentPageNumber}"></c:param>
+</c:url>
+
+
 <div class="container">
 	
 	<div class="row page-header i-top-elem" style="margin-top: 10px !important;">
@@ -28,7 +34,7 @@
 			</div>
 			<div class="col-md-4 text-right">
 				<sec:authorize access="not isAuthenticated()">
-					<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg" style="margin-top: 30px;">
+					<a href="${redirectingProductList}" class="btn btn-warning i-btn-lg" style="margin-top: 30px;">
 						Sign In to Buy
 					</a>
 				</sec:authorize>
@@ -52,15 +58,20 @@
 			</thead>
 			
 			<c:forEach var="product" items="${productList}">
+			
+				<c:url var="productDetailLink" value='/product/detail/${product.productId}'>
+					<c:param name="backLinkPageNumber" value="${currentPageNumber}"></c:param>
+				</c:url>
+			
 				<tr>					
 					<td>
-						<a href='<spring:url value="/product/detail/${product.productId}"/>'>
+						<a href="${productDetailLink}">
 							<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
 									class="img-responsive img-thumbnail">
 						</a>
 					</td>
 					<td>
-						<a href='<spring:url value="/product/detail/${product.productId}"/>'>
+						<a href="${productDetailLink}">
 							<span class="i-font-16">
 								${product.productName}
 							</span>
@@ -145,7 +156,7 @@
 				</a>
 			</sec:authorize>
 			<sec:authorize access="not isAuthenticated()">
-				<a href="<c:url value='/customer/product/list'/>" class="btn btn-warning i-btn-lg">
+				<a href="${redirectingProductList}" class="btn btn-warning i-btn-lg">
 					Sign In to Buy
 				</a>
 			</sec:authorize>

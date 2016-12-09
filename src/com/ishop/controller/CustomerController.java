@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ishop.exceptions.CustomerIdMismatchException;
@@ -110,7 +111,11 @@ public class CustomerController {
 	 * will be redirected to normal product detail page.
 	 */
 	@GetMapping("/product/detail/{productId}")
-	public String showProductDetailAfterLogin(@PathVariable("productId") Long productId) {
+	public String showProductDetailAfterLogin(@PathVariable("productId") Long productId, 
+			@RequestParam("backLinkPageNumber") int backLinkPageNumber, 
+			Model model) {
+		
+		model.addAttribute("backLinkPageNumber", backLinkPageNumber);
 		return "redirect:/product/detail/" + productId;
 	}
 	
@@ -120,8 +125,8 @@ public class CustomerController {
 	 * will be redirected to normal product list page.
 	 */
 	@GetMapping("/product/list")
-	public String showProductListAfterLogin() {
-		return "redirect:/product/list";
+	public String showProductListAfterLogin(@RequestParam("destPageNumber") int destPageNumber ) {
+		return "redirect:/product/list/page/" + destPageNumber;
 	}
 	
 }

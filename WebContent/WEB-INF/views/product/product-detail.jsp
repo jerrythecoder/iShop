@@ -42,7 +42,7 @@
 						</sec:authorize>
 						<sec:authorize access="not hasRole('ROLE_ADMIN')">
 							<c:set var="productListUrl" 
-	  									value="${pageContext.request.contextPath}/product/list"/>
+	  									value="${pageContext.request.contextPath}/product/list/page/${backLinkPageNumber}"/>
 						</sec:authorize>
 	  					
 	   					<a href="${productListUrl}" class="btn btn-default" style="margin-top: 25px;">
@@ -78,8 +78,11 @@
 						</p>
 						
 						<sec:authorize access="not isAuthenticated()">
-							<a href='<spring:url value="/customer/product/detail/${product.productId}" />' 
-									class="btn btn-warning i-btn-lg">
+							<c:url var="redirectingProductLink" value="/customer/product/detail/${product.productId}">
+								<c:param name="backLinkPageNumber" value="${backLinkPageNumber}"></c:param>
+							</c:url>
+						
+							<a href="${redirectingProductLink}" class="btn btn-warning i-btn-lg">
 								Sign In to Buy
 							</a>
 						</sec:authorize>
