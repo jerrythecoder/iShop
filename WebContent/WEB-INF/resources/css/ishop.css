@@ -17,6 +17,11 @@
 
 /************ Override Bootstrap ************/
 
+.carousel {
+	margin-top: 15px;
+	height: 500px;
+}
+
 .table td {
 	text-overflow: ellipsis;
 	vertical-align: middle !important;

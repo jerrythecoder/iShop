@@ -247,4 +247,36 @@ public class CustomerServiceImpl extends GenericServiceImpl<Customer, Long>
 		return order;
 	}
 
+	@Override
+	public int getCustomerOrderTotalCount(String username) throws NullEntityObjectException {
+		return this.getNonNullCustomer(username).getOrderList().size();
+	}
+	
+	@Override
+	public int getCustomerOrderPageCount(String username, int pageSize) 
+			throws NullEntityObjectException {
+		if (pageSize <= 0) {
+			throw new IllegalArgumentException("Page size must be greater than 0.");
+		}
+		return (this.getCustomerOrderTotalCount(username) / pageSize) + 1;
+	}
+
+	@Override
+	public List<CustomerOrder> getCustomerOrderPagedList(String username, int pageNumber, int pageSize) 
+			throws NullEntityObjectException {
+		if (pageNumber < 1 || pageNumber > this.getCustomerOrderPageCount(username, pageSize)) {
+			throw new IllegalArgumentException("Invalid page number: " + pageNumber);
+		}
+		
+		// Index of first row.
+		int first = (pageNumber - 1) * pageSize;
+		
+		List<CustomerOrder> allOrders = this.getNonNullCustomer(username).getOrderList();
+		
+		// Determine whether index is out of bound.
+		int maxIndex = allOrders.size() > first + pageSize ? first + pageSize : allOrders.size();
+		
+		return allOrders.subList(first, maxIndex);
+	}
+
 }

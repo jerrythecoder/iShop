@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.ishop.exceptions.CustomerIdMismatchException;
 import com.ishop.exceptions.NullEntityObjectException;
+import com.ishop.model.Customer;
 import com.ishop.model.CustomerOrder;
 import com.ishop.service.CredentialService;
 import com.ishop.service.CustomerService;
@@ -80,7 +81,51 @@ public class CustomerController {
 			@ModelAttribute("sessionUsername") String username, 
 			Model model) {
 		
-		model.addAttribute("orderList", userService.getCustomer(username).getOrderList());
+//		try {
+//			model.addAttribute("orderList", customerService.getNonNullCustomer(username).getOrderList());
+//		} catch (NullEntityObjectException e) {
+//			// Customer was not bound to user. Redirect to register wizard flow.
+//			return "redirect:/customer/register-wizard";
+//		}
+//		return "customer/order-list";
+		
+		
+		return "redirect:/customer/order/list/page/1";
+	}
+	
+	@GetMapping("/order/list/page/{pageNumber}")
+	public String showOrderListPage(@PathVariable("pageNumber") int pageNumber, 
+			@ModelAttribute("sessionUsername") String username, 
+			Model model) {
+		
+		/*
+		 * Note: Temporarily hard-coded the page size.
+		 */
+		final int PAGE_SIZE = 10;
+		
+		/*
+		 * If no customer is bound to the user, simply redirect to customer 
+		 * register wizard flow.
+		 */
+		if (!userService.isCustomerBoundToUser(username)) {
+			return "redirect:/customer/register-wizard";
+		}
+		
+		try {
+			model.addAttribute("orderTotalCount", customerService.getCustomerOrderTotalCount(username));
+			model.addAttribute("pageCount", customerService.getCustomerOrderPageCount(username, PAGE_SIZE));
+			model.addAttribute("currentPageNumber", pageNumber);
+			model.addAttribute("orderList", customerService.getCustomerOrderPagedList(username, pageNumber, PAGE_SIZE));
+		} catch (NullEntityObjectException e) {
+			// Still redirect to register wizard if customer is not bound.
+			return "redirect:/customer/register-wizard";
+		} catch (IllegalArgumentException e) {
+			// When invalid page number is supplied, view redirects to error page, with
+			// back button linked to customer order list.
+			model.addAttribute("backLink", "/customer/order/list");
+			return "error/page-not-exist";
+		}
+		
 		return "customer/order-list";
 	}
 	

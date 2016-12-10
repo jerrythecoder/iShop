@@ -3,6 +3,7 @@ package com.ishop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,10 +58,16 @@ public class ProductController {
 	
 	@GetMapping("/detail/{productId}")
 	public String showProductDetail(@PathVariable("productId") Long productId, 
-			@RequestParam("backLinkPageNumber") int backLinkPageNumber, 
+			@RequestParam(value = "backLinkPageNumber", required = false) Integer backLinkPageNumber, 
 			Model model) {
 		
 		model.addAttribute("product", productService.find(productId));
+		
+		if (backLinkPageNumber == null) {
+			// Set to 1 if not provided.
+			backLinkPageNumber = 1;
+		}
+		
 		model.addAttribute("backLinkPageNumber", backLinkPageNumber);
 		return "product/product-detail";
 	}

@@ -1,5 +1,7 @@
 package com.ishop.service;
 
+import java.util.List;
+
 import com.ishop.exceptions.CustomerIdMismatchException;
 import com.ishop.exceptions.InvalidCustomerAddressCategoryException;
 import com.ishop.exceptions.NullEntityObjectException;
@@ -35,5 +37,13 @@ public interface CustomerService extends GenericService<Customer, Long> {
 	
 	CustomerOrder getNonNullCustomerOrder(String username, Long orderId) 
 			throws NullEntityObjectException, CustomerIdMismatchException;
+	
+	/************ Customer order pagination *************/
+	int getCustomerOrderTotalCount(String username) throws NullEntityObjectException;
+	
+	int getCustomerOrderPageCount(String username, int pageSize) throws NullEntityObjectException;
+	
+	List<CustomerOrder> getCustomerOrderPagedList(String username, int pageNumber, int pageSize) 
+			throws NullEntityObjectException;
 	
 }

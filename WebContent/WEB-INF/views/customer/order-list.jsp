@@ -12,7 +12,7 @@
 			My Orders
 		</h2>
 		<p class="text-right i-center-child i-font-18">
-			<span class="label label-primary">Total Orders: ${fn:length(orderList)}</span>
+			<span class="label label-primary">Total Orders: ${orderTotalCount}</span>
 		</p>
 	</div>
 	
@@ -88,22 +88,70 @@
 		</div> <!-- order panel -->
 	</c:forEach>
 	
-	    	
-	<div class="row i-button-row">
-		<div class="col-md-3"></div>
-		<div class="col-md-3 text-center">
+	
+	<div class="row i-button-row i-center-child">
+		<div class="col-md-3 text-left">
 			<a href="<c:url value='/customer/home'/>" class="btn btn-warning i-btn-lg text-center">
 				Back to Customer Home
 			</a>
 		</div>
-		<div class="col-md-3 text-center">
+		<div class="col-md-6 text-center">
+			<nav aria-label="Page navigation">
+				<ul class="pagination" style="margin-top: 0px !important">
+						
+					<c:choose>
+						<c:when test="${currentPageNumber == 1}">
+							<li class="disabled">
+								<a aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href='<c:url value="/customer/order/list/page/${currentPageNumber - 1}"/>' aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					
+					<c:forEach var="pageNumber"  begin="1" end="${pageCount}" varStatus="loop">
+						<c:choose>
+							<c:when test="${loop.index == currentPageNumber}">
+								<li class="active"><a href='<c:url value="/customer/order/list/page/${loop.index}"/>'>${loop.index}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href='<c:url value="/customer/order/list/page/${loop.index}"/>'>${loop.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${currentPageNumber == pageCount}">
+							<li class="disabled">
+								<a aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href='<c:url value="/customer/order/list/page/${currentPageNumber + 1}"/>' aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</nav>
+		</div>
+		<div class="col-md-3 text-right">
 			<a href="<c:url value='/product/list'/>" class="btn btn-warning i-btn-lg">
 				Keep Shopping
 			</a>
 		</div>
-		<div class="col-md-3"></div>
-	</div>	<!-- button row -->
-	
+	</div>	
 </div> <!-- container -->
 
 <%@ include file="/WEB-INF/views/templates/footer.jsp" %>
