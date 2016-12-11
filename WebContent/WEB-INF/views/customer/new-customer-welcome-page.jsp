@@ -13,7 +13,7 @@
 		</p>
 		<p class="lead i-color-warn">
 			We are very pleased to welcome you as our new customer.<br>
-			Here in i-Shop, you will just find everything about trendy digital electronics!
+			Here in i-Shop, you will just find everything about trendy electronics!
 		</p>
 		
 		<div class="row">

@@ -18,7 +18,7 @@
 	<div class="jumbotron i-wd-55 i-center-child i-login-jumbotron">
 		<div class="text-center">
 			<h4>
-				<span class="glyphicon glyphicon-user"></span>
+				<span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>
 				Please sign in
 				<br><br>
 			</h4>
@@ -49,7 +49,7 @@
 			
 			<br>
 			<div class="form-group text-center">
-				<input type="submit" value="Sign In" class="btn btn-primary i-btn-md"/>
+				<input type="submit" value="Sign In" class="btn btn-warning i-btn-lg"/>
 			</div>
  		</form>
  		

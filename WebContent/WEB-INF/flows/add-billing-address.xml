@@ -5,6 +5,11 @@
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 	
 	
+	<decision-state id="isCustomerBoundToUser">
+		<if test="!userService.isCustomerBoundToUser(currentUser.name)" 
+				then="customerNotBound" else="addBillingAddress"/>
+	</decision-state>
+	
 	<view-state id="addBillingAddress" view="customer/customer-billing-address-form" model="billingAddress">
 		<on-entry>
 			<evaluate expression="customerService.getOrCreateBillingAddress(currentUser.name)" 
@@ -20,4 +25,5 @@
 	
 	<end-state id="addressAdded" view="externalRedirect:/customer/home"></end-state>
 	<end-state id="cancelled" view="externalRedirect:/customer/home"></end-state>
+	<end-state id="customerNotBound" view="externalRedirect:/customer/register-wizard"></end-state>
 </flow>

@@ -40,7 +40,10 @@
 			</c:when>
 		</c:choose>
 		
-		<p class="lead text-center">Please enter your <span class="i-font-bold">billing address</span>:</p>
+		<p class="lead text-center">
+			<span class="glyphicon glyphicon-credit-card" style="margin-right: 10px;"></span>
+			Please enter your <span class="i-font-bold">billing address</span>:
+		</p>
 	</div>
 
 	<div class="jumbotron i-center-child i-login-jumbotron i-wd-75">

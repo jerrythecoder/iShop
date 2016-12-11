@@ -25,7 +25,10 @@
 <div class="container i-wd-50">
 
 	<div class="page-header text-center">
-		<p class="lead">Please enter your <span class="i-font-bold">shipping address</span>:</p>
+		<p class="lead">
+			<span class="glyphicon glyphicon-plane" style="margin-right: 10px;"></span>
+			Please enter your <span class="i-font-bold">shipping address</span>:
+		</p>
 	</div>
 
 	<div class="jumbotron i-center-child i-login-jumbotron i-wd-75">

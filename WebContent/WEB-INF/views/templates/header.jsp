@@ -78,7 +78,7 @@
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
 											aria-expanded="false">My Links <span class="caret"></span></a>
-									<ul class="dropdown-menu">
+									<ul class="dropdown-menu" style="border-radius: 0px !important;">
 										<li><a href='<c:url value="/customer/home"/>'>
 											<span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>
 											Customer Home

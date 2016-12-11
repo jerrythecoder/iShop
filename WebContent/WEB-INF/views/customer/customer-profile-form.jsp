@@ -19,7 +19,13 @@
 				<p class="lead i-color-warn">To activate your shopping cart, you will need to enter your profile information below:</p>
 			</c:when>
 			<c:otherwise>
-				<p class="lead text-center">Please enter your profile information:</p>
+				<c:if test="${empty customer.customerId}">
+					<p class="lead i-color-warn text-center">To continue, customer profile is required.</p>
+				</c:if>
+				<p class="lead text-center">
+					<span class="glyphicon glyphicon-user" style="margin-right: 10px;"></span>
+					Please enter your profile information:
+				</p>
 			</c:otherwise>
 		</c:choose>
 	</div>
