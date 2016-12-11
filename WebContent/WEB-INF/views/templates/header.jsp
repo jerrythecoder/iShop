@@ -72,11 +72,36 @@
 							
 							<li><a href='<spring:url value="/product/list"/>'>Product</a></li>
 							
-							<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-								<li><a href='<spring:url value="/customer/order/list"/>'>My Orders</a></li>
-							</sec:authorize>
-							
 							<li><a href="#">Contact</a></li>
+							
+							<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+											aria-expanded="false">My Links <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href='<c:url value="/customer/home"/>'>
+											<span class="glyphicon glyphicon-home" style="margin-right: 5px;"></span>
+											Customer Home
+										</a></li>
+										<li><a href='<c:url value="/customer/order/list"/>'>
+											<span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>
+											My Orders
+										</a></li>
+										<li><a href='<c:url value="/customer/cart"/>'>
+											<span class="glyphicon glyphicon-shopping-cart" style="margin-right: 5px;"></span>
+											My Shopping Cart
+										</a></li>
+										<li role="separator" class="divider"></li>
+										<li class="dropdown-header">
+											<span class="glyphicon glyphicon-wrench" style="margin-right: 5px;"></span>
+											Customer Tools
+										</li>
+										<li><a href='<c:url value="/customer/profile-form"/>'>Edit My Profile</a></li>
+										<li><a href='<c:url value="/customer/billing-address-form"/>'>Edit Billing Address</a></li>
+										<li><a href='<c:url value="/customer/shipping-address-form"/>'>Edit Shipping Address</a></li>
+									</ul>
+								</li>
+							</sec:authorize>
 							
 							<sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
 								<li class="dropdown">
@@ -84,19 +109,19 @@
 											aria-expanded="false">Admin Tools <span class="caret"></span></a>
 									<ul class="dropdown-menu" style="border-radius: 0px !important;">
 										<li><a href='<c:url value="/admin/product-inventory"/>'>
-											<span class="glyphicon glyphicon-th"></span>
+											<span class="glyphicon glyphicon-th" style="margin-right: 5px;"></span>
 											Product Inventory
 										</a></li>
 										<li><a href='<c:url value="/admin/order-management"/>'>
-											<span class="glyphicon glyphicon-list-alt"></span>
+											<span class="glyphicon glyphicon-list-alt" style="margin-right: 5px;"></span>
 											Order Management
 										</a></li>
 										<li><a href="#">
-											<span class="glyphicon glyphicon-user"></span>
+											<span class="glyphicon glyphicon-user" style="margin-right: 5px;"></span>
 											Customer Management
 										</a></li>
 										<li><a href="#">
-											<span class="glyphicon glyphicon-link"></span>
+											<span class="glyphicon glyphicon-link" style="margin-right: 5px;"></span>
 											i-Shop Contact
 										</a></li>
 									</ul>
