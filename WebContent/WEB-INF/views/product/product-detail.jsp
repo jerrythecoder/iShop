@@ -45,7 +45,7 @@
 	  									value="${pageContext.request.contextPath}/product/list/page/${backLinkPageNumber}"/>
 						</sec:authorize>
 	  					
-	   					<a href="${productListUrl}" class="btn btn-default" style="margin-top: 25px;">
+	   					<a href="${productListUrl}" class="btn btn-link" style="margin-top: 25px;">
 							<span class="glyphicon glyphicon-chevron-left"></span>
 							Back to List
 						</a>
@@ -84,6 +84,14 @@
 						
 							<a href="${redirectingProductLink}" class="btn btn-warning i-btn-lg">
 								Sign In to Buy
+							</a>
+						</sec:authorize>
+						
+						<sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+							<a href='<c:url value="/admin/product-form-update/${product.productId}"/>' 
+									class="btn btn-primary i-btn-lg">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Edit Product
 							</a>
 						</sec:authorize>
 						
@@ -143,7 +151,7 @@
 			</div> <!-- row 2 -->
 		</div>
 		
-		<a href="${productListUrl}" class="btn btn-default pull-right" style="margin-top: 25px;">
+		<a href="${productListUrl}" class="btn btn-link pull-right" style="margin-top: 25px;">
 			<span class="glyphicon glyphicon-chevron-left"></span>
 			Back to List
 		</a>

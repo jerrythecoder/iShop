@@ -73,14 +73,24 @@
 							<li><a href='<spring:url value="/product/list"/>'>Product</a></li>
 							
 							<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-							<li><a href='<spring:url value="/customer/order/list"/>'>My Orders</a></li>
+								<li><a href='<spring:url value="/customer/order/list"/>'>My Orders</a></li>
 							</sec:authorize>
 							
 							<li><a href="#">Contact</a></li>
 							
 							<sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
-							<li><a href='<spring:url value="/admin"/>'>Admin Tools</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+											aria-expanded="false">Admin Tools <span class="caret"></span></a>
+									<ul class="dropdown-menu" style="border-radius: 0px !important;">
+										<li><a href='<spring:url value="/admin/product-inventory"/>'>Product Inventory</a></li>
+										<li><a href="#">Order Management</a></li>
+										<li><a href="#">Customer Management</a></li>
+										<li><a href="#">i-Shop Contact</a></li>
+									</ul>
+								</li>
 							</sec:authorize>
+							
 						</ul>
 							
 						<ul class="nav navbar-nav pull-right">

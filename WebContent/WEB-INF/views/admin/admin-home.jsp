@@ -2,33 +2,73 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
-    <div class="container-wrapper">
-    	<div class="container">
-    	
-    		<div class="page-header">
-	    		<c:if test="${pageContext.request.userPrincipal.name != null}">
-	  				<h1>Welcome, ${pageContext.request.userPrincipal.name}</h1>
-	    		</c:if>
-    		</div>
-    		
-    		<div class="row">
-    			<div class="col-md-4">
-	    			<h3>
-		    			<a href='<spring:url value="/admin/product-inventory"/>'>Product Inventory</a>
-		    		</h3>
-		    		<p>Here you can view and modify the product inventory</p>
-    			</div>
-    			<div class="col-md-4">
-	    			<h3>
-		    			<a href='<spring:url value="#"/>'>Customer Management</a>
-		    		</h3>
-		    		<p>Manage all customers in an easy way</p>
-    			</div>
-    		</div>
-    		
-    	</div> <!-- end tag of container -->
-    </div> <!-- end tag of container-wrapper -->
 
-    		
+<div class="container">
+	<div class="page-header">
+   		<h2>Administrator Home</h2>
+  	</div>
+
+	<div class="row" style="margin-top: 30px">
+	
+		<a href='<spring:url value="/admin/product-inventory"/>'>
+			<div class="col-md-4">
+				<div class="jumbotron i-uni-jumbotron-active text-left">
+					<h4 class="i-color-warn">
+						<span class="glyphicon glyphicon-th"></span>
+			   			Product Inventory
+			   		</h4>
+			   		<h4>Create, modify or delete products.</h4> 
+			   		<h4>Set product features and information.</h4>
+				</div>
+			</div>
+		</a>
+		
+		<a href='<spring:url value="/admin/product-inventory"/>'>
+			<div class="col-md-4">
+				<div class="jumbotron i-uni-jumbotron-active text-left">
+					<h4 class="i-color-warn">
+						<span class="glyphicon glyphicon-list-alt"></span>
+			   			Order Management
+			   		</h4>
+			   		<h4>View and modify customer orders in time.</h4> 
+			   		<h4>Supervise order / shipment status.</h4>
+				</div>
+			</div>
+		</a>
+		
+		<a href='<spring:url value="#"/>'>
+			<div class="col-md-4">
+				<div class="jumbotron i-uni-jumbotron-active text-left">
+					<h4 class="i-color-warn i-font-18">
+						<span class="glyphicon glyphicon-user"></span>
+			   			Customer Management
+			   		</h4>
+			   		<h4>Manage all customers in an easy way.</h4> 
+			   		<h4>Activate / deactivate customers.</h4>
+				</div>
+			</div>
+		</a>
+		
+	</div> <!-- row 1 -->
+	
+	<div class="row" style="margin-top: 30px">
+	
+		<a href='<spring:url value="/admin/product-inventory"/>'>
+			<div class="col-md-4">
+				<div class="jumbotron i-uni-jumbotron-active text-left">
+					<h4 class="i-color-warn">
+						<span class="glyphicon glyphicon-link"></span>
+			   			i-Shop Contact
+			   		</h4>
+			   		<h4>Edit shop contact information.</h4> 
+				</div>
+			</div>
+		</a>
+		
+	</div> <!-- row 2 -->
+
+</div> <!-- container -->
+
+		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>
     		

@@ -34,3 +34,19 @@ function showToastBarRemoveItem(btnId) {
     	x.className = x.className.replace("show", "");
     }, 3000);
 }
+
+/*
+ * In product inventory list, passes product deleting link to modal dialog.
+ */
+function setDeleteLink(id) {
+	var productBtn = document.getElementById("product-" + id);
+	var confirmBtn = document.getElementById("deleteInventoryConfirmBtn");
+	
+	var productLink = productBtn.getAttribute("data-href");
+	
+	$("span#modalBodyProductId").text(id);
+	confirmBtn.setAttribute("href", productLink);
+}
+
+
+

@@ -24,7 +24,8 @@
 
 <div class="container">
 	
-	<div class="row page-header i-top-elem" style="margin-top: 10px !important;">
+	<div class="page-header i-top-elem">
+		<div class="row" style="margin-top: -20px !important;">
 			<div class="col-md-8">
 				<h2>
 					<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
@@ -39,6 +40,7 @@
 					</a>
 				</sec:authorize>
 			</div>
+		</div>
 	</div>
   		
 	<div class="panel panel-warning">
