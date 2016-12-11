@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ishop.service.CustomerOrderService;
 import com.ishop.service.ProductService;
 
 /**
@@ -20,6 +21,9 @@ public class AdminHomeController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CustomerOrderService customerOrderService;
 	
 	
 	@GetMapping
@@ -37,6 +41,18 @@ public class AdminHomeController {
 	public String showProductInventoryPage(Model model) {
 		model.addAttribute("productList", productService.list());
 		return "admin/product-inventory";
+	}
+	
+	/**
+	 * Show product inventory list.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/order-management")
+	public String showCustomerOrderPage(Model model) {
+		model.addAttribute("customerOrderList", customerOrderService.list());
+		return "admin/order-management";
 	}
 	
 	@GetMapping("/customer-management")

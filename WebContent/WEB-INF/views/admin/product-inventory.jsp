@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
@@ -24,18 +25,21 @@
 			<span class="glyphicon glyphicon-th"></span>
 			Product Inventory Management
 		</h2>
-		<div class="row" style="margin-top: 20px; margin-bottom: 10px;">
+		<div class="row" style="margin-top: 30px;">
 			<div class="col-md-3">
-					<a href='<spring:url value="/admin/product-form-add"/>' class="btn btn-primary i-btn-lg">
-						<span class="glyphicon glyphicon-plus"></span>
-	    				Add New Product
-	    			</a>
+				<a href='<spring:url value="/admin/product-form-add"/>' class="btn btn-primary i-btn-lg">
+					<span class="glyphicon glyphicon-plus"></span>
+    				Add New Product
+    			</a>
 			</div>
-			<div class="col-md-9">
-					<a href='<spring:url value="/admin"/>' class="btn btn-link i-btn-lg pull-right">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-	    				Back to Admin Home
-	    			</a>
+			<div class="col-md-3">
+				<p class="lead">Product Total: ${fn:length(productList)}</p>
+			</div>
+			<div class="col-md-6">
+				<a href='<spring:url value="/admin"/>' class="btn btn-link i-btn-lg pull-right">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+    				Back to Admin Home
+    			</a>
 			</div>
 		</div>
 	</div>

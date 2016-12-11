@@ -83,10 +83,22 @@
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
 											aria-expanded="false">Admin Tools <span class="caret"></span></a>
 									<ul class="dropdown-menu" style="border-radius: 0px !important;">
-										<li><a href='<spring:url value="/admin/product-inventory"/>'>Product Inventory</a></li>
-										<li><a href="#">Order Management</a></li>
-										<li><a href="#">Customer Management</a></li>
-										<li><a href="#">i-Shop Contact</a></li>
+										<li><a href='<c:url value="/admin/product-inventory"/>'>
+											<span class="glyphicon glyphicon-th"></span>
+											Product Inventory
+										</a></li>
+										<li><a href='<c:url value="/admin/order-management"/>'>
+											<span class="glyphicon glyphicon-list-alt"></span>
+											Order Management
+										</a></li>
+										<li><a href="#">
+											<span class="glyphicon glyphicon-user"></span>
+											Customer Management
+										</a></li>
+										<li><a href="#">
+											<span class="glyphicon glyphicon-link"></span>
+											i-Shop Contact
+										</a></li>
 									</ul>
 								</li>
 							</sec:authorize>

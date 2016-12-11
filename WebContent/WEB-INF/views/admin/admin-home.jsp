@@ -10,7 +10,7 @@
 
 	<div class="row" style="margin-top: 30px">
 	
-		<a href='<spring:url value="/admin/product-inventory"/>'>
+		<a href='<c:url value="/admin/product-inventory"/>'>
 			<div class="col-md-4">
 				<div class="jumbotron i-uni-jumbotron-active text-left">
 					<h4 class="i-color-warn">
@@ -23,7 +23,7 @@
 			</div>
 		</a>
 		
-		<a href='<spring:url value="/admin/product-inventory"/>'>
+		<a href='<c:url value="/admin/order-management"/>'>
 			<div class="col-md-4">
 				<div class="jumbotron i-uni-jumbotron-active text-left">
 					<h4 class="i-color-warn">
@@ -36,7 +36,7 @@
 			</div>
 		</a>
 		
-		<a href='<spring:url value="#"/>'>
+		<a href='<c:url value="#"/>'>
 			<div class="col-md-4">
 				<div class="jumbotron i-uni-jumbotron-active text-left">
 					<h4 class="i-color-warn i-font-18">
@@ -53,7 +53,7 @@
 	
 	<div class="row" style="margin-top: 30px">
 	
-		<a href='<spring:url value="/admin/product-inventory"/>'>
+		<a href='#'>
 			<div class="col-md-4">
 				<div class="jumbotron i-uni-jumbotron-active text-left">
 					<h4 class="i-color-warn">
