@@ -177,9 +177,10 @@
 						</div>
 					</div>
 					
-					<form class="navbar-form navbar-left" role="search">
+					<form class="navbar-form navbar-left" role="search" action='<c:url value="/product/list/search/1"/>' method="get">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="All electronics" style="width: 400px;">
+							<input type="text" name="keyword" class="form-control" placeholder="All electronics" 
+									style="width: 400px;">
 						</div>
 						<button type="submit" class="btn btn-warning" style="width: 100px; margin-left: 5px;">Search</button>
 					</form>

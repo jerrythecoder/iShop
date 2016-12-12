@@ -84,9 +84,9 @@ public class HibernateGenericDaoImpl<E, K extends Serializable> implements Gener
 		CriteriaBuilder builder = session().getCriteriaBuilder();
 		CriteriaQuery<E> criteriaQuery = (CriteriaQuery<E>) builder.createQuery(entityClass);
 		
-		Root<? extends E> root = criteriaQuery.from(entityClass);
+		Root<? extends E> from = criteriaQuery.from(entityClass);
 		
-		CriteriaQuery<? extends E> select = criteriaQuery.select(root);
+		CriteriaQuery<? extends E> select = criteriaQuery.select(from);
 		
 		TypedQuery<E> typedQuery = (TypedQuery<E>) session().createQuery(select);
 		

@@ -41,8 +41,18 @@
 	  									value="${pageContext.request.contextPath}/admin/product-inventory"/>
 						</sec:authorize>
 						<sec:authorize access="not hasRole('ROLE_ADMIN')">
-							<c:set var="productListUrl" 
+							<c:choose>
+								<c:when test="${onSearch == true}">
+	  								<c:url var="onSearchUrl" value='/product/list/search/${backLinkPageNumber}'>
+										<c:param name="keyword" value="${keyword}"></c:param>
+									</c:url>
+									<c:set var="productListUrl" value="${onSearchUrl}"/>
+								</c:when>
+								<c:otherwise>
+									<c:set var="productListUrl" 
 	  									value="${pageContext.request.contextPath}/product/list/page/${backLinkPageNumber}"/>
+								</c:otherwise>
+							</c:choose>
 						</sec:authorize>
 	  					
 	   					<a href="${productListUrl}" class="btn btn-link" style="margin-top: 25px;">

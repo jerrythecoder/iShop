@@ -27,43 +27,11 @@
 	<div class="page-header i-top-elem">
 		<div class="row" style="margin-top: -20px !important;">
 			<div class="col-md-8">
-				<c:choose>
-					<c:when test="${not empty keyword}">
-						
-						<c:url var="pagePreviousUrl" value='/product/list/search/${currentPageNumber - 1}'>
-							<c:param name="keyword" value="${keyword}"></c:param>
-						</c:url>
-						
-						<c:url var="pageNextUrl" value='/product/list/search/${currentPageNumber + 1}'>
-							<c:param name="keyword" value="${keyword}"></c:param>
-						</c:url>
-						
-						<c:set var="onSearch" value="true"></c:set>
-						
-						<h2>
-							<span class="glyphicon glyphicon-search" width="40" height="40"></span>
-							Search Products in Shop
-						</h2>
-						<p class="lead">Result by keyword: 
-							<span class="i-font-bold">${keyword}</span>
-						</p>
-					</c:when>
-					<c:otherwise>
-					
-						<c:url var="pagePreviousUrl" value='/product/list/page/${currentPageNumber - 1}'>
-						</c:url>
-						
-						<c:url var="pageNextUrl" value='/product/list/page/${currentPageNumber + 1}'>
-						</c:url>
-						
-						<c:set var="onSearch" value="false"></c:set>
-						<h2>
-							<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
-							All Products in Shop
-						</h2>
-						<p class="lead">Don't miss out on our latest electronic selections!</p>
-					</c:otherwise>
-				</c:choose>
+				<h2>
+					<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
+					Products in Shop
+				</h2>
+				<p class="lead">Search result by keyword: ${keyword}</p>
 			</div>
 			<div class="col-md-4 text-right">
 				<sec:authorize access="not isAuthenticated()">
@@ -96,8 +64,6 @@
 				
 				<c:url var="productDetailLink" value='/product/detail/${product.productId}'>
 					<c:param name="backLinkPageNumber" value="${currentPageNumber}"></c:param>
-					<c:param name="onSearch" value="${onSearch}"></c:param>
-					<c:param name="keyword" value="${keyword}"></c:param>
 				</c:url>
 				
 				<tr>
@@ -148,7 +114,7 @@
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="${pagePreviousUrl}" aria-label="Previous">
+								<a href='<c:url value="/product/list/search/${currentPageNumber - 1}"/>' aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>
 								</a>
 							</li>
@@ -158,37 +124,10 @@
 					<c:forEach var="pageNumber"  begin="1" end="${pageCount}" varStatus="loop">
 						<c:choose>
 							<c:when test="${loop.index == currentPageNumber}">
-							
-								<c:choose>
-									<c:when test="${not empty keyword}">
-										<li class="active">
-											<a href='<c:url value="/product/list/search/${loop.index}?keyword=${keyword}"/>'>${loop.index}</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li class="active">
-											<a href='<c:url value="/product/list/page/${loop.index}"/>'>${loop.index}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-								
+								<li class="active"><a href='<c:url value="/product/list/search/${loop.index}"/>'>${loop.index}</a></li>
 							</c:when>
-							
 							<c:otherwise>
-								
-								<c:choose>
-									<c:when test="${not empty keyword}">
-										<li>
-											<a href='<c:url value="/product/list/search/${loop.index}?keyword=${keyword}"/>'>${loop.index}</a>
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li>
-											<a href='<c:url value="/product/list/page/${loop.index}"/>'>${loop.index}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-								
+								<li><a href='<c:url value="/product/list/search/${loop.index}"/>'>${loop.index}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -203,7 +142,7 @@
 						</c:when>
 						<c:otherwise>
 							<li>
-								<a href="${pageNextUrl}" aria-label="Next">
+								<a href='<c:url value="/product/list/search/${currentPageNumber + 1}"/>' aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 								</a>
 							</li>

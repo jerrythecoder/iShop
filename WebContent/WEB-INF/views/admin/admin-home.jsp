@@ -2,10 +2,27 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 
 
+<!-- Modal Dialog -->
+<div class="modal fade" id="featureNotCompleted" tabindex="-1" role="dialog" aria-labelledby="featureNotCompleted">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content i-modal-content">
+			<div class="modal-body i-modal-body">
+				Sorry, this feature is not completed yet.
+			</div>
+			<div class="modal-footer i-center-parent">
+				<button type="button" class="btn btn-primary i-btn-sm" data-dismiss="modal">OK</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <div class="container">
 	<div class="page-header">
-   		<h2>Administrator Home</h2>
+   		<h2>
+   			<span class="glyphicon glyphicon-home" style="margin-right: 10px;"></span>
+   			Administrator Home
+   		</h2>
   	</div>
 
 	<div class="row" style="margin-top: 30px">
@@ -36,7 +53,7 @@
 			</div>
 		</a>
 		
-		<a href='<c:url value="#"/>'>
+		<a href='#' data-toggle="modal" data-target="#featureNotCompleted">
 			<div class="col-md-4">
 				<div class="jumbotron i-uni-jumbotron-active text-left">
 					<h4 class="i-color-warn i-font-18">
@@ -53,7 +70,7 @@
 	
 	<div class="row" style="margin-top: 30px">
 	
-		<a href='#'>
+		<a href='#' data-toggle="modal" data-target="#featureNotCompleted">
 			<div class="col-md-4">
 				<div class="jumbotron i-uni-jumbotron-active text-left">
 					<h4 class="i-color-warn">

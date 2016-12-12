@@ -23,6 +23,11 @@ import com.ishop.service.ProductService;
 @RequestMapping("/product")
 public class ProductController {
 	
+	/*
+	 * Note: Temporarily hard-coded the page size.
+	 */
+	private final int PAGE_SIZE = 10;
+	
 	@Autowired
 	private ProductService productService;
 	
@@ -33,10 +38,6 @@ public class ProductController {
 	
 	@GetMapping("/list/page/{pageNumber}")
 	public String showProductListPage(@PathVariable("pageNumber") int pageNumber, Model model) {
-		/*
-		 * Note: Temporarily hard-coded the page size.
-		 */
-		final int PAGE_SIZE = 10;
 		
 		List<Product> productList = null;
 		try {
@@ -59,6 +60,8 @@ public class ProductController {
 	@GetMapping("/detail/{productId}")
 	public String showProductDetail(@PathVariable("productId") Long productId, 
 			@RequestParam(value = "backLinkPageNumber", required = false) Integer backLinkPageNumber, 
+			@RequestParam(value = "onSearch", required = false) boolean onSearch, 
+			@RequestParam(value = "keyword", required = false) String keyword, 
 			Model model) {
 		
 		model.addAttribute("product", productService.find(productId));
@@ -69,7 +72,37 @@ public class ProductController {
 		}
 		
 		model.addAttribute("backLinkPageNumber", backLinkPageNumber);
+		model.addAttribute("onSearch", onSearch);
+		model.addAttribute("keyword", keyword);
 		return "product/product-detail";
+	}
+	
+	/**
+	 * A basic implementation of product search function. Matching only a single 
+	 * keyword from product name string.
+	 */
+	@GetMapping("/list/search/{pageNumber}")
+	public String searchProduct(@PathVariable("pageNumber") int pageNumber, 
+			@RequestParam("keyword") String keyword, Model model) {
+		
+		List<Product> productList = null;
+		
+		try {
+			productList = productService.getPagedSearchList(keyword, pageNumber, PAGE_SIZE);
+		} catch (IllegalArgumentException e) {
+			// When invalid page number is supplied, view redirects to error page, with
+			// back button linked to product list.
+			model.addAttribute("backLink", "/product/list");
+			return "error/page-not-exist";
+		}
+		
+		model.addAttribute("productList", productList);
+//		model.addAttribute("productTotalCount", productService.getTotalCount());
+		model.addAttribute("pageCount", productService.getSearchPageCount(keyword, PAGE_SIZE));
+		model.addAttribute("currentPageNumber", pageNumber);
+		model.addAttribute("keyword", keyword);
+		
+		return "product/product-list";
 	}
 
 }
