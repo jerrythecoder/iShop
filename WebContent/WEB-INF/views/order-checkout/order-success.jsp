@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
 	
 
-<div class="container">
+<div class="container i-wd-70">
 	
 	<div class="page-header i-top-elem">
 		<div class="main-content-header-title">

@@ -11,7 +11,7 @@
    			<div class="jumbotron i-flow-jumbotron" ng-hide="${orderValid}">
    				<p>
    					<span class="glyphicon glyphicon-remove-sign"></span>
-   					The content of the order is invalid.
+   					The content of the order is no longer valid.
    				</p>
    			</div>
    		</div>

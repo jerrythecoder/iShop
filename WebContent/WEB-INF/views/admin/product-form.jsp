@@ -122,11 +122,11 @@
 			<br>
 			
 			<div class="text-center">
-				<input type="submit" value="OK" class="btn btn-primary i-btn-sm"/>
 				<a data-toggle="modal" data-target="#cancelEditingDialog"
-						class="btn btn-default i-btn-sm" style="margin-left: 20px;">
+						class="btn btn-default i-btn-sm" style="margin-right: 20px;">
 					Cancel
 				</a>
+				<input type="submit" value="OK" class="btn btn-primary i-btn-sm"/>
 			</div>
 			
 		</form:form>

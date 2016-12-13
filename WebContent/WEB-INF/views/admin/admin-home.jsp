@@ -7,7 +7,7 @@
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content i-modal-content">
 			<div class="modal-body i-modal-body">
-				Sorry, this feature is not completed yet.
+				Sorry, this feature has not been completed yet.
 			</div>
 			<div class="modal-footer i-center-parent">
 				<button type="button" class="btn btn-primary i-btn-sm" data-dismiss="modal">OK</button>

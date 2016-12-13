@@ -7,7 +7,7 @@
 <%@ include file="/WEB-INF/views/templates/checkout-flow-cancel-dialog.jsp" %>
 
 
-<div class="container">
+<div class="container i-wd-70">
    		
 	<div class="page-header i-top-elem">
 		<div class="main-content-header-title">
@@ -20,23 +20,23 @@
    	
    	
 	<%@ include file="/WEB-INF/views/templates/checkout-flow-validation-block.jsp" %>
-	   	
-	   		
+	
+	
   	<div class="i-center-parent" ng-show="${orderActive && orderValid}">
-		<div class="jumbotron i-wd-80 i-center-child i-flow-jumbotron">	
-	   		
-	   		<div class="row text-center i-flow-label-row">
-	   			<div class="col-md-4">
-	   				<div class="i-flow-label i-flow-label-active">1. Your Items</div>
-	   			</div>
-	   			<div class="col-md-4">
-	   				<div class="i-flow-label">2. Billing/shipping Address</div>
-	   			</div>
-	   			<div class="col-md-4">
-	   				<div class="i-flow-label">3. Confirm Order</div>
-	   			</div>
-	   		</div>
-	   		
+  	
+  		<div class="row text-center i-flow-label-row">
+			<div class="col-md-4">
+				<div class="i-flow-label i-flow-label-active">1. View Your Items</div>
+			</div>
+			<div class="col-md-4">
+				<div class="i-flow-label">2. Verify Billing/shipping Address</div>
+			</div>
+			<div class="col-md-4">
+				<div class="i-flow-label">3. Confirm Order</div>
+			</div>
+		</div>
+  	
+		<div class="jumbotron i-center-child i-flow-jumbotron">		
 			<div class="panel panel-default">
 				<table class="table table-hover text-left">
 					<tr class="info">
@@ -88,7 +88,7 @@
 			</div> <!-- end of panel -->
 		</div> <!-- jumbotron -->
 		
-		<div class="row i-button-row i-wd-80 i-center-child">
+		<div class="row i-button-row i-center-child">
 			<div class="col-md-8">
 				<button class="btn btn-default pull-left i-btn-md" data-toggle="modal" data-target="#cancelCheckout">
 					Cancel
