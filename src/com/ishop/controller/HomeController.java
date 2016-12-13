@@ -17,5 +17,10 @@ public class HomeController {
 	public String showHomePage() {
 		return "home";
 	}
+	
+	@GetMapping("contact")
+	public String showContactPage() {
+		return "contact";
+	}
 
 }

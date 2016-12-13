@@ -24,7 +24,7 @@
 
 <div class="container">
 	
-	<div class="page-header i-top-elem">
+	<div class="page-header i-top-elem" style="background-image: url('<c:url value="/resources/images/bg-product.jpg"/>')">
 		<div class="row" style="margin-top: -20px !important;">
 			<div class="col-md-8">
 				<c:choose>
@@ -61,7 +61,7 @@
 							<img alt="devices" src="${ctx}/resources/images/product-title-image.png" width="40" height="40">
 							All Products in Shop
 						</h2>
-						<p class="lead">Don't miss out on our latest electronic selections!</p>
+						<p class="lead">Don't miss out on our latest digital selections!</p>
 					</c:otherwise>
 				</c:choose>
 			</div>
@@ -229,7 +229,6 @@
 	</div> <!-- row -->
 	
 </div>
-    		
     		
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>
     		

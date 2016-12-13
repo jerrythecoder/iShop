@@ -56,7 +56,7 @@
 						  <span class="icon-bar"></span>
 						</button>
 						<div class="navbar-brand" style="padding-top: 5px; padding-bottom: 5px; padding-right: 0px;">
-							<a href="#">
+							<a href='<spring:url value="/"/>'>
 								<img alt="Brand" src="${imagePath}/brand-image.png" width="40" height="40">
 							</a>
 						</div>
@@ -70,9 +70,9 @@
 							<li><a></a></li>
 							<li><a href='<spring:url value="/"/>'>Home</a></li>
 							
-							<li><a href='<spring:url value="/product/list"/>'>Product</a></li>
+							<li><a href='<spring:url value="/product/list"/>'>Products</a></li>
 							
-							<li><a href="#">Contact</a></li>
+							<li><a href='<c:url value="/contact"/>'>Contact</a></li>
 							
 							<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
 								<li class="dropdown">

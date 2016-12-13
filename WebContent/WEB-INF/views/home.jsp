@@ -1,16 +1,20 @@
 <%@ include file="/WEB-INF/views/templates/header.jsp" %>
-			
+
+
+<c:set var="carouseHeight" value="500"></c:set>
+
+
 <!-- Carousel Starts -->
-   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+   <div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: ${carouseHeight}px !important;">
      <!-- Indicators -->
      <ol class="carousel-indicators">
        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
        <li data-target="#myCarousel" data-slide-to="1"></li>
        <li data-target="#myCarousel" data-slide-to="2"></li>
      </ol>
-     <div class="carousel-inner" role="listbox" style="border-radius: 3px;">
-       <div class="item active">
-         <img class="first-slide home-image" src='<c:url value="/resources/images/slide-01.jpg"/>' alt="First slide">
+     <div class="carousel-inner" role="listbox">
+       <div class="item active" style="height: ${carouseHeight}px !important;">
+         <img class="first-slide home-image" src='<c:url value="/resources/images/slide-01.jpg"/>' alt="First slide" style="height: ${carouseHeight}px !important;">
          <div class="container">
            <div class="carousel-caption">
              <h1>Example headline.</h1>
@@ -19,8 +23,8 @@
            </div>
          </div>
        </div>
-       <div class="item">
-         <img class="second-slide home-image" src='<c:url value="/resources/images/slide-02.jpg"/>' alt="Second slide">
+       <div class="item" style="height: ${carouseHeight}px !important;">
+         <img class="second-slide home-image" src='<c:url value="/resources/images/slide-02.jpg"/>' alt="Second slide" style="height: ${carouseHeight}px !important;">
          <div class="container">
            <div class="carousel-caption">
              <h1>Another example headline.</h1>
@@ -29,8 +33,8 @@
            </div>
          </div>
        </div>
-       <div class="item">
-         <img class="third-slide home-image" src='<c:url value="/resources/images/slide-03.jpg"/>' alt="Third slide">
+       <div class="item" style="height: ${carouseHeight}px !important;">
+         <img class="third-slide home-image" src='<c:url value="/resources/images/slide-03.jpg"/>' alt="Third slide" style="height: ${carouseHeight}px !important;">
          <div class="container">
            <div class="carousel-caption">
              <h1>One more for good measure.</h1>
@@ -40,15 +44,16 @@
          </div>
        </div>
      </div>
-     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" style="border-radius: 3px;">
+     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
        <span class="sr-only">Previous</span>
      </a>
-     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" style="border-radius: 3px;">
+     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
        <span class="sr-only">Next</span>
      </a>
    </div><!-- /.carousel -->
 <!-- Carousel Ends -->
+
 			
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>
