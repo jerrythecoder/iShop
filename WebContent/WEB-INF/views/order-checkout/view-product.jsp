@@ -51,8 +51,12 @@
 						<tr>
 							<td class="text-center">${item.product.productId}</td>
 							<td>
-								<img src="${imagePath}/product-images/product_${item.product.productId}.png" alt="image" 
-									class="img-responsive img-thumbnail">
+								<div class="thumbnail text-center i-thumbnail" style="width: 80px;">
+									<div class="i-img-wrapper" style="height: 50px;">
+										<img src="${imagePath}/product-images/product_${item.product.productId}.png" alt="image" 
+												class="img-responsive img-thumbnail i-img">
+									</div>
+								</div>
 							</td>
 							<td>${item.product.productName}</td>
 							<td>${item.product.productPrice}</td>

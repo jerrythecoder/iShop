@@ -55,8 +55,12 @@
 						<tr>
 							<td class="text-center">${item.itemProductId}</td>
 							<td>
-								<img src="${imagePath}/product-images/product_${item.itemProductId}.png" alt="image" 
-									class="img-responsive img-thumbnail">
+								<div class="thumbnail text-center i-thumbnail" style="width: 80px;">
+									<div class="i-img-wrapper" style="height: 50px;">
+										<img src="${imagePath}/product-images/product_${item.itemProductId}.png" alt="image" 
+												class="img-responsive img-thumbnail i-img">
+									</div>
+								</div>
 							</td>
 							<td>${item.itemProductName}</td>
 							<td>${item.itemProductPrice}</td>
@@ -104,10 +108,30 @@
 		   					</tr>
 		   					<tr>
 			   					<td>
-									<p class="i-font-14">${order.billingAddress.apartmentNumber} ${order.billingAddress.streetName}</p>
-									<p class="i-font-14">${order.billingAddress.city}, ${order.billingAddress.state}</p>
-									<p class="i-font-14">${order.billingAddress.country}</p>
-									<p class="i-font-14">${order.billingAddress.zipCode}</p>
+									<table>
+			   							<tr>
+											<td>
+				   								<div class="text-right" style="margin-left: 30px;">
+													<p class="i-font-14"><span class="-i-font-bold">Apt. number: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Street Name: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">City: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Province / State: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Country: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">ZIP Code: </span></p>
+												</div>
+											</td>
+											<td>
+				   								<div class="text-left" style="margin-left: 10px;">
+													<p class="i-font-14"><span class="i-font-bold">${order.billingAddress.apartmentNumber}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.billingAddress.streetName}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.billingAddress.city}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.billingAddress.state}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.billingAddress.country}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.billingAddress.zipCode}</span></p>
+												</div>
+											</td>
+			   							</tr>
+			   						</table>
 								</td>
 							</tr>
 						</table>
@@ -124,11 +148,31 @@
 			   					</td>
 		   					</tr>
 		   					<tr>
-			   					<td>
-									<p class="i-font-14">${order.shippingAddress.apartmentNumber} ${order.shippingAddress.streetName}</p>
-									<p class="i-font-14">${order.shippingAddress.city}, ${order.shippingAddress.state}</p>
-									<p class="i-font-14">${order.shippingAddress.country}</p>
-									<p class="i-font-14">${order.shippingAddress.zipCode}</p>
+			   					<td>		
+									<table>
+			   							<tr>
+											<td>
+				   								<div class="text-right" style="margin-left: 30px;">
+													<p class="i-font-14"><span class="-i-font-bold">Apt. number: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Street Name: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">City: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Province / State: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Country: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">ZIP Code: </span></p>
+												</div>
+											</td>
+											<td>
+				   								<div class="text-left" style="margin-left: 10px;">
+													<p class="i-font-14"><span class="i-font-bold">${order.shippingAddress.apartmentNumber}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.shippingAddress.streetName}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.shippingAddress.city}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.shippingAddress.state}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.shippingAddress.country}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${order.shippingAddress.zipCode}</span></p>
+												</div>
+											</td>
+			   							</tr>
+			   						</table>
 								</td>
 							</tr>
 						</table>

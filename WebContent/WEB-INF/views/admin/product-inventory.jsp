@@ -50,12 +50,12 @@
 				<tr class="bg-success">
 					<th class="i-wd-5 text-center">ID</th>
 					<th class="i-wd-8"></th>
-					<th class="i-wd-17">Product Name</th>
+					<th class="i-wd-24">Product Name</th>
 					<th class="i-wd-10">Category</th>
 					
-					<th class="i-wd-10">Price</th>
-					<th class="i-wd-10">Condition</th>
-					<th class="i-wd-10">Status</th>
+					<th class="i-wd-8">Price</th>
+					<th class="i-wd-8">Condition</th>
+					<th class="i-wd-8">Status</th>
 					
 					<th class="i-wd-10">Unit in Stock</th>
 					<th class="i-wd-10">Manufacturer</th>
@@ -73,10 +73,14 @@
 				<tr>
 					<td class="text-center">${product.productId}</td>
 					<td>
-						<a href="${productDetailLink}">
-							<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
-									class="img-responsive img-thumbnail">
-						</a>
+						<div class="thumbnail text-center i-thumbnail" style="width: 100px;">
+							<div class="i-img-wrapper" style="height: 60px;">
+								<a href="${productDetailLink}">
+										<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
+												class="img-responsive img-thumbnail i-img">
+								</a>
+							</div>
+						</div>
 					</td>
 					
 					<td>
@@ -88,7 +92,7 @@
 					</td>
 					<td>${product.productCategory}</td>
 					
-					<td>${product.productPrice}</td>
+					<td>${moneySign} ${product.productPrice}</td>
 					<td>${product.productCondition}</td>
 					<td>${product.productStatus}</td>
 					

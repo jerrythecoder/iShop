@@ -64,12 +64,18 @@
 				</tr>
 				<tr ng-repeat="item in cart.cartItems">
 					<td class="text-center">{{item.product.productId}}</td>
+					
 					<td>
-						<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
-							<img src="${imagePath}/product-images/product_{{item.product.productId}}.png" alt="image" 
-								class="img-responsive img-thumbnail">
-						</a>
+						<div class="thumbnail text-center i-thumbnail" style="width: 110px;">
+							<div class="i-img-wrapper" style="height: 70px;">
+								<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
+									<img src="${imagePath}/product-images/product_{{item.product.productId}}.png" alt="image"
+											class="img-responsive img-thumbnail i-img">
+								</a>
+							</div>
+						</div>
 					</td>
+					
 					<td>
 						<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
 							{{item.product.productName}}

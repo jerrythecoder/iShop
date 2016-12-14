@@ -17,9 +17,9 @@
          <img class="first-slide home-image" src='<c:url value="/resources/images/slide-01.jpg"/>' alt="First slide" style="height: ${carouseHeight}px !important;">
          <div class="container">
            <div class="carousel-caption">
-             <h1>Example headline.</h1>
-             <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-             <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+             <h1>iOS 10 and iPad. Made to do more together.</h1>
+             <p>iPad Pro runs iOS 10, the most advanced, intuitive and secure mobile operating system in the world. With its powerful built-in apps and multitasking capabilities, iOS 10 is designed to help you get the most out of iPad.</p>
+             <p><a class="btn btn-lg btn-primary" href='<c:url value="/product/list/search/1?keyword=ipad"/>' role="button">Search iPad in shop</a></p>
            </div>
          </div>
        </div>
@@ -27,9 +27,9 @@
          <img class="second-slide home-image" src='<c:url value="/resources/images/slide-02.jpg"/>' alt="Second slide" style="height: ${carouseHeight}px !important;">
          <div class="container">
            <div class="carousel-caption">
-             <h1>Another example headline.</h1>
-             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-             <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+             <h1>Apple Watch Gallery</h1>
+             <p>Whatever your style, there's an Apple Watch for you. Check out the full range of models below, or use the Interactive Gallery to create your own combinations by mixing and matching bands, cases and faces.</p>
+             <p><a class="btn btn-lg btn-primary" href='<c:url value="/product/list/search/1?keyword=watch"/>' role="button">Browse gallery</a></p>
            </div>
          </div>
        </div>
@@ -37,9 +37,9 @@
          <img class="third-slide home-image" src='<c:url value="/resources/images/slide-03.jpg"/>' alt="Third slide" style="height: ${carouseHeight}px !important;">
          <div class="container">
            <div class="carousel-caption">
-             <h1>One more for good measure.</h1>
-             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-             <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+             <h1>the new Surface family</h1>
+             <p>To do great things, you need powerful tools that deliver an ideal balance of craftsmanship, performance and versatility.</p>
+             <p><a class="btn btn-lg btn-primary" href='<c:url value="/product/list/search/1?keyword=surface"/>' role="button">Find Windows Surface</a></p>
            </div>
          </div>
        </div>
@@ -54,6 +54,62 @@
      </a>
    </div><!-- /.carousel -->
 <!-- Carousel Ends -->
+
+
+<div class="container i-wd-95">
+
+	<div class="panel panel-default text-center" style="padding: 20px; padding-bottom: 10px; 
+			border-radius: 4px !important; margin-top: -40px;">
+		<p class="i-font-18">Smart phones, tablets, wearables, laptops & desktops, videos & cameras, and also accessories... find all trendy electronics in i-Shop.</p>
+		<p class="i-font-18">
+			Check with our recommendations below. Or, you can just go 
+			<a href='<spring:url value="/product/list"/>' class="btn btn-warning i-btn-lg" 
+					style="margin-left: 10px;">View All Our Products</a>
+		</p>
+	</div>
+	
+	<sec:authorize access="not isAuthenticated()">
+		<div class="panel panel-default text-center" style="padding: 20px; padding-bottom: 10px; 
+				border-radius: 4px !important; margin-top: 0px;">
+			<p class="i-font-18">
+				Alright, to shop your favorite items, you will surely want to 
+				<a href='<spring:url value="/register"/>' class="btn btn-warning i-btn-md" 
+						style="margin-left: 10px; margin-right: 10px;">Sign Up</a>
+				 or 
+				<a href='<spring:url value="/login"/>' class="btn btn-warning i-btn-md" 
+						style="margin-left: 10px; margin-right: 10px;">Sign In</a>
+			</p>
+		</div>
+	</sec:authorize>
+	
+	<div class="row">
+		<c:forEach var="product" items="${suggestionList}">
+		
+			<c:url var="productDetailLink" value='/product/detail/${product.productId}'>
+				<c:param name="backToHome" value="true"></c:param>
+			</c:url>
+			
+			<div class="col-sm-6 col-md-3">
+			    <div class="thumbnail" style="height: 360px; overflow: hidden;">
+			    	<a href="${productDetailLink}">
+			    		<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image"
+			      				style="height: 150px; overflow: hidden;">
+			    	</a>
+			      <div class="caption text-center">
+			      	<div style="height: 60px;">
+			      		<h4 class="text-center">${product.productName}</h4>
+			      	</div>
+			      	<p style="height: 30px;">
+			      		<span>${product.productCategory}</span>, <span>${product.productStatus}</span>
+			      	</p>
+			        <h4 class="i-font-bold">${moneySign} ${product.productPrice}</h4>
+			        <p><a href="${productDetailLink}" class="btn btn-warning i-btn-lg" role="button">View Details</a></p>
+			      </div>
+			    </div>
+			  </div>
+		</c:forEach>
+	</div>
+</div>
 
 			
 <%@include file="/WEB-INF/views/templates/footer.jsp" %>

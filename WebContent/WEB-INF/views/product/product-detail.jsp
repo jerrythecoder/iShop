@@ -48,6 +48,9 @@
 									</c:url>
 									<c:set var="productListUrl" value="${onSearchUrl}"/>
 								</c:when>
+								<c:when test="${backToHome == true}">
+									<c:set var="productListUrl" value="${pageContext.request.contextPath}/"/>
+								</c:when>
 								<c:otherwise>
 									<c:set var="productListUrl" 
 	  									value="${pageContext.request.contextPath}/product/list/page/${backLinkPageNumber}"/>
@@ -65,14 +68,24 @@
 			</div>
 		</div>
 		
-		<div class="page-header i-top-elem">
+		<div class="page-header" style="margin-top: 0px !important;">
 			<div class="row">
-				<div class="col-md-6 -col-md-offset-1">
+				<div class="col-md-7">
+				<!-- 
 					<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
-						class="img-responsive img-rounded" style="width:100%; height:auto"/>
+						class="img-responsive img-rounded" style="max-width:100%; height:480px;"/>
+					 -->	
+
+						<div class="-thumbnail text-center i-thumbnail" style="width: 520px;">
+							<div class="i-img-wrapper" style="height: 400px;">
+									<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
+											class="img-responsive img-thumbnail i-img">
+							</div>
+						</div>
+
 				</div>
 				
-				<div class="col-md-6 -col-md-offset-1">
+				<div class="col-md-5 -col-md-offset-1">
 					
 					<p><span class="i-font-bold">Product ID: </span>${product.productId}</p>
 					<p><span class="i-font-bold">Category: </span>${product.productCategory}</p>

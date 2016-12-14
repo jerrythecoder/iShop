@@ -59,6 +59,7 @@ public class ProductController {
 	
 	@GetMapping("/detail/{productId}")
 	public String showProductDetail(@PathVariable("productId") Long productId, 
+			@RequestParam(value = "backToHome", required = false) boolean backToHome, 
 			@RequestParam(value = "backLinkPageNumber", required = false) Integer backLinkPageNumber, 
 			@RequestParam(value = "onSearch", required = false) boolean onSearch, 
 			@RequestParam(value = "keyword", required = false) String keyword, 
@@ -71,6 +72,7 @@ public class ProductController {
 			backLinkPageNumber = 1;
 		}
 		
+		model.addAttribute("backToHome", backToHome);
 		model.addAttribute("backLinkPageNumber", backLinkPageNumber);
 		model.addAttribute("onSearch", onSearch);
 		model.addAttribute("keyword", keyword);

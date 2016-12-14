@@ -69,10 +69,30 @@
 		   					</tr>
 		   					<tr>
 			   					<td ng-hide="${billingAddressExist} === false">
-									<p class="i-font-14">${billingAddress.apartmentNumber} ${billingAddress.streetName}</p>
-									<p class="i-font-14">${billingAddress.city}, ${billingAddress.state}</p>
-									<p class="i-font-14">${billingAddress.country}</p>
-									<p class="i-font-14">${billingAddress.zipCode}</p>
+									<table>
+			   							<tr>
+											<td>
+				   								<div class="text-right" style="margin-left: 30px;">
+													<p class="i-font-14"><span class="-i-font-bold">Apt. number: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Street Name: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">City: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Province / State: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Country: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">ZIP Code: </span></p>
+												</div>
+											</td>
+											<td>
+				   								<div class="text-left" style="margin-left: 10px;">
+													<p class="i-font-14"><span class="i-font-bold">${billingAddress.apartmentNumber}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${billingAddress.streetName}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${billingAddress.city}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${billingAddress.state}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${billingAddress.country}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${billingAddress.zipCode}</span></p>
+												</div>
+											</td>
+			   							</tr>
+			   						</table>
 								</td>
 								<td ng-show="${billingAddressExist} === false">
 									<p class="i-font-14">No billing address.</p>
@@ -103,11 +123,32 @@
 		   					</tr>
 		   					<tr>
 			   					<td ng-hide="${shippingAddressExist} === false">
-									<p class="i-font-14">${shippingAddress.apartmentNumber} ${shippingAddress.streetName}</p>
-									<p class="i-font-14">${shippingAddress.city}, ${shippingAddress.state}</p>
-									<p class="i-font-14">${shippingAddress.country}</p>
-									<p class="i-font-14">${shippingAddress.zipCode}</p>
+			   						<table>
+			   							<tr>
+											<td>
+				   								<div class="text-right" style="margin-left: 30px;">
+													<p class="i-font-14"><span class="-i-font-bold">Apt. number: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Street Name: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">City: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Province / State: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">Country: </span></p>
+													<p class="i-font-14"><span class="-i-font-bold">ZIP Code: </span></p>
+												</div>
+											</td>
+											<td>
+				   								<div class="text-left" style="margin-left: 10px;">
+													<p class="i-font-14"><span class="i-font-bold">${shippingAddress.apartmentNumber}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${shippingAddress.streetName}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${shippingAddress.city}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${shippingAddress.state}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${shippingAddress.country}</span></p>
+													<p class="i-font-14"><span class="i-font-bold">${shippingAddress.zipCode}</span></p>
+												</div>
+											</td>
+			   							</tr>
+			   						</table>
 								</td>
+								
 								<td ng-show="${shippingAddressExist} === false">
 									<p class="i-font-14">No shipping address.</p>
 								</td>

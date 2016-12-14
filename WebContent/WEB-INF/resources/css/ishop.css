@@ -126,6 +126,14 @@ div.i-vertical-center {
 
 /************ Width *************/
 
+.i-wd-100 {
+	width: 100%;
+}
+
+.i-wd-95 {
+	width: 95%;
+}
+
 .i-wd-90 {
 	width: 90%;
 }
@@ -508,3 +516,21 @@ div.i-order-panel-heading {
     to {bottom: 0; opacity: 0;}
 }
 
+
+
+
+.i-thumbnail {
+	display:table; 
+	border-collapse: separate;
+	margin-bottom: 0px;
+}
+
+.i-img-wrapper {
+	display:table-cell; 
+	vertical-align:middle;
+}
+
+.i-img {
+	max-height: 100%; 
+	border-width: 0px;
+}

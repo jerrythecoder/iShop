@@ -76,7 +76,7 @@
 	</div>
   		
 	<div class="panel panel-warning">
-		<table class="table table-hover">
+		<table class="table -table-hover">
 			<thead>
 				<tr class="active">
 					<th class="i-wd-2"></th>
@@ -87,7 +87,7 @@
 					<th class="i-wd-10">Status</th>
 					<th class="i-wd-10">Price</th>
 					<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-					<th class="i-wd-10"></th>
+						<th class="i-wd-10"></th>
 					</sec:authorize>
 				</tr>
 			</thead>
@@ -100,14 +100,20 @@
 					<c:param name="keyword" value="${keyword}"></c:param>
 				</c:url>
 				
-				<tr>
-					<td></td>		
-					<td>
-						<a href="${productDetailLink}">
-							<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
-									class="img-responsive img-thumbnail">
-						</a>
+				<tr>	
+					<td></td>
+					
+					<td class="text-left" style="vertical-align: middle !important;">
+						<div class="-thumbnail text-center i-thumbnail" style="width: 150px;">
+							<div class="i-img-wrapper" style="height: 110px;">
+								<a href="${productDetailLink}">
+										<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
+												class="img-responsive img-thumbnail i-img">
+								</a>
+							</div>
+						</div>
 					</td>
+					
 					<td>
 						<a href="${productDetailLink}">
 							<span class="i-font-16">
