@@ -136,7 +136,7 @@
 		<!-- right column -->
 		<div class="col-md-7">
 			<div class="row" ng-init="cartEmpty == true">
-				<div class="jumbotron i-cus-jumbotron text-center" ng-show="cartEmpty">
+				<div class="jumbotron i-cus-jumbotron text-center" ng-show="cartEmpty" ng-cloak>
 					<p class="lead">
 						<span class="glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
 						There's no item in your shopping cart right now.
@@ -146,7 +146,7 @@
 					</a>
 				</div>
 				
-				<div class="panel i-cus-panel i-center-child" ng-hide="cartEmpty">
+				<div class="panel i-cus-panel i-center-child" ng-hide="cartEmpty" ng-cloak>
 					<div class="panel-heading i-cus-panel-heading">
 						<span class="glyphicon glyphicon-shopping-cart" style="margin-right: 10px;"></span>
 						My Shopping Cart

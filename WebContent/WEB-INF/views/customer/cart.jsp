@@ -29,11 +29,13 @@
 			My Shopping Cart
 		</h2>
 		<p class="text-right i-center-child i-font-18" ng-init="cart.totalQuantity = 0; refreshCart()">
-			<span class="label label-primary">Total Quantity: {{cart.totalQuantity}}</span>
+			<span class="label label-primary">Total Quantity: 
+				<span ng-bind="cart.totalQuantity">0</span>
+			</span>
 		</p>
 	</div>
 			
-	<div class="text-center" ng-show="cartEmpty">
+	<div class="text-center" ng-show="cartEmpty" ng-cloak>
 		<div class="jumbotron i-flow-jumbotron i-center-child">
 			<p>
 				<span class="glyphicon glyphicon-exclamation-sign"></span>
@@ -49,7 +51,7 @@
 		</div>
 	</div>
 	   			
-	<div ng-hide="cartEmpty">
+	<div ng-hide="cartEmpty" ng-cloak>
   		<div class="panel panel-warning">
     		<table class="table table-hover">
 				<tr style="background-color: #ffffcc;">

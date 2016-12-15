@@ -35,10 +35,13 @@
 		<link href="${ctx}/resources/css/ishop.css" rel="stylesheet">
 		
 		<!-- Angular JS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-cookies.js"></script>
+		<script src="${ctx}/resources/js/angular.min.js"></script>
+		<script src="${ctx}/resources/js/angular-cookies.min.js"></script>
 		<script src="<c:url value='/resources/js/controller.js'/>"></script>
+		
+		<!-- Customization JS -->
 		<script src="<c:url value='/resources/js/ishop.js'/>"></script>
+		
 	</head>
 
 	<body ng-app="shoppingCartApp" ng-controller="cartCtrl">
@@ -188,15 +191,18 @@
 					</form>
 					
 					<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-						<form class="navbar-form pull-right" action="<spring:url value='/customer/cart'/>" 
-								method="get" ng-init="cart.totalQuantity = 0; refreshCart()">
+						<form class="navbar-form pull-right" action="<spring:url value='/customer/cart'/>" method="get">
 							<button type="submit" class="btn btn-warning i-btn-md">
-								<span class="badge" ng-hide="isNaN(cart.totalQuantity)">{{cart.totalQuantity}}</span>
+								<span class="badge" ng-init="refreshCart()" ng-hide="isNaN(cart.totalQuantity)" 
+										ng-bind="cart.totalQuantity">
+									0
+								</span>
 								<span class="glyphicon glyphicon-shopping-cart"></span>
 								My Cart
 							</button>
 						</form>
 					</sec:authorize>
+					
 				</div> <!-- container -->
 			</div> <!-- row-2 -->
 		</nav>

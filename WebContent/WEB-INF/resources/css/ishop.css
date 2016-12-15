@@ -534,3 +534,12 @@ div.i-order-panel-heading {
 	max-height: 100%; 
 	border-width: 0px;
 }
+
+
+/***********************************************************/
+/*********************** Angular JS ************************/
+/***********************************************************/
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

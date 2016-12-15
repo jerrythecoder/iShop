@@ -5,10 +5,12 @@
 		<!-- FOOTER -->
 		<div id="footer">
 			<div class="container">
-				<footer style="color: white;">
-					<p class="pull-left">&copy; 2016 i-SHOP by Jerry &middot; 
+				<footer>
+					<p class="pull-left" style="color: #9d9d9d;">&copy; 2016 &middot;
+						<a href='<c:url value="/contact"/>' class="i-color-warn">i-SHOP by Jerry</a> &middot; 
 						<a href="#" style="color: #9d9d9d;">Privacy</a> &middot; 
-						<a href="#" style="color: #9d9d9d;">Terms</a></p>
+						<a href="#" style="color: #9d9d9d;">Terms</a>
+					</p>
 					<p class="pull-right"><a href="#" style="color: #9d9d9d;">Back to top</a></p>
 				</footer>
 			</div>
