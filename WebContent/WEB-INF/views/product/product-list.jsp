@@ -78,7 +78,7 @@
 	<div class="panel panel-warning">
 		<table class="table -table-hover">
 			<thead>
-				<tr class="active">
+				<tr style="background-color: #ffffcc;">
 					<th class="i-wd-2"></th>
 					<th class="i-wd-15"></th>
 					<th class="i-wd-30">Product</th>
@@ -107,7 +107,7 @@
 						<div class="-thumbnail text-center i-thumbnail" style="width: 150px;">
 							<div class="i-img-wrapper" style="height: 110px;">
 								<a href="${productDetailLink}">
-										<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
+										<img src="${productThumbnailPath}/${product.productId}.jpg" alt="image" 
 												class="img-responsive img-thumbnail i-img">
 								</a>
 							</div>

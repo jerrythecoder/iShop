@@ -54,23 +54,17 @@
 			</div>
 			
 			<div class="form-group">
-				<label>Category: </label>
-				<label class="checkbox-inline">
-					<form:radiobutton path="productCategory" value="iPad"/>
-					iPad
-				</label>
-				<label class="checkbox-inline">
-					<form:radiobutton path="productCategory" value="Apple Mac"/>
-					Apple Mac
-				</label>
-				<label class="checkbox-inline">
-					<form:radiobutton path="productCategory" value="Apple Watch"/>
-					Apple Watch
-				</label>
-				<label class="checkbox-inline">
-					<form:radiobutton path="productCategory" value="Accessory"/>
-					Accessory
-				</label>
+				<label>Category: </label>				
+				<div class="row">
+					<c:forEach var="category" items="${categoryList}">
+						<div class="col-md-5 col-md-offset-1">
+							<label class="checkbox-inline">
+								<form:radiobutton path="productCategory" value="${category}"/>
+								${category}
+							</label>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			
 			<div class="form-group">

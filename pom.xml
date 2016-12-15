@@ -117,6 +117,13 @@
 	    <version>2.4.4.RELEASE</version>
 	</dependency>
 	
+	<!-- Image handling tool -->
+	<dependency>
+	    <groupId>org.imgscalr</groupId>
+	    <artifactId>imgscalr-lib</artifactId>
+	    <version>4.2</version>
+	</dependency>
+	
   </dependencies>
   
   

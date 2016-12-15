@@ -50,9 +50,9 @@
     							<c:forEach var="item" items="${order.orderItems}">
     								<tr>
     									<td class="i-wd-10">
-											<div class="thumbnail text-center i-thumbnail" style="width: 80px;">
-												<div class="i-img-wrapper" style="height: 50px;">
-													<img src="${imagePath}/product-images/product_${item.itemProductId}.png" alt="image" 
+											<div class="-thumbnail text-center i-thumbnail" style="width: 60px;">
+												<div class="i-img-wrapper" style="height: 60px;">
+													<img src="${productThumbnailPath}/${item.itemProductId}.jpg" alt="image" 
 															class="img-responsive img-thumbnail i-img">
 												</div>
 											</div>

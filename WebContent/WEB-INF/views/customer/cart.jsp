@@ -52,7 +52,7 @@
 	<div ng-hide="cartEmpty">
   		<div class="panel panel-warning">
     		<table class="table table-hover">
-				<tr class="active">
+				<tr style="background-color: #ffffcc;">
 					<th class="i-wd-10 text-center">ID</th>
 					<th class="i-wd-8"></th>
 					<th class="i-wd-25">Name</th>
@@ -66,10 +66,10 @@
 					<td class="text-center">{{item.product.productId}}</td>
 					
 					<td>
-						<div class="thumbnail text-center i-thumbnail" style="width: 110px;">
+						<div class="-thumbnail text-center i-thumbnail" style="width: 70px;">
 							<div class="i-img-wrapper" style="height: 70px;">
 								<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
-									<img src="${imagePath}/product-images/product_{{item.product.productId}}.png" alt="image"
+									<img src="${productThumbnailPath}/{{item.product.productId}}.jpg" alt="image"
 											class="img-responsive img-thumbnail i-img">
 								</a>
 							</div>

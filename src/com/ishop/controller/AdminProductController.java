@@ -41,6 +41,7 @@ public class AdminProductController {
 	 */
 	@GetMapping("/product-form-add")
 	public String showProductAddingForm(Model model) {
+		model.addAttribute("categoryList", productService.getProductCategoryList());
 		model.addAttribute("product", new Product());
 		return "admin/product-form";
 	}
@@ -55,6 +56,8 @@ public class AdminProductController {
 	@GetMapping("/product-form-update/{productId}")
 	public String showProductUpdatingForm(
 			@PathVariable("productId") Long productId, Model model) {
+		
+		model.addAttribute("categoryList", productService.getProductCategoryList());
 		model.addAttribute("product", productService.find(productId));
 		return "admin/product-form";
 	}

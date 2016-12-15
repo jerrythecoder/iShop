@@ -163,10 +163,10 @@
 								</tr>
 								<tr ng-repeat="item in cart.cartItems">
 									<td>
-										<div class="thumbnail text-center i-thumbnail" style="width: 65px;">
-											<div class="i-img-wrapper" style="height: 45px;">
+										<div class="-thumbnail text-center i-thumbnail" style="width: 60px;">
+											<div class="i-img-wrapper" style="height: 60px;">
 												<a href='<spring:url value="/product/detail/{{item.product.productId}}"/>'>
-													<img src="${imagePath}/product-images/product_{{item.product.productId}}.png" alt="image"
+													<img src="${productThumbnailPath}/{{item.product.productId}}.jpg" alt="image"
 															class="img-responsive img-thumbnail i-img">
 												</a>
 											</div>
@@ -241,8 +241,9 @@
 											               	-->
 											               	
 											               	<c:if test="${index < fn:length(order.orderItems) && index < max}">
-											               		<img src="${imagePath}/product-images/product_${order.orderItems[index].itemProductId}.png" 
-											               				alt="image" class="img-responsive img-thumbnail" width="60px" height="50px" style="margin: 5px;">
+											               		<img src="${productThumbnailPath}/${order.orderItems[index].itemProductId}.jpg" 
+											               				alt="image" class="img-responsive img-thumbnail" width="60px" height="60px" 
+											               						style="margin: 5px; border-width: 0px;">
 											               	</c:if>
 											               	<c:if test="${fn:length(order.orderItems) > max && index == max}">
 											               		<span class="glyphicon glyphicon-option-horizontal i-font-18" style="margin: 5px;"></span>

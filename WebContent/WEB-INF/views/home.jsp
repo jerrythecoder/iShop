@@ -92,7 +92,7 @@
 			<div class="col-sm-6 col-md-3">
 			    <div class="thumbnail" style="height: 360px; overflow: hidden;">
 			    	<a href="${productDetailLink}">
-			    		<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image"
+			    		<img src="${productThumbnailPath}/${product.productId}.jpg" alt="image"
 			      				style="height: 150px; overflow: hidden;">
 			    	</a>
 			      <div class="caption text-center">

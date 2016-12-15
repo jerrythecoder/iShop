@@ -78,7 +78,7 @@
 
 						<div class="-thumbnail text-center i-thumbnail" style="width: 520px;">
 							<div class="i-img-wrapper" style="height: 400px;">
-									<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
+									<img src="${productImagePath}/${product.productId}.jpg" alt="image" 
 											class="img-responsive img-thumbnail i-img">
 							</div>
 						</div>
@@ -169,6 +169,8 @@
 		<div class="page-header i-top-elem">
 			<div class="row">
 				<div class="col-md-12 -col-md-offset-1">
+					<p class="lead">${product.productDescription}</p>
+					<p class="lead">${product.productDescription}</p>
 					<p class="lead">${product.productDescription}</p>
 				</div>
 			</div> <!-- row 2 -->

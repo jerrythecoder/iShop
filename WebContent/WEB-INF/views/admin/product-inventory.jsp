@@ -73,10 +73,10 @@
 				<tr>
 					<td class="text-center">${product.productId}</td>
 					<td>
-						<div class="thumbnail text-center i-thumbnail" style="width: 100px;">
-							<div class="i-img-wrapper" style="height: 60px;">
+						<div class="-thumbnail text-center i-thumbnail" style="width: 80px;">
+							<div class="i-img-wrapper" style="height: 80px;">
 								<a href="${productDetailLink}">
-										<img src="${imagePath}/product-images/product_${product.productId}.png" alt="image" 
+										<img src="${productThumbnailPath}/${product.productId}.jpg" alt="image" 
 												class="img-responsive img-thumbnail i-img">
 								</a>
 							</div>

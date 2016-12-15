@@ -10,6 +10,8 @@
 	<!-- Global scope variables -->
 	<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 	<c:set var="imagePath" value="${ctx}/resources/images"/>
+	<c:set var="productImagePath" value="${ctx}/resources/images/product-images/large"/>
+	<c:set var="productThumbnailPath" value="${ctx}/resources/images/product-images/thumbnail"/>
 	<c:set var="moneySign" value="$"/>
 	
 	<head>
